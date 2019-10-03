@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>Formularios</h1>
+    </header>
+    <nav>
+        <h2>Menu Principal</h2>
+        <ul>
+            <li><a href="">Link 1</a></li>
+            <li><a href="">Link 2</a></li>
+            <li><a href="">Link 3</a></li>
+        </ul>
+    </nav>
+    <main>
+
+        <form method="GET" action="ssasdasd.html">
+            <fieldset>
+                <legend>Datos Personales</legend>
+                <p>
+                    <label>Nombres:</label>
+                    <!-- 'placeholder' = muestra un texto de ayuda en el input -->
+                    <!-- 'required' = obliga al usuario a ingresar texto en el input
+                        antes de mandar el formulario-->
+                    <!-- 'name' = es un atributo que crea una variable
+                    para representar al elemento -->
+                    <!-- 'value' = establece el valor del elemento -->
+                    <input type="text"
+                           placeholder="Ejm: Jorge"
+                           minlength="3"
+                           maxlength="20"
+                           name="nombre"
+                           required/>
+                </p>
+                <p>
+                    <label>Apellidos:</label>
+                    <input type="text"
+                           placeholder="Ejm: Garnica"
+                           minlength="3"
+                           maxlength="20"
+                           name="apellido"
+                           required>
+                </p>
+                <p>
+                    <label>Correo electrónico:</label>
+                    <input type="email"
+                           placeholder="Ejm: jgarnica@gmail.com"
+                           name="email"
+                           required>
+                </p>
+                <p>
+                    <label>Edad:</label>
+                    <!-- step = "incrementa el valor del input 
+                        cada x cantidad de numeros" -->
+                    <input type="number"
+                            min="18"
+                            max="80"
+                            value="18"
+                            required>
+                </p>
+                <p>
+                    <label>Fecha de Nacimiento:</label>
+                    <input type="date">
+                </p>
+                <p>
+                    <label>Hora de Nacimiento:</label>
+                    <input type="time">
+                </p>
+                <p>
+                    <label>Contraseña</label>
+                    <input type="password">
+                </p>
+                <p>
+                    <label>Color favorito:</label>
+                    <input type="color" />
+                </p>
+                <p>
+                    <label>Adjuntar CV</label>
+                    <input type="file" />
+                </p>
+                <p>
+                    <input type="reset" value="Limpiar campos" />
+                    <input type="submit" value="Registrar Usuario">
+                </p>
+            </fieldset>
+
+        </form>
+
+    </main>
+
+</body>
+
+</html>
