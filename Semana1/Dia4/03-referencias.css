@@ -1,0 +1,56 @@
+/* Todas las etiquetas li a */
+li, a{
+    color: blue;
+}
+/* Todos los h2 que sean hijos a cualquier nivel
+de un elemento section */
+section h2{
+    color: orangered;
+}
+/* Todos los h2 que sean hijos DIRECTOS
+de un elemento section */
+section>h2{
+    color: brown;
+}
+/* Todos los label hijos DIRECTOS
+de un id que sea form2 */
+#form2>label{
+    border: 1px solid blueviolet;
+}
+/* Todos los span hijos DIRECTOS de un label
+que a su vez sea hijo DIRECTO de un id que sea
+form2 */
+#form2>label>span{
+    border: 1px solid greenyellow;
+}
+/* Todos los elementos que tengan la clase
+texto-grande */
+.texto-grande{
+    font-size: 50px;
+}
+/* Todos los h1 que tengan la clase texto-grande */
+h1.texto-grande{
+    font-family: Arial, Helvetica, sans-serif;
+}
+h2.texto-grande{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Selectores de etiquetas con atributos */
+/* Todos los parrafos que tengan el atributo 
+name */
+p[name]{
+    background-color: chocolate;
+}
+
+/* Todos los parrafos que tengan el atributo
+name que tengan el valor de parrafo2 */
+p[name="parrafo2"]{
+    background-color: peru;
+}
+
+/* Todos los inputs que tengan el atributo
+type que tengan el valor de email  */
+input[type="email"]{
+    color: brown;
+}

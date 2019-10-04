@@ -1,0 +1,23 @@
+/* Todas las etiquetas h2 */
+h2{
+    color: blue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+section{
+    color: brown;
+}
+p{ color: green;}
+article{
+    color: violet;
+}
+/* Todas los elementos que 
+tengan la clase aguamarina */
+.aguamarina{
+    color: aquamarine;
+}
+/* Todos los elementos que tengan
+el id contacto */
+#contacto{
+    background-color: burlywood;
+}
