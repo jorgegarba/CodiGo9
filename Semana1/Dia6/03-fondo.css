@@ -1,0 +1,33 @@
+/* Funciones de reset o configuracion inicial */
+*{
+    margin:0;
+}
+html, body{
+    height: 100%;
+}
+/*--Configuracion inicial-- */
+body{
+    background-color: crimson;
+}
+header{
+    background-color: blueviolet;
+}
+.section1{
+    height: 400px;
+    background-color: black;
+    /* Para poner una imagen de fondo */
+    background-image: url('./imagenes/django.png');
+    /* Para definir si queremos que la imagen se repita */
+    /* repeat-y => la imagen se repite verticalmente */
+    /* repeat-x => la imagen se repite horizontalmente */
+    background-repeat: no-repeat;
+    /* Para definir el tamaño de la imagen de fondo
+    y usamos contain para que se ajuste a la altura definida*/
+    background-size: contain;
+    /* Para posicionar nuestra imagen de fondo */
+    background-position: center;
+}
+.section2{
+    background-image: url('./imagenes/hoja\ arrugada.jpg');
+    height: 400px;
+}
