@@ -1,0 +1,23 @@
+header{
+    border: 1px solid salmon;
+    width: 50%;
+}
+section{
+    font-size: 70px;
+}
+div{
+    border: 1px solid blue;
+    width: 50%;
+}
+/* rem es la unidad de medida RELATIVA que depende
+ directamente del elemento raiz de la pagina, osea del 
+ tamaño de fuente del elemento <html> */
+section p{
+    font-size: 1rem;
+}
+/* em es la unidad de medida RELATIVA que depende
+del ultimo font-size definido DENTRO DEL ARBOL DE
+ELEMENTOS en el que se encuentra. */
+.parrafo{
+    font-size: 2em;
+}

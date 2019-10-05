@@ -16,3 +16,34 @@ code{
 .c-font{
     font: oblique bold 20px Verdana;
 }
+.c-text-align{
+    text-align: center;
+}
+.c-text-align-last{
+    text-align-last: right;
+}
+.c-letter-spacing{
+    letter-spacing: 10px;
+}
+.c-word-spacing{
+    word-spacing: 15px;
+}
+.c-line-height{
+    line-height: 10px;
+}
+img{
+    vertical-align: middle;
+}
+.c-border{
+    border: 1px dotted #000000;
+}
+.c-width{
+    width: 50%;
+}
+.c-height{
+    height: 20px;
+}
+.c-overflow{
+    overflow: scroll;
+    overflow-x: hidden;
+}

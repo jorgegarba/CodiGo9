@@ -1,0 +1,22 @@
+header{
+    border: 1px solid red;
+    height: 300px;
+}
+div{
+    border: 1px solid blue;
+    width: 40px;
+}
+div:nth-child(1) {
+    /* padding: 10px => relleno de 10px a los 4 lados 
+    padding: 10px 50px => relleno vertical de 10px y 
+    horizontal de 50px
+    padding: 10px 50px 80px 100px => relleno arriba=10px derecha=50px
+    abajo=80px izquierda=100px */
+    /* margin: aplica las mismas reglas */
+    padding: 10px 50px 80px 100px;
+}
+div:nth-child(2){
+    margin-left: 12px;
+    margin-top: 30px;
+    padding: 30px;
+}
