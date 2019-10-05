@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+}
+html, body{
+    height: 100%;
+}
+header{
+    margin: 10px;
+    width: 400px;
+    border: 1px solid #188079;
+    /* box-shadow: propiedad que sirve para dar un estilo
+    tridimensional al elemento, por defecto viene con el
+    valor 'none' */
+    box-shadow: inset -10px 10px 10px #123456;
+}

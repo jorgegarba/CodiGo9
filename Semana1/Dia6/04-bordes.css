@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+}
+body,html{
+    height: 100%;
+}
+div{
+    width: 400px;
+    /* border-width => grosor del borde */
+    /* border-style => estilo del borde: solid(solido), 
+    dotted (punteado), hidden (oculto), dashed(punteado pero
+    los puntos mas separados) */
+    /* border-color => color del borde rbg, hexadecimal,
+    colores primarios, rgba */
+    /* border: border-width(1px) border-style(solid) 
+    border-color(red) => agrupa todas las propiedades que
+    se pueden asigar al borde del elemento */
+    /* border: 1px solid red; */
+    border-width: 1px;
+    border-style: solid;
+    border-color: red;
+    /* Centra el elemento al centro de la pagina */
+    margin: auto;
+
+}
+.section1{
+    height: 300px;
+    /* si solo queremos definir un lado de un borde puede
+    ser: border-top, border-bottom, border-left, border-right */
+    border-top: 1px solid blue;
+    border-bottom: 1px solid salmon;
+}
+.section2{
+    height: 300px;
+    border: 2px solid orangered;
+    /* Agarra todas las esquinas del borde y crea un circulo
+    imaginario y le da un radio de 20px */
+    border-radius: 20px;
+}
+.section3{
+    height: 300px;
+    width: 300px;
+    border: 1px solid green;
+    /* border-radius acepta como valores: px, %, em, rem. */
+    border-radius: 50%;
+}
+.section4{
+    height: 200px;
+    width: 200px;
+    border: 1px dotted red;
+    margin: auto;
+    /* border en el lado superior izquierdo y que sea 
+    redondeado */
+    border-top-left-radius: 40px;
+    /* border superior derecho redondeado */
+    border-top-right-radius: 40px;
+}

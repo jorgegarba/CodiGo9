@@ -31,3 +31,18 @@ header{
     background-image: url('./imagenes/hoja\ arrugada.jpg');
     height: 400px;
 }
+.section3{
+    height: 500px;
+    background-image: url('./imagenes/paisaje.jpg');
+    background-size: 100%;
+    /* Si hay un background-image, background-attackment
+    determina si la imagen va a estar fija o se desplazará
+    junto al bloque que lo contiene, en este caso un section
+    Sus valores pueden ser: scroll(la imagen se mueve con su
+    contenedor), fixed(la imagen estara fijada a la pantalla
+    y no se mueve con su contenedor) */
+    background-attachment: fixed;
+}
+.section4{
+    height: 1000px;
+}
