@@ -1,0 +1,30 @@
+/* Numero de la posicion del hijo */
+/* Escoger el hijo #3 de los p */
+p:nth-child(3){
+    color: blue;
+}
+
+/* Escoger el primer hijo de los p */
+p:first-child{
+    color: blueviolet;
+}
+
+/* Escoger el ultimo hijo de los p */
+p:last-child{
+    color: green;
+}
+
+/* Todos los elementos impares */
+tr:nth-child(odd){
+    background-color: #dddddd;
+}
+
+/* Todos los elementos pares */
+tr:nth-child(even){
+    background-color: #c5a1a1;
+}
+/* El hijo #1 del tr que tiene como padre
+un thead */
+thead tr:nth-child(1){
+    background-color: aqua;
+}
