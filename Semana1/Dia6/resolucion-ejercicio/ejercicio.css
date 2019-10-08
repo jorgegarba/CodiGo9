@@ -1,0 +1,60 @@
+/* Agregas fuentes personalizadas */
+@font-face{
+    font-family: 'Source-Sans-Pro';
+    src: url('./src/SourceSansPro-Regular.ttf');
+}
+*{
+    margin: 0;
+    font-family: 'Source-Sans-Pro'
+}
+html, body{
+    height: 100%;
+    background-color: #dbdbdb;
+}
+.contenedor{
+    margin: auto;
+    width: 340px;
+    margin-top: 5%;
+    box-shadow: 0px 0px 5px #000000;
+}
+.imagen{
+    height: 340px;
+}
+.descripcion{
+    padding: 30px 20px;
+    border-bottom: 50px;
+    background-color: #ffffff;
+
+}
+h4{
+    color:#dbdbdb;
+    margin-bottom: 5%;
+}
+.colores{
+    float: left;
+    margin: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid;
+}
+.azul{
+    background-color: blue;
+}
+.rojo{
+    background-color: red;
+
+}
+.blanco{
+    background-color: white;
+}
+.verde{
+    background-color: green;
+}
+
+span{
+    float: right;
+    color: #36CBAB;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
