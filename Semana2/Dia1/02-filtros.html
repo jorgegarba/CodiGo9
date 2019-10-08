@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./02-filtros.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Propiedad</th>
+                <th>Descripcion</th>
+                <th>Ejemplo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>blur(valor)</td>
+                <td>Produce un filtro de difuminado.
+                    Acepta valores en pixeles desde 1px
+                    a 10px.
+                </td>
+                <td>
+                    <p class="c-blur">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut voluptatum quis ipsam
+                        nobis esse
+                        voluptate illum unde nihil provident animi blanditiis cumque atque, accusantium quia obcaecati
+                        fugiat itaque voluptatem saepe.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>grayscale(valor)</td>
+                <td>
+                    <p>
+                        Esta función convierte los colores
+                        de la imagen en una escala de grises.
+                        Sus valores van desde el 0.1 hasta el 1.
+                    </p>
+                </td>
+                <td>
+                    <img src="./ejemplo.jpg" class="c-grayscale">
+                </td>
+            </tr>
+            <tr>
+                <td>drop-shadow(x,y,tamaño,color)</td>
+                <td>
+                    <p>
+                        Esta función genera una sombra. El atributo
+                        x e y determinan la distancia entre la sombra
+                        y la imagen, el atributo tamaño es el tamaño
+                        de la sombra, y el atributo color es el color
+                        de la sombra.
+                    </p>
+                </td>
+                <td>
+                    <p class="c-drop-shadow">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, incidunt
+                        consequuntur eveniet
+                        officia dolorum nihil cumque inventore delectus omnis beatae itaque sint. Eveniet aperiam vitae
+                        temporibus ut. Molestias, dolorem facere.</p>
+                    <img src="./ejemplo.jpg" class="c-drop-shadow" alt="">
+                </td>
+            </tr>
+            <tr>
+                <td>brightness(valor)</td>
+                <td>
+                    <p>Cambia el brillo de la imagen. Sus valores
+                        pueden ser entre 0.1 y 10.
+                    </p>
+                </td>
+                <td>
+                    <img src="./ejemplo.jpg" class="c-brightness">
+                </td>
+            </tr>
+            <tr>
+                <td>hue-rotate(valor)</td>
+                <td>
+                    <p>Esta función genera la rotación a los matices
+                        de la imagen. Sus valores son entre 1deg
+                        a 360deg.
+                    </p>
+                </td>
+                <td>
+                    <img src="./ejemplo.jpg" class="c-hue-rotate">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <h2>Transformaciones</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Propiedad</th>
+                <th>Descripcion</th>
+                <th>Ejemplo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>scale(x,y)</td>
+                <td>
+                    <p>Modifica la escala del elemento.
+                        Si solo queremos modificar la
+                        escala de algún eje, existen las
+                        funciones scaleX(valor) y scaleY(valor)
+                    </p>
+                </td>
+                <td>
+                    <img src="./ejemplo.jpg" class="c-scale" alt="">
+                </td>
+            </tr>
+            <tr>
+                <td>rotate(angulo)</td>
+                <td>
+                    <p>Sirve para rotar el elemento. se puede
+                        declarar en deg, grad(radianes) y
+                        turn(1turn => un circulo completo)
+                    </p>
+                </td>
+                <td>
+                    <img src="./ejemplo.jpg" class="c-rotate">
+                    <p class="c-rotate">Párrafo de prueba.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>translate(x,y)</td>
+                <td>Desplaza al elemento a la posición
+                    determinada por los valores x e y.
+                </td>
+                <td>
+                    <img src="./ejemplo.jpg" class="c-translate">
+                </td>
+            </tr>
+            <tr>
+                <td>Ejemplo Unificado</td>
+                <td>
+                    <p>
+                        Se puede agregar mas de una transformación
+                        a un mismo elemento.
+                    </p>
+                </td>
+                <td>
+                    <img src="./ejemplo.jpg" 
+                    class="c-combinado">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <h2>Transiciones</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Propiedad</th>
+                <th>Descripcion</th>
+                <th>Ejemplo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>transition-property</td>
+                <td>
+                    <p>
+                        Esta propiedad determina las propiedades que
+                        van a participar en la transición, si queremos
+                        que todas las propiedades participen se asigna
+                        el valor a11
+                    </p>
+                </td>
+                <td rowspan="3">
+                    <div class="c-transition-property"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>transition-duration</td>
+                <td>
+                    <p>Especifica la duración de la transición
+                        en segundos (s)
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>transition-timing-function</td>
+                <td>
+                    <p>Determina la función que se usa para calcular
+                        los valores de la transición. Sus valores son:
+                        ease (valor por defecto, incrementa su velocidad
+                        en el medio de la transición, lento al inicio y
+                        al fin), linear(la transición tiene la misma 
+                        velocidad en toda su duración), ease-in(inicia 
+                        lenta y va acelerando hasta que termine la 
+                        transición), ease-out(inicia rapida y va 
+                        desacelerando a medida que avanza la transición),
+                        ease-in-out(comienza lento, aumenta su velocidad
+                        hasta la mitad y de ahi vuelve a su velocidad
+                        lenta)
+                    </p>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</body>
+
+</html>

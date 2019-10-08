@@ -1,0 +1,44 @@
+.gradiente-lineal{
+    margin: 30px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid blue;
+    height: 500px;
+    /* posicion(top, bottom, left, right),
+     angulo (deg, grad), 
+     [colores(rgb,rgba,hexadecimal)] */
+    background: -webkit-linear-gradient(180deg, #c6c6c6 , #000000, #d54e);
+    /* background: -o-linear-gradient();
+    background: -moz-linear-gradient(); */
+}
+.gradiente-lineal-2{
+    margin: 30px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid;
+    /* -webkit- => google chrome
+    -moz- => mozilla firefox
+    -o- => Opera
+    -ms- => Internet Explorer / Edge */
+    background: -webkit-linear-gradient(
+        left, #ff0000,#00ff00
+        ,#0000ff);
+}
+.gradiente-circular{
+    margin: 30px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid;
+    /* posicion: la posicion que indica
+    el origen del gradiente y se puede
+    declarar en px, %, valores como (top,
+    bottom, left, right)
+    forma: determina la forma del gradiente
+    y sus valores son: circle, ellipse
+    colores: es la lista de colores que 
+    participan en la gradiente y pueden 
+    estar acompañados de un % para indicar
+    cuanto ocupa del gradiente */
+    background: -webkit-radial-gradient(
+        center, circle, #00ffab,#000000);
+}

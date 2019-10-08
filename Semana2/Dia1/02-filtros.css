@@ -1,0 +1,42 @@
+.c-blur{
+    filter: blur(5px);
+}
+.c-grayscale{
+    filter: grayscale(1);
+}
+.c-drop-shadow{
+    filter: drop-shadow(2px 2px 3px #00ff00);
+}
+.c-brightness{
+    filter: brightness(8.0);
+}
+.c-hue-rotate{
+    filter: hue-rotate(90deg);
+}
+/* Transformaciones */
+.c-scale{
+    transform: scale(0.5,0.5);
+}
+.c-rotate{
+    transform: rotate(1.2turn);
+}
+.c-translate{
+    transform: translate(20px,20px);
+}
+.c-combinado{
+    transform: scale(0.5,0.5) translate(70px,70px);
+}
+/* Transiciones */
+.c-transition-property{
+    width: 200px;
+    height: 50px;
+    background-color: #ffaabb;
+    transition-property: all;
+    transition-timing-function: ease;
+    transition-duration: 1s;
+}
+.c-transition-property:hover{
+    width: 500px;
+    height: 20px;
+    background-color: #00ff00;
+}

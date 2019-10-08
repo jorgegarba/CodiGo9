@@ -11,5 +11,5 @@ header{
     /* box-shadow: propiedad que sirve para dar un estilo
     tridimensional al elemento, por defecto viene con el
     valor 'none' */
-    box-shadow: inset -10px 10px 10px #123456;
+    box-shadow: -10px 10px 10px #123456;
 }
