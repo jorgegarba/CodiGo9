@@ -1,0 +1,35 @@
+.imagen{
+    /* animation-name = nombre de la animacion 
+    animation-duration = duracion de la animacion expresada en segundos
+    animation-timing-function = como se va a realizar la animación
+    animation-delay = cuanto tiempo va a esperar para comenzar a 
+    funcionar la aminacion
+    animation-iteration-count = cuantas veces se va a repetir la animacion,
+    su valor por defecto es 1 y si queremos que siempre se ejecute ponemos
+    el valor de infinite
+    animation-direction = en que orden se va a ejecutar la animacion, su 
+    valor
+    por defecto es (normal) y tiene valores como "reverse", "alternate",
+    "alternate-reverse"
+    animation-fill-mode = como afecta la animacion a los estilos del 
+    elemento, su valor por defecto es (none) y tienes valores como 
+    "forwards", "backwards" y "both" */
+    animation: mianimacion 3s ease-in 0s infinite normal none;
+}
+@keyframes mianimacion {
+    0%{
+        transform: translate(0px,0px);
+    }
+    25%{
+        transform: translate(20px,0px);
+    }
+    50%{
+        transform: translate(20px,20px);
+    }
+    75%{
+        transform: translate(0px,20px);
+    }
+    100%{
+        transform: translate(0px,0px);
+    }
+}
