@@ -1,0 +1,15 @@
+img{
+    /* Cuando un elemento flota sin importar su valor (left,right...)
+    los demas elementos, así sean block, se ocupan el espacio disponible
+    como si el elemento no estuviese y consideran que la dimension del
+    navegador es incluyendo el elemto */
+    float: left;
+    margin: 0px 10px;
+}
+section{
+    background-color: gray;
+    /* overflow: auto; */
+}
+.clearfloat{
+    clear: both;
+}

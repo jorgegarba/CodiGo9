@@ -1,0 +1,40 @@
+#cajapadre{
+    position: relative;
+    width: 600px;
+    border: 1px solid;
+    z-index: -2;
+}
+.cajahijo{
+    width: 120px;
+    height: 50px;
+    margin: 5px;
+
+}
+.caja-1{
+    position: absolute;
+    top: 25px;
+    float: left;
+    background-color: orange;
+    /* z-index indica el orden de un elemento y sus
+     descendientes cuando varios elementos se superponen
+     Un elemento con mayor valor generalmente cubre a otro
+     con menor valor.*/
+    z-index: -1;
+}
+.caja-2{
+    float: left;
+    background-color: purple;
+}
+.caja-3{
+    float: right;
+    background-color: green;
+}
+.caja-4{
+    float: right;
+    background-color: blueviolet;
+}
+.restaurar{
+    /* Artificio que sirve para que el elemento padre este obligado
+    a reconocer a sus hijos aún asi esten flotando en el html*/
+    clear: both;
+}
