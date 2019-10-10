@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+}
+html,body{
+    height: 100%;
+    background-color: salmon;
+}
+.container{
+    margin: auto;
+    width: 167px;
+    margin-top: 10%;
+    background-color: #ededed;
+}
+input{
+    margin: 10px;
+    padding: 10px;
+}
+input[type="button"]{
+    background-color: transparent;
+    font-size: 20px;
+    border: none;
+    outline: none;
+}
+input:hover{
+    background-color: #cccccc;
+}
+input[type="text"]{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #00bbcc;
+    width: 20px;
+    outline: none;
+}
+input[type="button"]:focus{
+    animation: click 0.5s ease 0s 1 normal none;
+}
+@keyframes click{
+    20%{
+        transform: rotate(0.2turn);
+    }
+    40%{
+        transform: rotate(0.4turn);
+    }
+    60%{
+        transform: rotate(0.6turn);
+    }
+    80%{
+        transform: rotate(0.8turn);
+    }
+    100%{
+        transform: rotate(1turn);
+    }
+}
