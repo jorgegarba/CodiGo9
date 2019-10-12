@@ -1,0 +1,37 @@
+/* Funciones de reset */
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+html, body {
+    height: 100%;
+}
+
+header {
+    height: 10%;
+    background-color: coral;
+}
+
+main {
+    display: flex;
+    height: 80%;
+    background-color: aquamarine;
+    padding: 1em 2em;
+}
+
+footer {
+    height: 10%;
+    background-color: crimson;
+}
+
+section{
+    background-color: goldenrod;
+    flex: 2;
+}
+aside{
+    background-color: indigo;
+    flex: 1;
+}
