@@ -3,7 +3,6 @@
 * {
     margin: 0;
     box-sizing: border-box;
-    
 }
 
 html, body {
@@ -27,11 +26,26 @@ footer {
     background-color: crimson;
 }
 
-section{
+section {
     background-color: goldenrod;
     flex: 2;
+    display: flex;
+    padding: 1em;
 }
-aside{
+
+aside {
     background-color: indigo;
     flex: 1;
+}
+
+.art1 {
+    flex: 1;
+    background-color: lightgreen;
+    margin-right: 0.5em;
+}
+
+.art2 {
+    flex: 1;
+    background-color: lightgreen;
+    margin-left: 0.5em;
 }
