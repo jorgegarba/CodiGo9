@@ -1,0 +1,10 @@
+@font-face{
+    font-family: 'Harry-Potter';
+    src: url('./HARRYP__.TTF');
+}
+p{
+    font-family: 'Harry-Potter';
+}
+span{
+    font-family: 'Zhi Mang Xing', cursive;
+}

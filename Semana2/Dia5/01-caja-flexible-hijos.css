@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+}
+html, body{
+    height: 100%;
+}
+.contenedor{
+    margin: auto;
+    width: 70%;
+    height: 50%;
+    background-color: salmon;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.hijo{
+    background-color: #00b285;
+    width: 200px;
+    height: 100px;
+    margin: 30px;
+    padding: 20px;
+    text-align: center;
+    font-size: 50px;
+    /* Especifica el factor de crecimiento de un elemento tipo flex, su valor
+    sera que cantidad de espacio debe ocupar dentro del elemento flexible.
+    Si todos los elementos tienen flex-grow:1, el espacio restante se distribuye
+    entre los elementos */
+    flex-grow: 1;
+    /* Restringe el ancho minimo que definimos en la propiedad height. Si
+    usamos el valor 0 el elemento hijo no podra hacerse mas pequeño que su 
+    ancho establecido */
+    flex-shrink: 0;
+    /* Especifica la base flexible, que es el tamaño inicial de un elemento
+    flexible en el caso que no hayamos dado un width */
+    /* Especificamos el tamaño inicial que tendra un elemento hijo */
+    flex-basis: auto;
+    flex: 1 0 auto;/* flex-grow:1 flex-shrink:0 flex-basis:auto*/
+    flex: 1 auto; /* flex-grow:1 flex-shrink:1 flex-basis:auto*/
+    flex: 1; /* flex-grow:1 flex-shrink: 1 flex-basis:auto */
+}
+.otro{
+    /* ordena los elementos de menor a mayor segun su valor */
+    /* Por defecto su valor es 0 */
+    order: -1;
+    /* NOTA: Para que funcione su padre no tiene que tener la propiedad
+    align-content */
+    /* Alinea los elementos flexibles de la linea flexible actual, tiene valores
+    como auto(default), flex-start, flex-end, stretch, baseline */
+    align-self: stretch;
+    height: auto;
+}

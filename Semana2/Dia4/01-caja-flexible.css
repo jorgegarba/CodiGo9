@@ -1,0 +1,47 @@
+/* Va a hacer efecto EN TODOS LOS ELEMENTOS DE LA PAGINA */
+*{
+    margin: 0;
+}
+.contenedor{
+    width: 100%;
+    height: 500px;
+    background-color: #ff5c29;
+    /* Define el contenedor como flexible y todos
+    sus hijos como elementos flexibles */
+    display: flex;
+    /* Indica la direccion de los elementos o hijos,
+    sus valores pueden ser: row (default),
+    row-reverse, column, column-reverse */
+    flex-direction: row;
+    /* Respeta el ancho de los elementos hijos (si
+    tenemos muchos hijos, haran un salto de linea),
+    sus valores pueden ser: wrap y nowrap(default) */
+    flex-wrap: wrap;
+    /* Posiciona los elementos horizontalmente,
+    sus valores son: flex-start(default), flex-end,
+    center, space-between, space-around */
+    justify-content: space-around;
+    /* Posiciona los elementos verticalmente, sus
+    valores son: flex-start(default), flex-end, 
+    center stretch, baseline */
+    /* NOTA: Para usar el valor stretch nuestros 
+    hijos no deben de tener altura (height) */
+    align-items: stretch;
+    /* NOTA: Solo funciona si hay mas de una 
+    linea de elementos hijos */
+    /* Sirve para alinear todo el contenido,
+    sus valores son: flex-start(default), flex-end
+    center, space-between, space-around, stretch */
+    /* align-content: stretch; */
+
+}
+.hijo{
+    background-color: #00b285;
+    width: 200px;
+    height: 100px;
+    color: white;
+    margin: 0px;
+    padding: 20px;
+    font-size: 50px;
+    text-align: center;
+}
