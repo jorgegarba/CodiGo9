@@ -36,6 +36,11 @@ section {
 aside {
     background-color: indigo;
     flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .art1 {
@@ -48,4 +53,18 @@ aside {
     flex: 1;
     background-color: lightgreen;
     margin-left: 0.5em;
+}
+
+.art3 {
+    background-color: #ccc;
+    /* flex: 2 0 100px; */
+    width: 100px;
+    height: 100px;
+}
+
+.art4 {
+    background-color: yellow;
+    /* flex: 1 0     100px; */
+    width: 100px;
+    height: 100px;
 }
