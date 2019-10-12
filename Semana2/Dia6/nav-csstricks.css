@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: 'Roboto Slab';
+    outline: none;
+}
+header{
+    width: 100%;
+    display: flex;
+    background-color: black;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex{
+    display: flex;
+}
+ul{
+    justify-content: space-between;
+    padding: 10px;
+}
+.bloque{
+    display: block;
+    text-align: center;
+}
+.logo{
+    align-self: stretch;
+    align-items: center;
+    flex: 0;
+    display: flex;
+    padding: 0 30px;
+}
+.nav{
+    flex: 1;
+    font-size: 10px;
+}
+.busqueda{
+    margin-right: 20px;
+    flex: 0;
+    padding: 0 40px;
+    align-content: flex-end;
+    display: flex;
+}
+.buscador{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding-left: 10px;
+    border: none;
+    border-top: 1px solid rgb(224, 224, 224);
+    border-bottom: 1px solid rgb(224, 224, 224);
+    border-left: 1px solid rgb(224, 224, 224);
+    background-color: black;
+    color: white;
+}
+span>i{
+    padding: 10px 10px;
+    border: none;
+    border-top: 1px solid rgb(224, 224, 224);
+    border-bottom: 1px solid rgb(224, 224, 224);
+    border-right: 1px solid rgb(224, 224, 224);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: linear-gradient(90deg, #FD810B 40%, #E83864);
+}
+li{
+    padding: 10px;
+}
+h3{
+    width: 110px;
+}
+i{
+    font-size: 15px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
