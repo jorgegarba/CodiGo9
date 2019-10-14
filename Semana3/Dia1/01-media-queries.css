@@ -1,0 +1,34 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: #999999;
+}
+/* all: en todos los medios */
+/* print: para cuando la pagina se envia a la 
+impresora */
+/* va entre parentesis porque se le asigna un
+parametro */
+
+@media all and (max-width: 1024px){
+    body{
+        background-color: #3333FF;
+    }
+    h1{
+        color: white;
+    }
+}
+@media (max-width: 768px){
+    body{
+        background-color: #FF33FF;
+    }
+}
+@media (min-width: 500px){
+    body{
+        background-color: #339354;
+    }
+}
+@media( min-width: 200px) and (max-width:400px){
+    body{
+        background-color: yellow;
+    }
+}
