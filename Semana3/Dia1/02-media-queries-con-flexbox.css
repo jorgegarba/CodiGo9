@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+}
+.padre{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 10px;
+}
+.header{background-color: #581845;}
+.article{ background-color: #ffc300;}
+.izquierda{ background-color: #900c3f;}
+.derecha{ background-color: #c70039;}
+.footer {background-color: #daf7a6;}
+.header, .article, .izquierda, .derecha, .footer{
+    flex-grow: 1;
+    flex-basis: 100%;
+    padding: 10px;
+}
+@media (min-width: 600px){
+    .aside{
+        /* dentro del flex tenemos en ORDEN :
+        1: flex-grow => Determina hasta cuanto puede crecer. 
+        Si todos tienen el valor de 1 entonces el espacio disponible sera
+        compartido equitativamente entre todos los elementos
+        2: flex-shrink => controla como se contrae el elemento. Si no tiene
+        un espacio suficiente pero el valor es positivo el elemento se 
+        contrae a partir del flex-basis
+        3: flex-basis => Define el espacio que va a ocupar el elemento. Su
+        valor es auto*/
+        flex: 1 1 auto;
+    }
+}
+@media (min-width: 800px){
+    .article{
+        /* flex-grow: 2;
+        flex-shrink: 0;
+        flex-basis: 0; */
+        flex: 2 0;
+    }
+    .izquierda{
+        order: 1;
+    }
+    .article{
+        order: 2;
+    }
+    .derecha{
+        order: 3;
+    }
+    .footer{
+        order: 4;
+    }
+}
