@@ -1,3 +1,4 @@
+/*
 var salario_inicial = 1500;
 var incremento = 10;
 var salario = 0;
@@ -44,9 +45,28 @@ if(metodo_de_pago==="efectivo"){
 else{
     console.log(`Su total es de S/.${(sencilla*cant_sencilla + doble*cant_doble + triple*cant_triple)*1.05}`);
 }
+*/
 
-// cantidad del lote
-// cuantos son verdes, blancos y rojos
-
-// anio= 365
-// ahorro 3 9 27 
+// Una compañía fabrica focos de colores (verdes, blancos y rojos). Se
+// desea contabilizar, de un lote de N focos, el número de focos de cada
+// color que hay en existencia. Desarrolle un algoritmo para determinar
+// esto y represéntelo mediante el diagrama de flujo, el pseudocódigo
+// y el diagrama N/S, utilizando el ciclo apropiado.
+var cantidad_total = +prompt("Ingrese la cantidad del lote");
+var rojo=0,verde=0,blanco=0;
+for(let foco=1; foco<=cantidad_total; foco++){
+    var color = prompt(`El foco ${foco} es: 1. verde, 2. blanco, 3. rojo`);
+    if(color==1){
+        verde=verde+1 // verde++;
+    }
+    if(color==2){
+        blanco++;
+    }
+    if(color==3){
+        rojo++;
+    }
+    else{
+        console.log("El valor ingresado no es correcto")
+    }
+}
+console.log(`El lote con ${cantidad_total} focos, tiene ${verde} focos verdes, ${blanco} focos blancos y ${rojo} focos rojos`)
