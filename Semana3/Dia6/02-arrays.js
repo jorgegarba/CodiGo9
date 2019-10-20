@@ -88,39 +88,90 @@ for (let fila = 0; fila < miarreglo.length; fila++) {
     }
 }
 */
+
 /*
+// TRES EN RAYA
 var tres_en_raya = [
     ["", "", ""],
     ["", "", ""],
     ["", "", ""],
 ]
 
+var jugador = 1;
+var fin = false;
+var persona_fila = 0;
+var persona_columna = 0;
 
-var persona1_fila = +prompt("Primer jugador, Ingrese la posicion, la fila");
-var persona1_columna = +prompt("Primer jugador, Ingrese la posicion, la columna");
-if (persona1_fila < 3 && persona1_columna < 3) {
-    tres_en_raya[persona1_fila][persona1_columna] = "X"
-} else {
-    alert("Dimension incorrecta")
-
+while (!fin) {
+    switch (jugador) {
+        case 1:
+            console.log(tres_en_raya);
+            persona_fila = +prompt("Primer jugador, Ingrese la posicion, la fila")-1;
+            persona_columna = +prompt("Primer jugador, Ingrese la posicion, la columna")-1;
+            if (persona_fila < 3 && persona_columna < 3) {
+                if (tres_en_raya[persona_fila][persona_columna] != "") {
+                    alert("Ya se escribio ahi")
+                }
+                else {
+                    tres_en_raya[persona_fila][persona_columna] = "O";
+                    for (let fila = 0; fila < tres_en_raya.length; fila++) {
+                        if (tres_en_raya[fila][0] == "O" && tres_en_raya[fila][1] == "O" && tres_en_raya[fila][2] == "O") {
+                            alert("Gano el jugador 1");
+                            fin = true;
+                            break;
+                        }
+                        if (tres_en_raya[0][fila] == "O" && tres_en_raya[1][fila] == "O" && tres_en_raya[2][fila] == "O") {
+                            alert("Gano el jugador 1");
+                            fin = true;
+                            break;
+                        }
+                        if (tres_en_raya[0][0] == "O" && tres_en_raya[1][1] == "O" && tres_en_raya[2][2] == "O") {
+                            alert("Gano el jugador 1");
+                            fin = true;
+                            break;
+                        }
+                    }
+                    jugador = 2;
+                }
+            } else {
+                alert("Dimension incorrecta")
+            }
+            break;
+        case 2:
+            console.log(tres_en_raya);
+            persona_fila = +prompt("Segundo jugador, Ingrese la posicion, la fila")-1;
+            persona_columna = +prompt("Segundo jugador, Ingrese la posicion, la columna")-1;
+            if (persona_fila < 3 && persona_columna < 3) {
+                if (tres_en_raya[persona_fila][persona_columna] != "") {
+                    alert("Ya se escribio ahi")
+                }
+                else {
+                    tres_en_raya[persona_fila][persona_columna] = "X";
+                    for (let fila = 0; fila < tres_en_raya.length; fila++) {
+                        if (tres_en_raya[fila][0] == "X" && tres_en_raya[fila][1] == "X" && tres_en_raya[fila][2] == "X") {
+                            alert("Gano el jugador 2");
+                            fin = true;
+                            break;
+                        }
+                        if (tres_en_raya[0][fila] == "X" && tres_en_raya[1][fila] == "X" && tres_en_raya[2][fila] == "X") {
+                            alert("Gano el jugador 2");
+                            fin = true;
+                            break;
+                        }
+                        if (tres_en_raya[0][0] == "X" && tres_en_raya[1][1] == "X" && tres_en_raya[2][2] == "X") {
+                            alert("Gano el jugador 2");
+                            fin = true;
+                            break;
+                        }
+                    }
+                    jugador = 1;
+                }
+            } else {
+                alert("Dimension incorrecta")
+            }
+    }
 }
 console.log(tres_en_raya);
-
-var persona2_fila = prompt("Segundo jugador, Ingrese la posicion, la fila");
-var persona2_columna = +prompt("Segundo jugador, Ingrese la posicion, la columna");
-if (persona2_fila < 3 && persona2_columna < 3) {
-    if (tres_en_raya[persona2_fila][persona2_columna] != "") {
-        alert("Ya se escribio ahi")
-    }
-    else {
-        tres_en_raya[persona2_fila][persona2_columna] = "O"
-    }
-} else {
-    alert("Dimension incorrecta")
-}
-
-console.log(tres_en_raya);
-
 */
 
 // PIEDRA PAPEL O TIJERA
@@ -189,6 +240,8 @@ while (jugar) {
             break;
     }
 }
+*/
+
 // if (jugador1 == "piedra") {
 //     if (jugador2 == "piedra") {
 //         console.log("Empate");
@@ -223,8 +276,9 @@ while (jugar) {
 //     }
 // }
 
+/*
 var anios = [1992, 2000, 2005, 2008, 1969, 1345, 1540, 1780, 1901, 2020]
-// El año bisiesto es el año que es multiplo de 4 
+// El año bisiesto es el año que es multiplo de 4
 // pero que no es multiplo de 100
 for (let posicion = 0; posicion < anios.length; posicion++) {
     if (anios[posicion] % 4 == 0 && anios[posicion] % 100 != 0) {
