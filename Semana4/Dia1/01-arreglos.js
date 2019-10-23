@@ -4,6 +4,7 @@ let numeros = [10, 20, 30, 40, 50, 0, 0, 0, -3, -8, -2];
 console.log(numeros.length);
 // ultimo elemento del arreglo
 console.log(numeros[numeros.length - 1]);
+
 // imprimiendo un arreglo
 console.log(numeros);
 
