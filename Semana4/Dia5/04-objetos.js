@@ -1,6 +1,8 @@
 // JSON
 // JavaScript Object Notation
 
+/*
+
 // Crea un Objeto
 let vehiculo = {
     llantas: 4,
@@ -62,15 +64,15 @@ restaurante.mostrarPedidos();
 
 // Un objeto dentro de otro objeto
 let libro = {
-    autor :'Alfredo Bryce Echenique',
+    autor: 'Alfredo Bryce Echenique',
     titulo: 'Un mundo para Julius',
-    editorial:{
+    editorial: {
         nombre: 'Seix Barral',
         anioPub: '1970'
     }
 }
 console.log(libro.editorial.anioPub);
-
+*/
 
 // Crear un objeto de nombre objFactura, que tenga la estructura de una factura
 /**
@@ -92,4 +94,65 @@ console.log(libro.editorial.anioPub);
  * 5. agregarDetalle(funcion)
  *  agregar un objeto de tipo detalle al arreglo de detalles
  */
-let objeto={}
+let objFactura = {
+    cabecera: {
+        // ruc: '',
+        // razonSocial: '',
+        // fecha: '',
+        // nro: ''
+    },
+    detalles: [
+        // {
+        //     cant: 0,
+        //     descripcion: "",
+        //     precioUnit: 0,
+        //     total: 0,
+        // },
+        // {
+        //     cant: 0,
+        //     descripcion: "",
+        //     precioUnit: 0,
+        //     total: 0,
+        // }
+    ],
+    pie_factura: {
+        // igv:0,
+        // valor_venta:0
+    },
+    // totalFactura:0,
+    agregarDetalle: () => {
+        let totalGeneral = 0;
+        let productos = +prompt("Ingrese la cantidad de productos")
+        for (let producto = 0; producto < productos; producto++) {
+
+            let cant = +prompt(`Ingrese la cantidad ${producto + 1}`);
+            let descripcion = prompt(`Ingrese la descripcion ${producto + 1}`);
+            let precioUnit = +prompt(`Ingrese el precio unitario ${producto + 1}`);
+            let total = cant * precioUnit;
+            totalGeneral += total;
+            let detalleTmp = {
+                cant,
+                descripcion: descripcion,
+                precioUnit: precioUnit,
+                total: total
+            };
+            objFactura.detalles.push(detalleTmp);
+        }
+        // Agregar campos a un objeto
+        objFactura.pie_factura.igv = totalGeneral * 0.18
+        objFactura.pie_factura.valor_venta = totalGeneral - objFactura.pie_factura.igv
+        objFactura.totalFactura = totalGeneral
+    },
+    agregarCabecera: () => {
+        let cabeceraTmp = {
+            ruc: prompt("Ingrese el ruc"),
+            razonSocial: prompt("Ingrese la razon social"),
+            fecha: prompt("Ingrese su fecha"),
+            nro: prompt("Ingrese el nro de la factura")
+        };
+        objFactura.cabecera = cabeceraTmp;
+        objFactura.agregarDetalle();
+    }
+}
+objFactura.agregarCabecera();
+console.log(objFactura);
