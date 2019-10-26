@@ -27,6 +27,7 @@ def restar(a,b):
 # print(resutado)
 
 # la variable *args es una lista dinamica de elementos para recibir un numero indeterminado de variables
+
 def indeterminada (a,b,*args):
     print(f"El valor de a es {a}")
     print("El valor de b es {}".format(b))
@@ -35,7 +36,7 @@ def indeterminada (a,b,*args):
     for elemento in args:
         print(elemento)
 
-# indeterminada(10,20,40,50,80,100,200,"Viernes",True)
+indeterminada(10,20,40,50,80,100,200,"Viernes",True)
 
 # **kwargs : keyword args es una variable para recibir un numero ilimitado de parametros pero usando diccionarios
 diccionario = {
@@ -44,14 +45,14 @@ diccionario = {
 
 def indeterminada_diccionario(**kwargs):
     print(kwargs)
-# indeterminada_diccionario(numero=5,nombre="Juan",lista=[1,2,3,4,5])
+# indeterminada_diccionario(numero=5,nombre="Juan",lista=[1,2,3,4,5],otra=80)
 
 # se pueden mezclar los dos tipos de variables para que reciban un numero ilimitado de parametros y un numero ilimitado de parametros con nombre de variable
 def indeterminada_mix(*args,**kwargs):
     print(args)
     print(kwargs)
 
-# indeterminada_mix(10,20,40,mensaje="Buenos dias",dia="Sabado",pUnit=10,descripcion="Kg de manzana",cantidad=20)
+indeterminada_mix(10,20,40,mensaje="Buenos dias",dia="Sabado",pUnit=10,descripcion="Kg de manzana",cantidad=20)
 
 def raiz_cuadrada(numero):
     pass
