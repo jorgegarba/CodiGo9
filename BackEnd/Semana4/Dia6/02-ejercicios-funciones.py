@@ -47,4 +47,35 @@ def dibujar_rectangulo(ancho,alto):
     resultado4 = resultado4 * alto
     print(resultado4)
 
-dibujar_rectangulo(4,5)
+ancho = int(input("Ingrese el ancho: "))
+alto = int(input("Ingrese el alto: "))
+dibujar_rectangulo(ancho,alto)
+
+# Escribir una funcion que reciba la altura de un triangulo y lo dibuje invertido
+# Ejemplo
+# Altura: 6
+# Resultado
+# ******
+# *****
+# ****
+# ***
+# **
+# *
+
+
+
+
+
+# Escribir una funcion que reciba como parametros el lado de un octagono y lo dibuje
+# Ejemplo
+# Lados: 4
+#    ****
+#   ******
+#  ********
+# **********
+# **********
+# **********
+# **********
+#  ********
+#   ******
+#    ****
