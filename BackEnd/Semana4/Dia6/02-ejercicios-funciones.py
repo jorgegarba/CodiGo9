@@ -47,9 +47,9 @@ def dibujar_rectangulo(ancho,alto):
     resultado4 = resultado4 * alto
     print(resultado4)
 
-ancho = int(input("Ingrese el ancho: "))
-alto = int(input("Ingrese el alto: "))
-dibujar_rectangulo(ancho,alto)
+# ancho = int(input("Ingrese el ancho: "))
+# alto = int(input("Ingrese el alto: "))
+# dibujar_rectangulo(ancho,alto)
 
 # Escribir una funcion que reciba la altura de un triangulo y lo dibuje invertido
 # Ejemplo
@@ -62,6 +62,32 @@ dibujar_rectangulo(ancho,alto)
 # **
 # *
 
+def triangulo_invertido (altura):
+    # METODO 1
+    for fila in range(altura,0,-1):
+        print("*"*fila)
+    # METODO 2
+    print("Metodo 2")
+    for y in range(altura):
+        for i in range(altura-y):
+            print('*',end="")
+        print('')
+    # METODO 3
+    print("Metodo 3")
+    for numero in range(altura):
+        resultado = '*'*(altura-numero)
+        print(resultado)
+    # METODO 4
+    print("Metodo 4")
+    h= altura
+    for i in range(altura):
+        nivel=""
+        for i in range(h):
+            nivel += "*"
+        print(nivel)
+        h -= 1
+
+triangulo_invertido(6)
 
 
 
@@ -79,3 +105,7 @@ dibujar_rectangulo(ancho,alto)
 #  ********
 #   ******
 #    ****
+
+
+# Una vez resuelto todos los ejercicio , crear un menu de seleccion que permita escoger que ejercicio queremos ejecutar hasta que escribamos la palabra "salir" ahi recien termina de pedir que ejercicio queramos ejecutar
+# NOTA: EN PYTHON NO EXISTE EL CONDICIONAL SWITCH, USE IF ELIF ELSE 
