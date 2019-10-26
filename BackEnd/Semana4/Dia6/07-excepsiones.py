@@ -19,3 +19,14 @@ finally:
 # no es OBLIGATORIO que vayan else y finally, puede ir una o ninguna o todas, PERO si en ese orden (primero el else y luego el finally en el caso que vayan las dos)
 
 # Que reciba dos numeros y que los multiple, si se ingresa un caracter o algo que no sea un numero que lo vuelva a pedir hasta que los dos sean numeros
+print("MULTIPLICACION")
+verdadero = True
+while (verdadero):
+    try:
+        numero1 = int(input("Ingresa un numero:"))
+        numero2 = int(input("Ingresa un numero:"))
+        print("La multiplicacion es: {}".format(numero1*numero2))
+    except:
+        print("Tiene que ingresar un numero")
+    else:
+        verdadero=False
