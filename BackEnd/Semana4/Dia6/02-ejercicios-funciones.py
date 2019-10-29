@@ -106,6 +106,5 @@ triangulo_invertido(6)
 #   ******
 #    ****
 
-
 # Una vez resuelto todos los ejercicio , crear un menu de seleccion que permita escoger que ejercicio queremos ejecutar hasta que escribamos la palabra "salir" ahi recien termina de pedir que ejercicio queramos ejecutar
-# NOTA: EN PYTHON NO EXISTE EL CONDICIONAL SWITCH, USE IF ELIF ELSE 
+# NOTA: EN PYTHON NO EXISTE EL CONDICIONAL SWITCH, USE IF ELIF ELSE
