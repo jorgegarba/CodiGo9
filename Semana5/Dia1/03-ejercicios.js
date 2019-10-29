@@ -20,15 +20,14 @@ do{
     switch (opcion) {
         case 1:
             let platoTemporal ={
-                nombres: prompt("Ingrese el nombre del plato"),
-                calorias: +prompt(`Ingrese las calorias del plato ${this.nombres}`),
-                precio: +prompt(`Ingrese el precio del plato ${this.nombres}`)
+                nombre: prompt("Ingrese el nombre del plato"),
+                calorias: +prompt(`Ingrese las calorias del plato`),
+                precio: +prompt(`Ingrese el precio del plato`)
             }
             rest1.platos.push(platoTemporal);
             break;
         case 2:
             console.log(rest1.platos);
-            
             break;
         case 3:
             alert("Adiocito");
