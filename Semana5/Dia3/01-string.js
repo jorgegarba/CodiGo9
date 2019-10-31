@@ -34,8 +34,26 @@ console.log(nombre.substring(nombre.length-5));
 // startsWith(cadena) => devuelve true en el caso que el string comience con el contenido de la cadena
 console.log(nombre.startsWith("Hoy"));
 
+// endsWith(cadena) => devuelve true en el caso que el string termine con el contenido de la cadena
+console.log(nombre.endsWith("ween"));
 
+// indexOf(cadena) => devuelve la posicion en la que una subcadena inicia. Si la subcadena no existe, devuelve -1
+console.log(nombre.indexOf("Mañana"));
 
+// charAt(posicion) => devuelve la letra que se cuentra en esa posicion
+console.log(nombre.charAt(5));
+console.log(nombre[5]);
 
+// EJERCICIOS
+// Cada ejercicio es una funcion que recibe un string
+// Por ejemplo:
+// let cuentavocales= (cadena)=>{
+// }
+// 1. Determinar el numero de vocales en un string
+// 2. Determinar el numero de palabras en un string
+// 3. Determinar si una cadena es palindroma
+// Ejemplo: 'anita lava la tina'
+// 'oso'
+// 'anitalavalatina'
 
 
