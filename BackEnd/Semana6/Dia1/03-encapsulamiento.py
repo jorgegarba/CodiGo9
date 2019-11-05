@@ -46,12 +46,10 @@ print(miAutito)
 # Crear una clase llamada Coordenadas y que va a tener como atributos X y Y , en su constructor debe inicializar los valores y sino recibe cualquiera de los dos su valor por defecto es 0. Tener un metodo para ver cuales han sido los valores ingresados, ejemplo
 # (10,5)
 # tener un metodo para ver en que cuadrante esta
-#         |
 #     2   |    1
 #   ______|______
 #         |
 #     3   |    4
-#         |
 # Esta en el cuadrante 1
 # Tener un metodo otro_vector() que tome otras cooredenadas y calcule su vector resultante ((x2-x1),(y2-y1))
-# PLUS: calcular la distancia entre los dos puntos => ((x2-x1)^2+(y2-y1)^2)^1/2
+# PLUS: calcular la distancia entre los dos puntos => ((x2-x1)^2+(y2-y1)^2)^1/2, este debe ser un metodo privado que se ejecute cuando llamamos al metodo otro_vector()
