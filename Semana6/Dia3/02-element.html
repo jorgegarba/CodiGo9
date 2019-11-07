@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        #seccion2 {
+            width: 50%;
+            background-color: coral;
+        }
+
+        body {
+            margin-top: 30px;
+        }
+
+        .letraGrande {
+            font-size: 1.5rem;
+        }
+
+        .sombra {
+            box-shadow: 2px 2px 10px #000;
+        }
+
+        .centrado {
+            margin: auto;
+        }
+
+        .flexRow {
+            flex-direction: column;
+        }
+
+        #seccion3 {
+            display: flex;
+            
+        }
+
+        #article1 {
+            flex: 1;
+            background-color: crimson;
+            
+        }
+
+        #article2 {
+            flex: 1;
+            background-color: cadetblue;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <header id="cabecera">
+        <nav>
+            <ul>
+                <li>Link 1</li>
+                <li>Link 2</li>
+                <li>Link 3</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="seccion1">
+            <p>Parrafo 1</p>
+            <p>Parrafo 2</p>
+            <p>Parrafo 3</p>
+            <p>Parrafo 3</p>
+            <p>Parrafo 3</p>
+        </section>
+        <section id="seccion2" class="letraGrande sombra">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ullam fuga laboriosam voluptatibus
+                excepturi hic, animi ab commodi mollitia asperiores non sit repellendus. Assumenda rerum quisquam
+                incidunt. Dignissimos, voluptatem consectetur?
+            </p>
+        </section>
+        <section id="seccion3">
+            <article id="article1">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, mollitia. Placeat voluptatem dolorum
+                    eum. Fugiat quaerat quidem placeat itaque autem? Nesciunt doloribus aspernatur aliquam! Est debitis
+                    eos a impedit magni.</p>
+            </article>
+            <article id="article2">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, harum distinctio. Ea rem, labore
+                    illum sapiente unde quis repellat qui pariatur asperiores doloremque neque praesentium debitis
+                    perspiciatis quam similique consequuntur.</p>
+            </article>
+        </section>
+    </main>
+
+
+    <script src="./02-element.js"></script>
+</body>
+
+</html>

@@ -30,7 +30,7 @@ console.log(miMain);
 
 
 // 4. querySelectorAll("un selector como en css")
-// Devuelve un arreglo de elementos que coincidan 
+// Una funcion que Devuelve un arreglo de elementos que coincidan 
 // con el selector que se la dado a la función
 let losParrafos = document.querySelectorAll("body p");
 console.log(losParrafos);
