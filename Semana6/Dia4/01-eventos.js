@@ -27,6 +27,16 @@ let miFuncion = () => {
 btnCambiarTema.onclick = miFuncion;
 
 
-setTimeout(() => {
-  document.getElementById("seccion1").removeAttribute("hidden", "hidden");
-}, 1000);
+let btnOcultar = document.getElementById("btnOcultar");
+let seccion1 = document.getElementById("seccion1");
+let btnMostrar = document.getElementById("btnMostrar");
+
+btnOcultar.onclick = () => {
+  seccion1.setAttribute("hidden", "hidden");
+  btnMostrar.removeAttribute("hidden");
+}
+
+btnMostrar.onclick = () => {
+  seccion1.removeAttribute("hidden");
+  btnMostrar.setAttribute("hidden");
+}
