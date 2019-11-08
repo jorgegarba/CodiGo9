@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/tema-claro.css" id="linkEstilos">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html,body {
+            height: 100%;
+        }
+        header{
+            height: 10%;
+        }
+        main{
+            height: 90%;
+            display: flex;
+        }
+        #seccion1{
+            flex: 1;
+            transition: 0.5s;
+        }
+        #seccion2{
+            flex: 4;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header class="cabecera">
+        <button id="btnMostrar" hidden="hidden">
+            Mostrar Barra Lateral
+        </button>
+    </header>
+    <main class="main" id="main">
+        <section id="seccion1">
+            <button id="btnCambiarTema">
+                Cambiar a Oscuro
+            </button>
+
+            <button id="btnOcultar">
+                Ocultar Barra Lateral
+            </button>
+
+        </section>
+        <section id="seccion2">
+
+        </section>
+    </main>
+
+    <script src="./01-eventos.js"></script>
+</body>
+
+</html>
