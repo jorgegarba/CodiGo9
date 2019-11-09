@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #585763;
+        }
+
+        input {
+            width: 50%;
+            height: 10%;
+            background-color: #C9C5E3;
+            outline: none;
+            border: 0;
+            font-size: 50px;
+            padding: 0 20px;
+            color: #4D4966;
+        }
+
+        input::placeholder {
+            color: #A19EB5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="text" 
+                placeholder="Ingrese su Nombre"
+                 id="inputNombre"
+                 autocomplete="off"
+                 maxlength="15">
+    <p id="contador">
+        Quedan 15 caracteres
+    </p>
+
+
+    <script src="./02-eventos-blur-focus.js"></script>
+</body>
+
+</html>
