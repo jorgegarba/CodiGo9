@@ -52,9 +52,6 @@ let provincias = [
 
 
 
-
-
-
 let selectDepartamento = document.getElementById("selectDepartamento");
 let selectProvincia = document.getElementById("selectProvincia");
 
@@ -75,5 +72,20 @@ departamentos.forEach((elemento, i) => {
 // correspondan al departamento seleccionado
 
 selectDepartamento.onchange = () => {
-
+  selectProvincia.innerText = "";
+  let idSeleccionado = selectDepartamento.value;
+  if (idSeleccionado != 0) {
+    selectProvincia.removeAttribute("disabled");
+    provincias.forEach((elemento, i) => {
+      if (idSeleccionado == elemento.idDpto) {
+        let miOpcion = document.createElement("option");
+        miOpcion.innerText = elemento.nombre;
+        miOpcion.value = elemento.id;
+        selectProvincia.appendChild(miOpcion);
+      }
+    })
+  } else {
+    selectProvincia.setAttribute("disabled", "disabled");
+    selectProvincia.innerHTML = `<option> Seleccione Provincia </option>`
+  }
 }
