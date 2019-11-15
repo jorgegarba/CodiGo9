@@ -38,5 +38,5 @@ btnOcultar.onclick = () => {
 
 btnMostrar.onclick = () => {
   seccion1.removeAttribute("hidden");
-  btnMostrar.setAttribute("hidden");
+  btnMostrar.setAttribute("hidden","hidden");
 }
