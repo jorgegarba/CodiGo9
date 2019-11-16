@@ -84,3 +84,10 @@ playaLambramani.agregarVehiculo(cherry);
 
 playaLambramani.retirarVehiculoByPlaca("QWE-222");
 playaLambramani.agregarVehiculo(honda);
+
+
+
+let cadena = "Hoy es sabado con Andres sabado"
+console.log(cadena.indexOf("Eduardo"))
+console.log(cadena.length-1)
+console.log(cadena.lastIndexOf("es",26))
