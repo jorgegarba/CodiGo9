@@ -1,5 +1,3 @@
-nombre = "Eduardo"
-print(type(nombre))
 mascotas={
     "nombre":"Fido",
     "animal":"Perro",
