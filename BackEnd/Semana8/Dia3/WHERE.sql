@@ -66,3 +66,12 @@ SELECT * FROM ALUMNOS WHERE alum_fecnac like '%-08-%' OR alum_fecnac like '%-10-
 
 # SELECCIONAR TODOS LOS ALUMNOS QUE LLEVEN MATEMATICAS Y QUE SU APELLIDO SEA PINTO
 # alum_nom	alum_ape	cur_nom
+select alumnos.alum_nom, alumnos.alum_ape, cursos.cur_nom from alum_cur as puente 
+inner join alumnos on puente.alum_id=alumnos.alum_id
+inner join cursos on puente.cur_id=cursos.cur_id
+where cur_nom like 'matematica%' and alum_ape like 'Pinto';
+
+# SELECT [CAMPOS]
+# FROM [TABLAS] {JOINS}
+# WHERE [CLAUSULAS]
+
