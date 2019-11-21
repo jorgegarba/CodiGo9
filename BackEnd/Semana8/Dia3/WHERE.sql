@@ -75,3 +75,6 @@ where cur_nom like 'matematica%' and alum_ape like 'Pinto';
 # FROM [TABLAS] {JOINS}
 # WHERE [CLAUSULAS]
 
+# USANDO LA FUNCION YEAR SE DESEA SABER TODOS LOS ALUMNOS QUE NACIERON ENTRE
+# 1992 y 1994
+select * from alumnos where year(alum_fecnac)>=1992 and year(alum_fecnac)<=1994;
