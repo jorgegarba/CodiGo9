@@ -8,6 +8,10 @@ USE CODIGO9;
 # CUR_NOM (VARCHAR(50))
 # CUR_DIFICULTAD (VARCHAR(20)) CON UNA RELACION DE MUCHOS A MUCHOS SIENDO SU TABLA
 # PUENTE ALUM_CUR, UNA VEZ CREADO INGRESE LE SIGUIENTE SCRIPT
+# todos los de quinto llevan fisica I y CTA 
+# todos los de cuarto llevan Matematica II y Biologia
+# todos los de primero llevan Matematica I y Matematica II
+
 INSERT INTO ALUMNO (ALUM_NOM,ALUM_APE,ALUM_GRADO)VALUES
 ('Eduardo','Juarez','Quinto',1992-08-01),
 ('Christopher','Rodriguez','Cuarto',1993-07-10),
