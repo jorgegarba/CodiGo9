@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
+        integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
+
+    <style>
+        .altura-300 {
+            height: 300px;
+        }
+
+        .altura-100 {
+            height: 100px;
+        }
+
+        .fondo-row {
+            background-color: #C680FF;
+        }
+
+        .verde-claro {
+            background-color: #F5FF80;
+        }
+
+        .verde-oscuro {
+            background-color: #A9B336;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <main class="container-fluid">
+        <h2><code>class="align-items-start"</code></h2>
+        <h5>
+            La fila organiza todas sus columnas
+            en la parte superior en el eje Y
+        </h5>
+        <div class="row align-items-start altura-300 fondo-row">
+            <div class="col-md-4 altura-100 verde-claro">
+                Contenido
+            </div>
+            <div class="col-md-4 altura-100 verde-oscuro">
+                Contenido
+            </div>
+            <div class="col-md-4 altura-100 verde-claro">
+                Contenido
+            </div>
+        </div>
+        <hr>
+
+        <h2><code>class="align-items-center"</code></h2>
+        <h5>
+            La fila organiza todas sus columnas
+            en la parte central en el eje Y
+        </h5>
+        <div class="row align-items-center altura-300 fondo-row">
+            <div class="col-md-4 altura-100 verde-claro">
+                Contenido
+            </div>
+            <div class="col-md-4 altura-100 verde-oscuro">
+                Contenido
+            </div>
+            <div class="col-md-4 altura-100 verde-claro">
+                Contenido
+            </div>
+        </div>
+        <hr>
+        <h2><code>class="align-items-end"</code></h2>
+        <h5>
+            La fila organiza todas sus columnas
+            en la parte inferior en el eje Y
+        </h5>
+        <div class="row align-items-end altura-300 fondo-row">
+            <div class="col-md-4 altura-100 verde-claro">
+                Contenido
+            </div>
+            <div class="col-md-4 altura-100 verde-oscuro">
+                Contenido
+            </div>
+            <div class="col-md-4 altura-100 verde-claro">
+                Contenido
+            </div>
+        </div>
+        <hr>
+        <h2><code>class="align-self-[start/center/end]"</code></h2>
+        <h5>
+            Las columnas se alinean individualmente <br>
+            OJO> La clase va en la columna y no en fila
+        </h5>
+        <div class="row altura-300 fondo-row">
+            <div class="col-md-4 align-self-start altura-100 verde-claro">
+                Contenido
+            </div>
+            <div class="col-md-4 align-self-center altura-100 verde-oscuro">
+                Contenido
+            </div>
+            <div class="col-md-4 align-self-end altura-100 verde-claro">
+                Contenido
+            </div>
+        </div>
+    </main>
+
+
+    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'
+        integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo'
+        crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js'
+        integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1'
+        crossorigin='anonymous'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'
+        integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM'
+        crossorigin='anonymous'></script>
+</body>
+
+</html>

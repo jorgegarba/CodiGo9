@@ -7,48 +7,58 @@
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
         integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
-
-    <title>Document</title>
     <style>
-        .oscuro{
-            background-color: #ccc;
+        .altura-300 {
+            height: 300px;
         }
-        .claro{
-            background-color: #eee;
+
+        .altura-100 {
+            height: 100px;
+        }
+
+        .fondo-row {
+            background-color: #C680FF;
+        }
+
+        .verde-claro {
+            background-color: #F5FF80;
+        }
+
+        .verde-oscuro {
+            background-color: #A9B336;
         }
     </style>
+    <title>Document</title>
 </head>
 
 <body>
 
-    <main class="container-fluid ">
-    
-        <section class="row">
-            <div class="col oscuro">
-                Mi Primera Columna
+    <main class="container-fluid">
+        <h2><code>class="justify-content-center"</code></h2>
+        <h5>
+            Alinea las columnas de una fila centrado horizontalmente
+        </h5>
+        <div class="row justify-content-center fondo-row">
+            <div class="col-md-4 altura-100 verde-oscuro">
+
             </div>
-            <div class="col claro">
-                Mi Segunda Columna
+            <div class="col-md-4 altura-100 verde-claro">
+
             </div>
-            <div class="col oscuro">
-                Mi Tercera Columna
-            </div>
-        </section>
+        </div>
         <hr>
-        <section class="row">
-            <div class="col-8 claro">
-                Columna de 8
+        <h2><code>class="justify-content-end"</code></h2>
+        <h5>
+            Alinea las columnas de una fila a la derecha horizontalmente
+        </h5>
+        <div class="row justify-content-end fondo-row">
+            <div class="col-md-4 altura-100 verde-oscuro">
+        
             </div>
-            <div class="col-4 oscuro">
-                Columna de 4
+            <div class="col-md-4 altura-100 verde-claro">
+        
             </div>
-        </section>
-        <hr>
-        <section class="row">
-            <div class="col-6 oscuro">
-                Unica columna de 6
-            </div>
-        </section>
+        </div>
     </main>
 
 
