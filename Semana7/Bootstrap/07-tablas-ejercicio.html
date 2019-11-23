@@ -14,6 +14,11 @@
     <!-- FONT AWESOME 4 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <style>
+        #tabla{
+            transition: .5s;
+        }
+    </style>
     <title>Document</title>
 </head>
 
@@ -21,20 +26,79 @@
 
     <main class="container-fluid">
 
-        <div class="row">
+        <div class="row mt-5">
 
             <div class="col-md-4">
                 <div class="row">
-                    <div class="col-md-6">
-
+                    <div class="col-md-6 text-center">
+                        <i class="fas fa-check-square fa-2x text-danger" id="icoDark"></i>
                     </div>
-                    <div class="col-md-6">
-
+                    <div class="col-md-6 text-center">
+                        <button id="btnDark">
+                            Table Dark
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <i class="fas fa-check-square fa-2x text-danger" id="icoBordered"></i>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <button id="btnBordered">
+                            Table Bordered
+                        </button>
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
-
+                <table class="table" id="tabla">
+                    <thead>
+                        <tr>
+                            <th>Cabecera 01</th>
+                            <th>Cabecera 02</th>
+                            <th>Cabecera 03</th>
+                            <th>Cabecera 04</th>
+                            <th>Cabecera 05</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cuerpo 01</td>
+                            <td>Cuerpo 02</td>
+                            <td>Cuerpo 03</td>
+                            <td>Cuerpo 04</td>
+                            <td>Cuerpo 05</td>
+                        </tr>
+                        <tr>
+                            <td>Cuerpo 01</td>
+                            <td>Cuerpo 02</td>
+                            <td>Cuerpo 03</td>
+                            <td>Cuerpo 04</td>
+                            <td>Cuerpo 05</td>
+                        </tr>
+                        <tr>
+                            <td>Cuerpo 01</td>
+                            <td>Cuerpo 02</td>
+                            <td>Cuerpo 03</td>
+                            <td>Cuerpo 04</td>
+                            <td>Cuerpo 05</td>
+                        </tr>
+                        <tr>
+                            <td>Cuerpo 01</td>
+                            <td>Cuerpo 02</td>
+                            <td>Cuerpo 03</td>
+                            <td>Cuerpo 04</td>
+                            <td>Cuerpo 05</td>
+                        </tr>
+                        <tr>
+                            <td>Cuerpo 01</td>
+                            <td>Cuerpo 02</td>
+                            <td>Cuerpo 03</td>
+                            <td>Cuerpo 04</td>
+                            <td>Cuerpo 05</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
         </div>
@@ -52,6 +116,7 @@
     <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'
         integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM'
         crossorigin='anonymous'></script>
+    <script src="./07-tablas-ejercicio.js"></script>
 </body>
 
 </html>
