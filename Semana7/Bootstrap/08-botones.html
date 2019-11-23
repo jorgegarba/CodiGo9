@@ -47,6 +47,52 @@
                 <button class="btn btn-warning">
                     Botón warning
                 </button>
+                <button class="btn btn-dark">
+                    Botón dark
+                </button>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h2><code>class="btn btn-block"</code></h2>
+                <h5>
+                    <code>btn-block</code> hace que el boton tenga
+                    un ancho del 100% del su contenedor
+                </h5>
+                <button class="btn btn-danger btn-block">
+                    Boton block danger
+                </button>
+                <button class="btn btn-info btn-block">
+                    Boton block info
+                </button>
+            </div>
+            <div class="col-md-6">
+                <h2>
+                    <code>class="btn-sm" </code>
+                    <code>class="btn-lg" </code>
+                </h2>
+                <h5>
+                    <code>btn-sm</code> reduce el tamño del
+                    boton a un botón más compacto. <br>
+                    <code>btn-lg</code> amplía el tamño del
+                    boton a un botón más grande.
+                </h5>
+                <button class="btn btn-primary btn-sm">
+                    Botón small
+                </button>
+                <button class="btn btn-primary btn-lg">
+                    Botón large
+                </button>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <button class="btn btn-block btn-dark" id="btnGuardar">
+                    <i class="fas fa-save mr-2" id="icoGuardar"></i>
+                    Guardar Cambios
+                </button>
             </div>
         </div>
 
@@ -62,6 +108,19 @@
     <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'
         integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM'
         crossorigin='anonymous'></script>
+    <script>
+        let btnGuardar = document.getElementById("btnGuardar");
+        let icoGuardar = document.getElementById("icoGuardar");
+
+        btnGuardar.onclick = () => {
+            btnGuardar.setAttribute("disabled", "disabled");
+            icoGuardar.setAttribute("class", "fas fa-refresh mr-2 fa-spin");
+            setTimeout(() => {
+                btnGuardar.removeAttribute("disabled");
+                icoGuardar.setAttribute("class", "fas fa-save mr-2");
+            }, 2000);
+        }
+    </script>
 </body>
 
 </html>
