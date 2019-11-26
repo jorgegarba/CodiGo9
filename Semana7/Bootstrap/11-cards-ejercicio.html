@@ -10,6 +10,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- FONT AWESOME 5 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+        integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+    <!-- FONT AWESOME 4 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 </head>
 
 <body>
@@ -42,9 +48,29 @@
         </div>
     </nav>
 
-    <main class="container" id="contenedor">
+    <main class="container">
+        <div class="row mt-5">
+            <div class="col-12">
+                <form id="formulario">
+                    <div class="form-group">
+                        <label for="">Ingrese productos por fila</label>
+                        <input type="number" class="form-control"
+                            id="inputCantidad">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-block btn-dark" type="submit">
+                            <i class="fas fa-search mr-2"></i>
+                            Calcularsh
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-        
+        <section id="contenedor">
+
+        </section>
+
 
     </main>
 

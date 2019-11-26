@@ -2,12 +2,14 @@ import { productos } from './11-card-data.js';
 console.log(productos);
 
 let contenedor = document.getElementById("contenedor");
-let cont = 0;
-
+let formulario = document.getElementById("formulario");
+let inputCantidad = document.getElementById("inputCantidad");
 
 let crearColumnaConProducto = (producto) => {
+  let c = +inputCantidad.value;
   if (producto) {
-    return `<div class="col-md-4">
+
+    return `<div class="col-md-${12 / c}">
             <div class="card">
               <img src="${producto.imagen}" class="card-img-top">
                 <div class="card-body">
@@ -22,20 +24,29 @@ let crearColumnaConProducto = (producto) => {
   }
 }
 
+formulario.onsubmit = (event) => {
+  event.preventDefault();
+  let c = +inputCantidad.value;
 
-for (let i = 0; i < productos.length; i += 3) {
+  for (let i = 0; i < productos.length; i += c) {
+
+    let texto = "";
+    let fila = document.createElement("div");
+    fila.setAttribute("class", "row");
+
+    for (let j = 0; j < c; j++) {
+      let prod1 = crearColumnaConProducto(productos[j + i]);
+      texto = texto + prod1;
+    }
 
 
+    fila.innerHTML = texto;
+    contenedor.appendChild(fila);
 
-  let fila = document.createElement("div");
-  fila.setAttribute("class", "row");
-
-  let prod1 = crearColumnaConProducto(productos[i]);  
-  let prod2 = crearColumnaConProducto(productos[i + 1]);
-  let prod3 = crearColumnaConProducto(productos[i + 2]);
-
-  fila.innerHTML = prod1 + prod2 + prod3;
-  contenedor.appendChild(fila);
+  }
 
 }
+
+
+
 
