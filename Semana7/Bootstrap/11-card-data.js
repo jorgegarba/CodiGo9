@@ -5,7 +5,7 @@ export let productos = [
     "codigo": "45433",
     "cantidad": 80,
     "precio": 400,
-    "imagen": "http://placehold.it/300x300/00ff00/0000ff"
+    "imagen": "http://placehold.it/300x300"
   },
   {
     "id": "2",
@@ -13,7 +13,7 @@ export let productos = [
     "codigo": "codigo 2",
     "cantidad": 63,
     "precio": 31,
-    "imagen": "imagen 2"
+    "imagen": "http://placehold.it/300x300"
   },
   {
     "id": "3",
@@ -21,7 +21,7 @@ export let productos = [
     "codigo": "codigo 3",
     "cantidad": 12,
     "precio": 82,
-    "imagen": "imagen 3"
+    "imagen": "http://placehold.it/300x300"
   },
   {
     "id": "4",
@@ -29,7 +29,7 @@ export let productos = [
     "codigo": "codigo 4",
     "cantidad": 57,
     "precio": 44,
-    "imagen": "imagen 4"
+    "imagen": "http://placehold.it/300x300"
   },
   {
     "id": "5",
@@ -37,7 +37,7 @@ export let productos = [
     "codigo": "codigo 5",
     "cantidad": 18,
     "precio": 94,
-    "imagen": "imagen 5"
+    "imagen": "http://placehold.it/300x300"
   },
   {
     "id": "6",
@@ -45,7 +45,7 @@ export let productos = [
     "codigo": "codigo 6",
     "cantidad": 38,
     "precio": 34,
-    "imagen": "imagen 6"
+    "imagen": "http://placehold.it/300x300"
   },
   {
     "id": "7",
@@ -53,7 +53,7 @@ export let productos = [
     "codigo": "codigo 7",
     "cantidad": 6,
     "precio": 98,
-    "imagen": "imagen 7"
+    "imagen": "http://placehold.it/300x300"
   },
   {
     "id": "8",
@@ -61,7 +61,7 @@ export let productos = [
     "codigo": "codigo 8",
     "cantidad": 54,
     "precio": 15,
-    "imagen": "imagen 8"
+    "imagen": "http://placehold.it/300x300"
   },
   {
     "id": "9",
@@ -69,7 +69,7 @@ export let productos = [
     "codigo": "codigo 9",
     "cantidad": 38,
     "precio": 7,
-    "imagen": "imagen 9"
+    "imagen": "http://placehold.it/300x300"
   },
   {
     "id": "10",
@@ -77,7 +77,7 @@ export let productos = [
     "codigo": "codigo 10",
     "cantidad": 55,
     "precio": 22,
-    "imagen": "imagen 10"
+    "imagen": "http://placehold.it/300x300"
   },
   {
     "id": "11",
@@ -85,7 +85,7 @@ export let productos = [
     "codigo": "codigo 11",
     "cantidad": 83,
     "precio": 58,
-    "imagen": "imagen 11"
+    "imagen": "http://placehold.it/300x300"
   },
   {
     "id": "12",
@@ -93,7 +93,7 @@ export let productos = [
     "codigo": "codigo 12",
     "cantidad": 26,
     "precio": 59,
-    "imagen": "imagen 12"
+    "imagen": "http://placehold.it/300x300"
   },
   {
     "id": "13",
@@ -101,7 +101,7 @@ export let productos = [
     "codigo": "codigo 13",
     "cantidad": 63,
     "precio": 63,
-    "imagen": "imagen 13"
+    "imagen": "http://placehold.it/300x300"
   },
   {
     "id": "14",
@@ -109,6 +109,6 @@ export let productos = [
     "codigo": "codigo 14",
     "cantidad": 74,
     "precio": 73,
-    "imagen": "imagen 14"
+    "imagen": "http://placehold.it/300x300"
   }
 ];
