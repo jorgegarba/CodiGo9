@@ -1,7 +1,8 @@
 window.onload = () => {
 
   console.log("ya cargó todo");
-  // CODIGO PARA OCULTAR LA PANTLLA DE CARGANDO.....
-  
-  
+  let pantallaCarga = document.getElementById("pantallaCarga");
+  pantallaCarga.setAttribute("hidden", "hidden");
+
+
 }
