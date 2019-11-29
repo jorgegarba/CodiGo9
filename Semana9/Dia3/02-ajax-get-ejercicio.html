@@ -67,9 +67,8 @@
                     <div class="card-header bg-dark text-center text-light">
                         <h5>Resultados</h5>
                     </div>
-                    <div class='card-body'>
-                        <div class="alert alert-info text-center" role="alert"
-                                id="alertaCargando" hidden="hidden">
+                    <div class='card-body table-responsive'>
+                        <div class="alert alert-info text-center" role="alert" id="alertaCargando" hidden="hidden">
                             <h4 class="alert-heading">
                                 Cargando los gatos...
                             </h4>
@@ -77,6 +76,19 @@
                                 <i class="fa fa-refresh fa-3x fa-spin"></i>
                             </p>
                         </div>
+
+                        <table class="table" id="miTabla" hidden="hidden">
+                            <thead>
+                                <th>Id</th>
+                                <th>Email</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Imagen</th>
+                            </thead>
+                            <tbody id="cuerpoTabla">
+                                
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
