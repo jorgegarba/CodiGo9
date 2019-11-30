@@ -23,7 +23,7 @@ ajax.onreadystatechange = () => {
     // JSON.parse()=> convierte un string en un obeto JSON
     let enJSON = JSON.parse(texto);
     console.log(enJSON);
-    
+
     // status => Codigo de estado HTTP que responde el
     // servidor
     console.log(ajax.status);
@@ -44,5 +44,7 @@ ajax.open("GET", "https://reqres.in/api/users");
  * Paso => Se envía o lanza la petición con el 
  * método SEND
  */
-// SEND => Envía el body (en este caso, null)
+// SEND => Envía el body al servidor(en este caso, null)
+// ¿Qué es el body?
+// El contenido o la data que se envía
 ajax.send(null);
