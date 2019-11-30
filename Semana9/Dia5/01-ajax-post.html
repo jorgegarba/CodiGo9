@@ -63,20 +63,26 @@
                                 <i class="fas fa-user-plus fa-8x text-dark"></i>
                             </div>
                             <div class="col-md-6">
-                                <form>
+                                <form id="formRegistro">
                                     <div class="form-group">
                                         <label for="">Nombre:</label>
                                         <input type="text" placeholder="Ejm: Jorge Garnica"
-                                                class="form-control">
+                                                class="form-control" id="inputNombre">
                                     </div>
                                     <div class="form-group">
                                         <label for="">Seleccione Puesto:</label>
-                                        <select id="" class="form-control">
+                                        <select id="" class="form-control" id="selectPuesto">
                                             <option value="" selected>Programador</option>
                                             <option value="">Jefe de TI</option>
                                             <option value="">Arquitecto de Software</option>
                                             <option value="">Jefe de Proyectos</option>
                                         </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-dark btn-block" type="submit">
+                                            <i class="fas fa-user-plus mr-2"></i>
+                                            Crear Usuario
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -85,7 +91,14 @@
                 </div>
             </div>
             <div class="col-md-4">
+                <div class='card'>
+                    <div class='card-header text-center text-light bg-dark'>
+                        <h4>Resultados</h4>
+                    </div>
+                    <div class='card-body'>
 
+                    </div>
+                </div>
             </div>
 
         </div>
