@@ -3,7 +3,7 @@ from flask import Flask, jsonify, request
 # request => para extraer todo lo enviado por el body
 # JavaScript Object Notation => es el objeto por el cual se manejan datos hacia javascript
 from flask_mysqldb import MySQL
-# tienes que tener instalado => pip install flask-mysqldb
+# tienes que tener instalado => pip install flask-mysqldb, pero antes tienes que haber instalado el wheel no oficial de: https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient
 
 app = Flask(__name__)
 # CONFIGURACION PARA LAS CREDENCIALES DE CONEXION A NUESTRA BD
