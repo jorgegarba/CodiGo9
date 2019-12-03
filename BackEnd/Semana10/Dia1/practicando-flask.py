@@ -1,0 +1,1 @@
+# Se desea crear una base de datos de una asistencia de un colegio, con estudiantes y que se guarde el registro , primero se debe seleccionar el curso y ver los estudiantes matriculados en el curso y tomar asistencia de acuerdo a la fecha. utilice bootstrap para el diseño de la pagina web, y ver de acuerdo al dia seleccionado , cuales estudiantes asistieron y cuales no.

@@ -95,10 +95,33 @@ def traercliente(id):
         'message':'Siga intentando caballero/a'
     }),404
 
+# http://127.0.0.1:500/clientesuper/agregar
 @app.route('/clientesuper/agregar',methods=['POST'])
 def agregar_cliente_supermercado():
     data = request.get_json()
     # INGRESAR UN CLIENTE CON SUPERMERCADO PERO QUE PRIMERO VALIDE SI EXISTE EL CLIENTE Y SI EXISTE EL SUPERMECADO, CASO CONTRARIO INDIQUE QUE NO SE PUEDE PORQUE ALGUNO DE LOS DOS NO EXISTE (404) Y QUE EN LA DATA TENGAMOS EL ID_CLIENTE Y EL ID_SUPER Y SI TODO ESTA CONFORME QUE RETORNE UN MENSAJE DE SATISFACCION CON CODIGO 201
+    if(data.__contains__('id_cliente') and data.__contains__('id_super')):
+        conexion = mysql.connection.cursor()
+        conexion.execute(f"SELECT * FROM CLIENTE WHERE ID_CLI = {data['id_cliente']}")
+        cliente = conexion.fetchone()
+        conexion.execute(f"SELECT * FROM SUPERMERCADOS WHERE ID_SUPER = {data['id_super']}")
+        supermercado = conexion.fetchone()
+        conexion.close()
+        if supermercado and cliente:
+            conexioninsert = mysql.connection.cursor()
+            conexioninsert.execute("INSERT INTO SUPER_CLI (ID_CLI,ID_SUPER) VALUES (%s,%s)",(data['id_cliente'],data['id_super']))
+            mysql.connection.commit()
+            conexioninsert.close()
+            return jsonify({
+                'message':'El cliente fue vinculado con el supermercado con exito'
+            }),201
+        else:
+            return jsonify({
+                'message': 'No existe el cliente o el supermercado, compruebe y vuelva a intentalo'
+            }),400
+    return jsonify({
+        'message':'Faltan datos en el body'
+    }),400
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
