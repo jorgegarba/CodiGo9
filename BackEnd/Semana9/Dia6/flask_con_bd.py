@@ -14,6 +14,7 @@ app.config['MYSQL_DB']='flaskCodigo9'
 
 # CREAR VINCULO CON LA BASE DE DATOS
 mysql = MySQL(app)
+# PARA MODIFICAR LA CONTRASEÑA DEL USUARIO PARA QUE SEA VISTA DESDE AFUERA DEL SERVIDOR, TENEMOS QUE CORRER EL SIGUIENTE COMANDO
 # ALTER USER 'user'@'url' IDENTIFIED WITH mysql_native_password by 'password';
 
 # TRAER TODOS LOS SUPERMERCADOS
@@ -74,6 +75,30 @@ def agregar_cliente():
                 'message':'Faltan valores'
             }
         ),400
+
+@app.route('/clientes/traer/<int:id>', methods=['GET'])
+def traercliente(id):
+    conexion = mysql.connection.cursor()
+    conexion.execute(f"SELECT * FROM CLIENTE WHERE ID_CLI = {id}")
+    data = conexion.fetchone()
+    # fetchone() => trae la primera coincidencia
+    # fetchall() => trae todas las coincidencias
+    conexion.close()
+    if data:
+        return jsonify({
+            'id':data[0],
+            'nombre':data[1],
+            'apellido':data[2],
+            'categoria':data[3]
+        })
+    return jsonify({
+        'message':'Siga intentando caballero/a'
+    }),404
+
+@app.route('/clientesuper/agregar',methods=['POST'])
+def agregar_cliente_supermercado():
+    data = request.get_json()
+    # INGRESAR UN CLIENTE CON SUPERMERCADO PERO QUE PRIMERO VALIDE SI EXISTE EL CLIENTE Y SI EXISTE EL SUPERMECADO, CASO CONTRARIO INDIQUE QUE NO SE PUEDE PORQUE ALGUNO DE LOS DOS NO EXISTE (404) Y QUE EN LA DATA TENGAMOS EL ID_CLIENTE Y EL ID_SUPER Y SI TODO ESTA CONFORME QUE RETORNE UN MENSAJE DE SATISFACCION CON CODIGO 201
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
