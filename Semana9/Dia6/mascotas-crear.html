@@ -135,7 +135,7 @@
           <div class="col-12">
             <div class='card bg-light'>
               <div class='card-body'>
-                <form>
+                <form id="formAgregar">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
@@ -151,6 +151,7 @@
                           <option value="pollo">Pollo</option>
                           <option value="hamster">Hamster</option>
                           <option value="marrano">Marrano</option>
+                          <option value="gato">Gato</option>
                         </select>
                       </div>
                     </div>
@@ -172,7 +173,7 @@
                             <div class="input-group-prepend">
                               <label class="input-group-text" for="radioMacho">Macho</label>
                             </div>
-                            <input type="radio" class="form-control" name="radioSexo" id="radioMacho">
+                            <input type="radio" class="form-control" name="radioSexo" id="radioMacho" checked>
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -217,6 +218,11 @@
                     </div>
                   </div>
                   <!-- fin fila colores seleccionados -->
+                  <div class="row">
+                    <button class="btn btn-block btn-outline-success" type="button" id="btnCrearMascota">
+                      Crear Mascota
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
