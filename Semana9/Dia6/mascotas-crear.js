@@ -3,12 +3,12 @@ let selectColores = document.getElementById("selectColores");
 let listaColores = document.getElementById("lista-colores");
 let btnAgregar = document.getElementById("btnAgregarColor");
 let btnCrearMascota = document.getElementById("btnCrearMascota");
-const colores = ["blanco", "negro", "cafe", "beige", "plomo"];
+const coloresEstatico = ["blanco", "negro", "cafe", "beige", "plomo"];
 let coloresDisponibles = ["blanco", "negro", "cafe", "beige", "plomo"];
 let coloresElegidos = [];
 function setearColores() {
-  console.log(colores);
-  colores.forEach((color) => {
+  console.log(coloresEstatico);
+  coloresEstatico.forEach((color) => {
     let option = document.createElement("option");
     option.setAttribute("value", color);
     option.innerText = color.charAt(0).toUpperCase() + color.substring(1);
@@ -35,11 +35,11 @@ btnAgregar.onclick = () => {
   coloresElegidos.push(coloresDisponibles[indice]);
   coloresDisponibles.splice(indice, 1);
   selectColores.remove(selectColores.selectedIndex);
-  console.log(coloresDisponibles);
+  // console.log(coloresDisponibles);
   color.ondblclick = (e) => {
     eliminarColor(e.target);
   }
-  console.log(coloresElegidos);
+  // console.log(coloresElegidos);
   listaColores.appendChild(color);
 }
 
@@ -68,11 +68,15 @@ btnCrearMascota.onclick = () => {
     if (ajax.readyState === 4) {
       console.log(JSON.parse(ajax.responseText));
       document.getElementById("formAgregar").reset();
-      coloresDisponibles=colores;
+      console.log(coloresEstatico);
+      // destructuracion
+      coloresDisponibles=[...coloresEstatico];
+      console.log(coloresEstatico);
       coloresElegidos= [];
       selectColores.innerHTML="";
       listaColores.innerHTML="";
       setearColores();
+      
     }
   }
   ajax.open("POST", "http://5dc4957313d21600147e64d2.mockapi.io/mascota");
