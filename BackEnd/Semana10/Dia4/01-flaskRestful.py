@@ -13,12 +13,13 @@ class Item(Resource):
 
 class Inicio(Resource):
     def get(self):
-        # Ya no se necesita usar jsonify porque automaticamente Resource convierte un diccionario en un JSON
-        return {'Hola':'Mundo'}
+        # Ya no se necesita usar jsonify porque automaticamente Resource convierte un diccionario a un JSON
+        return 'HOLA MUNDO'
 # con Flask-restful ya no necesitamos poner decoradores, solamente se le pasa como un parametro a add_resource
 # add_resource => agregar un endpoint a nuestra API y lo hace mas facil de manejar
+api.add_resource(Inicio,'/')
 api.add_resource(Item,'/item')
-# http://127.0.0.1:500
+# http://127.0.0.1:5000
 
 if __name__=="__main__":
     app.run(debug=True)
