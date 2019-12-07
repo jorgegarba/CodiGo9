@@ -1,0 +1,1 @@
+$(".miSelect2").select2();

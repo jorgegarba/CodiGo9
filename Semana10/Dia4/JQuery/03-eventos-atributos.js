@@ -26,7 +26,6 @@ $("#btnLista").click(function () {
   });
   $("#col3").append(ul);
 });
-
 $("#btnAtributos").click(function () {
   // si el parrafo tiene asignado el atributo hidden
   if ($("#col2>p:eq(0)").attr("hidden")) {
@@ -37,3 +36,14 @@ $("#btnAtributos").click(function () {
     $("#col2>p:eq(0)").attr("hidden", "hidden")
   }
 });
+
+$("#frmBuscar").submit(function (evento) {
+  evento.preventDefault();
+  // $("#inputBuscar").val();
+  // Leer el valor de un input
+  let texto = $("#inputBuscar").val();
+  $("#resultado").html(texto);
+
+  // asignar el valor de un input
+  $("#inputBuscar").val("");
+})
