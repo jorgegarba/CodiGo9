@@ -51,11 +51,32 @@ class Producto(Resource):
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO PRODUCTO (PROD_DESC, PROD_PRECIO, PROD_DISPONIBLE) VALUES (%s,%s,%s)",(data['nombre'],data['precio'],data['disponible']))
         mysql.connection.commit()
+        cur.close()
         return {
             'message':'Producto agregado con exito',
             'producto':data
+        },201
+
+    def put(self,id_producto):
+        data = request.get_json()
+        cur = mysql.connection.cursor()
+        cur.execute("UPDATE PRODUCTO SET PROD_DESC=%s, PROD_PRECIO=%s, PROD_DISPONIBLE=%s WHERE PROD_ID=%s",(data['nombre'],data['precio'],data['disponible'],id_producto))
+        mysql.connection.commit()
+        cur.close()
+        return {
+            'message':'Producto actualizado con exito',
+            'producto': data
         }
 
-api.add_resource(Producto,'/producto')
+    def delete(self,id_producto):
+        cur = mysql.connection.cursor()
+        # si solo tienes un unico parametro en tu sentencia sql ponle la comita, sino, es opcional, esto sirve para definir que lo que le estamos mandando es una tupla
+        cur.execute("DELETE FROM PRODUCTO WHERE PROD_ID=%s",(id_producto,))
+        mysql.connection.commit()
+        return {
+            'message': 'Producto eliminado con exito'
+        },200
+
+api.add_resource(Producto,'/producto','/producto/<int:id_producto>')
 if __name__=='__main__':
     app.run(debug=True)
