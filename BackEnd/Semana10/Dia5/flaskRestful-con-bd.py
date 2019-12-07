@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Api, Resource
 from flask_mysqldb import MySQL
 
@@ -45,7 +45,16 @@ class Producto(Resource):
             'message':'Ok',
             'content': data
         }
-    # def post(self)
+
+    def post(self):
+        data = request.get_json()
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO PRODUCTO (PROD_DESC, PROD_PRECIO, PROD_DISPONIBLE) VALUES (%s,%s,%s)",(data['nombre'],data['precio'],data['disponible']))
+        mysql.connection.commit()
+        return {
+            'message':'Producto agregado con exito',
+            'producto':data
+        }
 
 api.add_resource(Producto,'/producto')
 if __name__=='__main__':
