@@ -1,0 +1,3 @@
+$('.contenedor').magnificPopup({
+  type: 'image'
+});
