@@ -1,6 +1,6 @@
 from base_de_datos import mysql
-from flask_restful import Resource, Api
-from flask import Request
+from flask_restful import Resource
+from flask import request
 
 class Mascota(Resource):
     def get(self,id):
