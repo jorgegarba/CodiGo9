@@ -14,11 +14,8 @@ $("#btnDark").click(function () {
   $("#col2").addClass("text-light")
     .addClass("bg-dark");
 });
-
-
 $("#btnLista").click(function () {
   $("#col3").html("");
-
   // creando un elemento con JQuery
   let ul = $("<ul></ul>");
   platos.forEach((plato) => {
@@ -30,3 +27,13 @@ $("#btnLista").click(function () {
   $("#col3").append(ul);
 });
 
+$("#btnAtributos").click(function () {
+  // si el parrafo tiene asignado el atributo hidden
+  if ($("#col2>p:eq(0)").attr("hidden")) {
+    // el parrafo está oculto y debe aparecer
+    $("#col2>p:eq(0)").removeAttr("hidden");
+  } else {
+    // el parrafo se está mostrando y debe desaparecer
+    $("#col2>p:eq(0)").attr("hidden", "hidden")
+  }
+});
