@@ -29,14 +29,35 @@ class Mascota(Resource):
             'content':f'No hay la mascota con el id {id}'
         },400
 
-    def put(self):
+    def put(self,id):
         """Modificar una mascota"""
-        pass
+        data = request.get_json()
+        cur = mysql.connection.cursor()
+        cur.execute("UPDATE t_mascota SET mas_nombre =%s,mas_raza=%s,mas_tipo=%s,mas_fecnac=%s, mas_sexo=%s,prop_id=%s WHERE mas_id= %s",(data['nombre'],data['raza'],data['tipo'],data['fecha'],data['sexo'],data['id_prop'],id))
+        mysql.connection.commit()
+        cur.close()
+        return {
+            'message':'Ok',
+            'content':'Se actualizo el registro de la mascota'
+        },201
 
 class Propietario(Resource):
     def get(self,dni):
         """Traer un usuario segun su dni"""
-        pass
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM t_propietario WHERE prop_dni=%s",(dni,))
+        resultado = cur.fetchone()
+        if resultado:
+            cur.close()
+            return {
+                'message':'Ok',
+                'content':resultado
+            },200
+        return {
+            'message':'error',
+            'content':'No existe ese propietario'
+        },400
+
     def post(self):
         propietario = request.get_json()
         cur = mysql.connection.cursor()
@@ -47,17 +68,41 @@ class Propietario(Resource):
             'message':'Ok',
             'content': 'Propietario creado con exito'
         },201
-    def put(self,id):
+
+    def put(self,dni):
         """Modificar un usuario"""
-        pass
+        data = request.get_json()
+        cur = mysql.connection.cursor()
+        cur.execute("UPDATE t_propietario SET prop_nombre=%s, prop_ape=%s, prop_dir=%s, prop_fono=%s, prop_dni=%s, prop_email=%s where prop_dni=%s",(data['nombre'],data['apellido'],data['direccion'],data['fono'],data['dni'],data['email'],dni))
+        mysql.connection.commit()
+        cur.close()
+        return {
+            'message' : 'Ok',
+            'content' : 'Usuario actualizado con exito'
+        },201
 
 class Color(Resource):
     def post(self):
         """Crear un color """
-        pass
+        data = request.get_json()
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO t_color (col_nombre, col_hexadecil, col_rgb) VALUES (%s,%s,%s)",(data['nombre'],data['hexadecimal'],data['rgb']))
+        mysql.connection.commit()
+        cur.close()
+        return {
+            'message':'Ok',
+            'content':'Color creado con exito'
+        },201
 
 
 class Colores(Resource):
     def get(self):
         """Traer todos los colores"""
-        pass
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM t_color")
+        data = cur.fetchall()
+        cur.close()
+        return {
+            'message':'Ok',
+            'content':data
+        },200

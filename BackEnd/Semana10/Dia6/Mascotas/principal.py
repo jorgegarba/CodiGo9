@@ -5,7 +5,7 @@ from app import app
 
 api = Api(app)
 api.add_resource(Mascota,'/mascota','/mascota/<int:id>')
-api.add_resource(Propietario,'/propietario','/propietario/<int:id>')
+api.add_resource(Propietario,'/propietario','/propietario/<int:dni>')
 
 if __name__=="__main__":
     app.run(debug=True)
