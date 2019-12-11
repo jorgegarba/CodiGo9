@@ -163,5 +163,9 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
     """
+    cur.execute(crear_tablas)
+    cur.close()
+
+if __name__=='__main__':
+  app.run(debug=True)
