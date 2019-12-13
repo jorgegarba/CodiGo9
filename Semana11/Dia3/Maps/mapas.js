@@ -1,6 +1,7 @@
 var mymap;
 var marcadorPuno;
 var circle;
+let marcadores = [];
 
 let iniciarMapa = () => {
   mymap = L.map('mapid').setView([-16.4291908, -71.5197197], 16);
@@ -17,6 +18,7 @@ $("#btnColocarMarcador").click(function () {
   marcadorPuno = L.marker([-15.837562, -70.022864]).addTo(mymap);
   // relocalizar el area visible en el mapa
   mymap.setView([-15.837562, -70.022864], 16);
+  marcadorPuno.bindPopup("<b>Aquí es Puno</b> <br/> Tierra de Fieles <br/> <img src='http://placehold.it/300/'/>");
 });
 
 $("#btnColocarCirculo").click(function () {
@@ -36,4 +38,26 @@ $("#btnColocarPoligono").click(function () {
     [-15.837562, -70.03]
   ]).addTo(mymap);
   mymap.setView([-15.837562, -70.022864], 16);
+})
+
+mymap.on('click', (e) => {
+  let marcadorTmp = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
+  marcadorTmp.bindPopup(`lat:${e.latlng.lat} lng:${e.latlng.lng}`);
+
+  marcadores.push(marcadorTmp);
+  console.log(marcadores);
+  marcadorTmp.on('contextmenu', () => {
+    // eliminar un marcador
+    marcadorTmp.remove(mymap);
+    // borrarlo de la lista de marcadores
+    marcadores = marcadores.filter((m) => {
+      return m !== marcadorTmp;
+    })
+    console.log(marcadores);
+
+  })
+
+
+
+
 })
