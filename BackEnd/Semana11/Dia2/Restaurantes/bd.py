@@ -51,7 +51,7 @@ ENGINE = InnoDB;
 -- Table `restaurante`.`t_mesa`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `restaurante`.`t_mesa` (
-  `mesa_id` INT NOT NULL,
+  `mesa_id` INT NOT NULL AUTO_INCREMENT,
   `mesa_capacidad` INT NULL,
   `mesa_estado` TINYINT NULL,
   PRIMARY KEY (`mesa_id`))
@@ -62,7 +62,7 @@ ENGINE = InnoDB;
 -- Table `restaurante`.`t_tipoMoneda`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `restaurante`.`t_tipoMoneda` (
-  `tm_id` INT NOT NULL,
+  `tm_id` INT NOT NULL AUTO_INCREMENT,
   `tm_cambio` DECIMAL NULL,
   `tm_moneda` VARCHAR(45) NULL,
   PRIMARY KEY (`tm_id`))
@@ -73,7 +73,7 @@ ENGINE = InnoDB;
 -- Table `restaurante`.`t_asignacion`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `restaurante`.`t_asignacion` (
-  `asig_id` INT NOT NULL,
+  `asig_id` INT NOT NULL AUTO_INCREMENT,
   `asig_fecha` DATE NULL,
   `t_mesa_mesa_id` INT NOT NULL,
   `t_usuario_usu_id` INT NOT NULL,
@@ -97,7 +97,7 @@ ENGINE = InnoDB;
 -- Table `restaurante`.`t_cabeceraPedido`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `restaurante`.`t_cabeceraPedido` (
-  `cp_id` INT NOT NULL,
+  `cp_id` INT NOT NULL AUTO_INCREMENT,
   `cp_razsocial` VARCHAR(60) NULL,
   `cp_direccion` VARCHAR(45) NULL,
   `cp_identificador` VARCHAR(20) NULL,
@@ -127,7 +127,7 @@ ENGINE = InnoDB;
 -- Table `restaurante`.`t_producto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `restaurante`.`t_producto` (
-  `prod_id` INT NOT NULL,
+  `prod_id` INT NOT NULL AUTO_INCREMENT,
   `prod_nomb` VARCHAR(45) NULL,
   `prod_precio` DECIMAL(5,2) NULL,
   `prod_disponible` TINYINT NULL,
@@ -139,7 +139,7 @@ ENGINE = InnoDB;
 -- Table `restaurante`.`t_detallePedido`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `restaurante`.`t_detallePedido` (
-  `dp_id` INT NOT NULL,
+  `dp_id` INT NOT NULL AUTO_INCREMENT,
   `dp_cant` INT NULL,
   `dp_precio` DECIMAL NULL,
   `t_producto_prod_id` INT NOT NULL,

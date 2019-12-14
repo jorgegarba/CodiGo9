@@ -5,15 +5,18 @@ from bd import mysql, app
 import bcrypt
 
 api = Api(app)
+
+
 class Mesa(Resource):
-    def get(self,id):
+    def get(self, id):
         cur = mysql.connection.cursor()
-        cur.execute("SELECT * FROM t_mesa where mesa_id=%s",(id,))
+        cur.execute("SELECT * FROM t_mesa where mesa_id=%s", (id,))
         resultado = cur.fetchone()
         cur.close()
         return {
             'Mesa': resultado
         }
+
     def post(self):
         # un validador es algo que nos ahorra el trabajo de validar si la informacion es correcta
         parser = reqparse.RequestParser()
@@ -30,9 +33,108 @@ class Mesa(Resource):
             help='Falta el estado'
         )
         data = parser.parse_args()
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO t_mesa (mesa_capacidad, mesa_estado) VALUES (%s,%s)",
+                    (data['capacidad'], data['estado']))
+        mysql.connection.commit()
+        cur.close()
         return {
-            data:data
-        }
+            'message': 'Mesa ingresada exitosamente'
+        }, 201
 
 
-# class Mesas(Resource):
+class Usuario(Resource):
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument(
+            'nombre',
+            type=str,
+            required=True,
+            help='Falta el nombre'
+        )
+        parser.add_argument(
+            'apellido',
+            type=str,
+            required=True,
+            help='Falta el apellido'
+        )
+        parser.add_argument(
+            'tipo',
+            type=str,
+            required=True,
+            help='Falta el tipo'
+        )
+        parser.add_argument(
+            'fecha',
+            type=str,
+            required=True,
+            help='Falta la fecha (YYYY-MM-DD)'
+        )
+        parser.add_argument(
+            'password',
+            type=str,
+            required=True,
+            help='Falta el password'
+        )
+        parser.add_argument(
+            'correo',
+            type=str,
+            required=True,
+            help='Falta el correo'
+        )
+        data = parser.parse_args()
+        # ENCRIPTACION DE CONTRASEÑAS
+        password = bytes(data['password'], 'utf-8')
+        salt = bcrypt.gensalt(rounds=10)
+        hashed = bcrypt.hashpw(password, salt)
+        # convertimos nuestras variables que inicialmente estan en bytes a string para poder almacenarlas en nuestra base de datos
+        saltstr = salt.decode('utf-8')
+        hashedstr = hashed.decode('utf-8')
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO T_USUARIO (USU_NOM, USU_APE, USU_TIPO, USU_FECHA, USU_SALT, USU_HASH, USU_EMAIL) VALUES(%s,%s,%s,%s,%s,%s,%s)",
+                    (data['nombre'], data['apellido'], data['tipo'], data['fecha'], saltstr, hashedstr, data['correo']))
+        cur.connection.commit()
+        cur.close()
+        print(password, salt, hashed)
+        return {
+            'message': 'Usuario creado exitosamente'
+        }, 201
+
+class Login(Resource):
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument(
+            'correo',
+            type=str,
+            required=True,
+            help='Falta el correo'
+        )
+        parser.add_argument(
+            'password',
+            type=str,
+            required=True,
+            help='Falta la password'
+        )
+        data = parser.parse_args()
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM t_usuario where usu_email=%s",(data['correo'],))
+        respuesta = cur.fetchone()
+        if (respuesta):
+            # VALIDAR CONTRASEÑA
+            # https://es.wikipedia.org/wiki/Sal_(criptograf%C3%ADa)
+            password = bytes(data['password'],'utf-8')
+            salt = bytes(respuesta[5],'utf-8')
+            hashed = bcrypt.hashpw(password,salt)
+            hashedstr = hashed.decode('utf-8')
+            if hashedstr == respuesta[4]:
+                return {
+                    'message': ('Bienvenido Mister %s %s' % (respuesta[1],respuesta[2]))
+                }
+            else:
+                return {
+                    'message': 'Usuario o contraseña incorrectos'
+                },403
+        else:
+            return {
+                'message': 'Usuario o contraseña no validos'
+            },403
