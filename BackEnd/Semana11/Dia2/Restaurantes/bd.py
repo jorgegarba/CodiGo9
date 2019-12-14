@@ -166,6 +166,3 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
     """
     cur.execute(crear_tablas)
     cur.close()
-
-if __name__=='__main__':
-  app.run(debug=True)
