@@ -180,6 +180,27 @@ class Asignacion (Resource):
         cur = mysql.connection.cursor()
         cur.execute("SELECT usu_tipo from t_usuario WHERE usu_id=%s",(data['id_usuario'],))
         usu_tipo = cur.fetchone()
-        if usu_tipo[0] == 1:
-            return 'Es admin'
-        return 'Es mesero'
+        if usu_tipo:
+            if usu_tipo[0] == '1':
+                try:
+                    cur.execute("INSERT INTO t_asignacion (asig_fecha, t_mesa_mesa_id, t_usuario_usu_id) VALUES (%s,%s,%s)",(data['fecha'],data['mesa_id'],data['id_asignar']))
+                    cur.connection.commit()
+                    cur.close()
+                    return { 
+                        'message':'La asignacion se realizo con exito'
+                    },201
+                except:
+                    cur.close()
+                    return {
+                        'message':'Los parametros son incorrectos'
+                    },500
+            else:
+                cur.close()
+                return {
+                    'message':'No dispones de los privilegios suficientes para hacer esta solicitud'
+                },403
+        else:
+            cur.close()
+            return {
+            'message':'No existe ese usuario'
+            },404
