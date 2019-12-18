@@ -83,6 +83,16 @@ class Usuario(Resource):
             help='Falta el correo'
         )
         data = parser.parse_args()
+        # VALIDAR QUE NO EXISTA UN USUARIO CON ESE CORREO
+        validacion = mysql.connection.cursor()
+        validacion.execute("SELECT * FROM T_USUARIO WHERE USU_EMAIL = %s",(data['correo'],))
+        resultadosValidacion = validacion.fetchone()
+        if resultadosValidacion:
+            return {
+                'message':'Correo ya registrado'
+            },500
+
+
         # ENCRIPTACION DE CONTRASEÑAS
         password = bytes(data['password'], 'utf-8')
         salt = bcrypt.gensalt(rounds=10)
@@ -138,3 +148,59 @@ class Login(Resource):
             return {
                 'message': 'Usuario o contraseña no validos'
             },403
+
+class Asignacion (Resource):
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument(
+            'id_usuario',
+            type=int,
+            required=True,
+            help='Falta el id_usuario'
+        )
+        parser.add_argument(
+            'id_asignar',
+            type=int,
+            required=True,
+            help='Falta el id_asignar'
+        )
+        parser.add_argument(
+            'mesa_id',
+            type=int,
+            required=True,
+            help='Falta el mesa_id'
+        )
+        parser.add_argument(
+            'fecha',
+            type=str,
+            required=True,
+            help='Falta la fecha'
+        )
+        data = parser.parse_args()
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT usu_tipo from t_usuario WHERE usu_id=%s",(data['id_usuario'],))
+        usu_tipo = cur.fetchone()
+        if usu_tipo:
+            if usu_tipo[0] == '1':
+                try:
+                    cur.execute("INSERT INTO t_asignacion (asig_fecha, t_mesa_mesa_id, t_usuario_usu_id) VALUES (%s,%s,%s)",(data['fecha'],data['mesa_id'],data['id_asignar']))
+                    cur.connection.commit()
+                    cur.close()
+                    return { 
+                        'message':'La asignacion se realizo con exito'
+                    },201
+                except:
+                    cur.close()
+                    return {
+                        'message':'Los parametros son incorrectos'
+                    },500
+            else:
+                cur.close()
+                return {
+                    'message':'No dispones de los privilegios suficientes para hacer esta solicitud'
+                },403
+        else:
+            cur.close()
+            return {
+            'message':'No existe ese usuario'
+            },404
