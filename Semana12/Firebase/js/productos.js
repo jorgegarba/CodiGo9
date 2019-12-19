@@ -1,36 +1,56 @@
 // creando la referencia a la BD realtime
 let database = firebase.database();
 
+let dibujarProductos = (productos) => {
 
-let traerProductos = () => {
-  // creando una referencia al nodo 'productos'
+  let miTabla = $(`<table id='miTabla' class='display'>
+                        <thead>
+                          <tr>
+                              <th>Id</th>
+                              <th>Nombre del Producto</th>
+                              <th>Precio</th>
+                              <th>Categoría</th>
+                          </tr>
+                        </thead>
+                        
+                    </table>`);
+
+  let tbody = $("<tbody></tbody>");
+  productos.forEach((p) => {
+    let fila = $(`<tr>
+                    <td>${p.id}</td>
+                    <td>${p.nombre}</td>
+                    <td>${p.precio}</td>
+                    <td>${p.categoria.nombre}</td>
+                  </tr>`);
+    tbody.append(fila);
+  });
+  miTabla.append(tbody);
+  $("#contenido").append(miTabla);
+
+  miTabla.DataTable();
+
+}
+
+
+let traerProductosRealTime = () => {
+  // Crean una ferencia al nodo 'productos'
   let refProductos = database.ref('productos');
 
-
-  // OPCION 1
-  // Leer la data en JSON
-  // refProductos.on('value', (snapshot) => {
-  //   console.log(snapshot.val());
-  // });
-
-  // OPCION 2
-  // Leer la data en JSON y transformarla en un arreglo
-  // de Objetos
-
+  // Nos suscribimos al consumo de datos en tiempo real
   refProductos.on('value', (snapshot) => {
     let productos = [];
-    
     snapshot.forEach((objProducto) => {
       let producto = {
         id: objProducto.key,
         nombre: objProducto.val().nombre,
         precio: objProducto.val().precio,
-        categoria: objProducto.val().categoria 
+        categoria: objProducto.val().categoria
       }
       productos.push(producto);
     });
-    console.log(productos);
+    dibujarProductos(productos);
   })
 }
 
-traerProductos();
+traerProductosRealTime();

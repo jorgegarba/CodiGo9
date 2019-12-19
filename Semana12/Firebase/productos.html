@@ -19,20 +19,24 @@
    <!-- Animate CSS -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
       integrity="sha256-PHcOkPmOshsMBC+vtJdVr5Mwb7r0LkSVJPlPrp/IMpU=" crossorigin="anonymous" />
+   <!-- CSS Datatables -->
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
 </head>
 
 <body>
 
    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
          aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
       <div class="collapse navbar-collapse" id="collapsibleNavId">
          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
+            <li class="nav-item">
                <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                <a class="nav-link" href="./productos.html">Productos</a>
             </li>
             <li class="nav-item">
@@ -52,11 +56,26 @@
          </form>
       </div>
    </nav>
+
    <main class="container mt-4">
-      <div class="jumbotron">
-         <h1 class="display-3">Bienvenido</h1>
-         <p class="lead">Productos y Categorias</p>
-         <hr class="my-2">
+      <div class="row">
+         <div class="col-12">
+
+            <div id="cargando">
+               <div class="alert alert-success text-center"
+                   role="alert">
+                 <h4 class="alert-heading">Cargando Datos...</h4>
+                 <p>
+                    <i class="fa fa-refresh fa-spin fa-3x"></i>
+                 </p>
+               </div>
+            </div>
+
+            <div id="contenido">
+
+            </div>
+
+         </div>
       </div>
    </main>
 
@@ -79,8 +98,13 @@
    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
    <!-- Firebase RealTime Db -->
    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
-   
-   
+   <!-- Script propio -->
+   <script src="./js/firebase.js"></script>
+   <!-- DataTables Script -->
+   <script type="text/javascript" charset="utf8"
+      src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+   <!-- Script Productos -->
+   <script src="./js/productos.js"></script>
 
 </body>
 
