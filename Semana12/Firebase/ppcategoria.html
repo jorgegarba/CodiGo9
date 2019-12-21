@@ -23,6 +23,8 @@
    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
    <!-- Sweet Alert2 -->
    <script src="./sweetalert2.min.js"></script>
+   <!-- ChartJs -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
 </head>
 
 <body>
@@ -78,46 +80,7 @@
          </div>
       </div>
       <div class="row">
-         <!-- Button trigger modal -->
-         <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modalAgregar">
-            Agregar un producto
-         </button>
-
-         <!-- Modal -->
-         <div class="modal fade" id="modalAgregar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-               <div class="modal-content">
-                  <div class="modal-header">
-                     <h5 class="modal-title">Agregar un producto</h5>
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                     </button>
-                  </div>
-                  <div class="modal-body">
-                     <form id="formularioAgregar">
-                        <div class="form-group">
-                           <label for="inputNombre">Nombre</label>
-                           <input type="text" class="form-control" id="inputNombre">
-                        </div>
-                        <div class="form-group">
-                           <label for="inputPrecio">Precio</label>
-                           <input type="number" class="form-control" id="inputPrecio">
-                        </div>
-                        <div class="form-group">
-                           <label for="selectCategoria">Categoria</label>
-                           <select name="state" id="selectCategoria">
-                           </select>
-                        </div>
-                     </form>
-                  </div>
-                  <div class="modal-footer">
-                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                     <button type="button" class="btn btn-primary" id="btnAdd">Agregar Producto</button>
-                  </div>
-               </div>
-            </div>
-         </div>
+         <canvas id="miGrafico" height="200px"></canvas>
       </div>
    </main>
 
@@ -142,8 +105,10 @@
    <!-- DataTables Script -->
    <script type="text/javascript" charset="utf8"
       src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <!-- ChartJs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
    <!-- Script Productos -->
-   <script src="./js/productos.js"></script>
+   <script src="./js/ppcategoria.js"></script>
 
 </body>
 
