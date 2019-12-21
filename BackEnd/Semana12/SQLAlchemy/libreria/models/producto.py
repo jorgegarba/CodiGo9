@@ -1,6 +1,4 @@
 from bd import bd
-
-
 class ProductoModel(bd.Model):
     __tablename__ = "t_producto"
     id = bd.Column("prod_id", bd.Integer, primary_key=True)

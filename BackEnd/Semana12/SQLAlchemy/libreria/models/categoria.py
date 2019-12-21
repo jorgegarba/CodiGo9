@@ -11,3 +11,12 @@ class CategoriaModel (bd.Model):
 
     def __init__(self, nombre):
         self.nombre = nombre
+
+    def devolver_json(self):
+        return {
+            'id':self.id,
+            'nombre': self.nombre
+        }
+    def guardar_en_la_bd(self):
+        bd.session.add(self)
+        bd.session.commit()
