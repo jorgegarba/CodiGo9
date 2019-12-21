@@ -52,5 +52,18 @@ let traerProductosRealTime = () => {
     dibujarProductos(productos);
   })
 }
+let traerCategorias = ()=>{
+  let refCategorias = database.ref('categorias');
+  // para traer una vez es => once
+  // para quedarse escuchando => on
+  refCategorias.on('value',(snapshot)=>{
+    snapshot.forEach((categoria)=>{
+      console.log(categoria.val()[2]);
+      let opcion = $('<option id="'+categoria.val().codigo+'">'+categoria.val().nombre+'</option>')
+      $('#selectCategoria').append(opcion);
+    })
 
+  })
+}
+traerCategorias();
 traerProductosRealTime();
