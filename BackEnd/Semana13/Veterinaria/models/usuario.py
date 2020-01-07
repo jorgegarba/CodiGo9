@@ -16,7 +16,7 @@ class UsuarioModel(bd.Model):
     correo = bd.Column("usu_email", bd.String(45))
     telefono = bd.Column ("usu_fono", bd.String(25))
     # RELACIONES
-    horario = bd.Relationship('HorarioModel', lazy="dynamic")
+    horario = bd.relationship('HorarioModel', lazy="dynamic")
     # usuario.horario
     # select * from usuario inner join horario on usuario.usu_id=horario.usu_id
     def __init__(self,nombre,apellido,tipo,direccion,correo,telefono,password=None):

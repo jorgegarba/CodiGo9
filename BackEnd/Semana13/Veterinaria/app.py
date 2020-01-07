@@ -13,6 +13,10 @@ CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI']="mysql://root:root@localhost/veterinaria"
 
 api = Api(app)
+@app.route('/')
+def endpoint_inicial():
+    return 'La API REST funciona! :D'
+
 
 @app.before_first_request
 def crear_base_de_datos():
