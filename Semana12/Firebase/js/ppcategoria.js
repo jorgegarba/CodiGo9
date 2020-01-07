@@ -58,12 +58,7 @@ let dibujarChart = () => {
         })
     })
 
-
-
-
-
-
-   
+  
 
 }
 
