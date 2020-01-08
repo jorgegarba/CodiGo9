@@ -5,7 +5,7 @@ class CabeceraDocumento(bd.Model):
     id = bd.Column("cd_id", bd.Integer, primary_key=True)
     fecha = bd.Column("cd_fech", bd.Date)
     numeracion = bd.Column("cd_numeracion", bd.String(25))
-    total = bd.Column("cd_total", bd.Float())
+    total = bd.Column("cd_total", bd.DECIMAL(5,2))
     # RELACION
     usu_id = bd.Column(bd.Integer, bd.ForeignKey("t_usuario.usu_id"), nullable=False)
     detalles = bd.relationship("DetalleDocumentoModel")
