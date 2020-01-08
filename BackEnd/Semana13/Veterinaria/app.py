@@ -5,12 +5,20 @@ from flask_cors import CORS
 
 # Solamente se crean las tablas siempre y cuando sean llamadas, ya sea directamente al modelo o al controlador
 from models.horario import HorarioModel
-from models.usuario import UsuarioModel
+from models.mascota import MascotaModel
+# from models.usuario import UsuarioModel
+from controllers.usuario import UsuarioController
+from models.atencion import AtencionModel
+from models.triaje import TriajeModel
+from models.precio import PrecioModel
+from models.detalle_doc import DetalleDocumentoModel
+from models.cabecera_doc import CabeceraDocumentoModel
+
 
 app = Flask(__name__)
 CORS(app)
-#dialect://user:password@domain/database
-app.config['SQLALCHEMY_DATABASE_URI']="mysql://root:root@localhost/veterinaria"
+# dialect://user:password@domain/database
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:root@localhost/veterinaria"
 
 api = Api(app)
 @app.route('/')
@@ -24,8 +32,14 @@ def crear_base_de_datos():
     bd.init_app(app)
     # PARA BAJARME TODAS LAS TABLAS (DROP)
     # bd.drop_all(app=app)
-    # PARA CREAR TODAS LAS TABLAS 
+    # PARA CREAR TODAS LAS TABLAS
     bd.create_all(app=app)
 
-if __name__=="__main__":
+
+api.add_resource(UsuarioController,
+                 '/registro',
+                 '/buscar_usuario/<string:nombre>')
+
+
+if __name__ == "__main__":
     app.run(debug=True)

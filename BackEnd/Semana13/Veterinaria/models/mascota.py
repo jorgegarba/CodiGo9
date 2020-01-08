@@ -10,7 +10,7 @@ class MascotaModel(bd.Model):
     mascota_tipo = bd.Column(bd.String(45))
     mascota_raza = bd.Column(bd.String(45))
     mascota_sexo = bd.Column(bd.String(45))
-    mascota_obs = bd.Column(bd.Text, default="No tiene.")
+    mascota_obs = bd.Column(bd.Text)
     # RELACIONES
     usu_id = bd.Column(bd.Integer, bd.ForeignKey(
         't_usuario.usu_id'), nullable=False)

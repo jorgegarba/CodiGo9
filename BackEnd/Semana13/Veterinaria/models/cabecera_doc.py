@@ -1,6 +1,6 @@
 from bd import bd
 
-class CabeceraDocumento(bd.Model):
+class CabeceraDocumentoModel(bd.Model):
     __tablename__="t_cabecera_doc"
     id = bd.Column("cd_id", bd.Integer, primary_key=True)
     fecha = bd.Column("cd_fech", bd.Date)
