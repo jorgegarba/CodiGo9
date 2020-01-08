@@ -79,3 +79,20 @@ class UsuarioController(Resource):
             return {
                 'message':'No hay un usuario con ese nombre '+nombre
             },404 # NOT FOUND
+
+class Login(Resource):
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument(
+            "correo",
+            type=str,
+            required=True,
+            help="Falta el correo"
+        )
+        parser.add_argument(
+            "password",
+            type=str,
+            required=True,
+            help="Falta el password"
+        )
+        
