@@ -43,7 +43,7 @@ class UsuarioModel(bd.Model):
             'telefono':self.telefono
         }
     
-    def guarda_en_la_bd(self):
+    def guardar_bd(self):
         # cada vez que nosotros creamos una instancia para crear un nuevo usuario, lo mejor es mandar toda la instacion a almacenar a la base de datos para no tener problemas con referencias a ese objeto
         # cuando creo mi sesion estoy insertando mi nuevo usuario, pero no lo estoy guardando, si hay algo mal o algo incorrecto, no lo guardara en la base de datos hasta hacer commit, caso contrario si no hay error pero no lo queremos guardar en la bd podemos hacer un rollback para 'retroceder en el tiempo' y asi no guardar ese registro, a esto se le llama TRANSACTION o TRANSACT-SQL
         bd.session.add(self)
