@@ -7,7 +7,7 @@ from flask_cors import CORS
 from models.horario import HorarioModel
 from models.mascota import MascotaModel
 # from models.usuario import UsuarioModel
-from controllers.usuario import UsuarioController
+from controllers.usuario import UsuarioController, Login
 from models.atencion import AtencionModel
 from models.triaje import TriajeModel
 from models.precio import PrecioModel

@@ -95,4 +95,9 @@ class Login(Resource):
             required=True,
             help="Falta el password"
         )
-        
+        data = parser.parse_args()
+        consulta = UsuarioModel.query.filter_by(correo= data['correo']).first()
+        print(consulta)
+        return {
+            'message':'Ok'
+        }
