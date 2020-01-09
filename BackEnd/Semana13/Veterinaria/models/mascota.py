@@ -34,7 +34,7 @@ class MascotaModel(bd.Model):
     def retornar_mascota(self):
         return {
             'nombre': self.mascota_nombre,
-            'fecha de nacimiento': self.mascota_fechnac,
+            'fecha de nacimiento': str(self.mascota_fechnac),
             'tipo': self.mascota_tipo,
             'raza': self.mascota_raza,
             'sexo': self.mascota_sexo,
@@ -44,3 +44,17 @@ class MascotaModel(bd.Model):
     def guardar_bd(self):
         bd.session.add(self)
         bd.session.commit()
+    
+    def actualizar_mascota(self, nombre=None, tipo=None, raza=None, sexo=None, observaciones=None):
+        if nombre:
+            self.mascota_nombre=nombre
+        if tipo:
+            self.mascota_tipo = tipo
+        if raza:
+            self.mascota_raza = raza
+        if sexo:
+            self.mascota_sexo = sexo
+        if observaciones:
+            self.mascota_obs = observaciones
+        bd.session.commit()
+

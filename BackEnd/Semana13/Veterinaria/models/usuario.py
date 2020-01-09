@@ -36,6 +36,10 @@ class UsuarioModel(bd.Model):
             self.hashe = hashed
             self.salt = salt
 
+    # metodo para sobreescribir la forma en que se devuelve un objeto, es exclusivo de las clases y la POO, es un metodo magico
+    def __str__(self):
+        return '{}, {}, {}'.format(self.nombre, self.apellido, self.correo)
+
     def retornar_usuario(self):
         return {
             'nombre_completo':self.nombre+' '+self.apellido,

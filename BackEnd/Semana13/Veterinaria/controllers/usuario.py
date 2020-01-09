@@ -1,5 +1,6 @@
 from flask_restful import Resource, reqparse
 from models.usuario import UsuarioModel
+import bcrypt
 
 class UsuarioController(Resource):
     def post (self):
@@ -98,6 +99,31 @@ class Login(Resource):
         data = parser.parse_args()
         consulta = UsuarioModel.query.filter_by(correo= data['correo']).first()
         print(consulta)
-        return {
-            'message':'Ok'
-        }
+        # ver si tiene password que haga la validacion y sino que indique que no tiene permisos de login
+        print(consulta.nombre)
+        #consulta => es un objecto de la clase UsuarioModel => nombre, apellido, correo, hash, salt, tipo
+        if consulta:
+            if consulta.hashe:
+                # VERIFICAR EL MATCH CON LA CONTRASEÑA
+                # bcrypt
+                pass_convertida = bytes(data['password'],'utf-8')
+                salt = bytes(consulta.salt,'utf-8')
+                hashed = bcrypt.hashpw(pass_convertida,salt)
+                hashed = hashed.decode('utf-8')
+                if hashed==consulta.hashe:
+                    return {
+                        'message': 'Usuario logeado correctamente'
+                    },200
+                else:
+                    return{
+                        'message':'Usuario o contraseña incorrectos'
+                    },400
+            else:
+                # No tiene permisos de login
+                return {
+                    'message':'Usuario o contraseña incorrectos'
+                }, 400
+        else:
+            return {
+                'message': 'Usuario o contraseña incorrectos'
+            }, 400
