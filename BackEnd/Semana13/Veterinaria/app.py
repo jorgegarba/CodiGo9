@@ -6,7 +6,7 @@ from flask_cors import CORS
 # Solamente se crean las tablas siempre y cuando sean llamadas, ya sea directamente al modelo o al controlador
 from models.horario import HorarioModel
 # from models.mascota import MascotaModel
-from controllers.mascota import MascotaController
+from controllers.mascota import MascotaController, MascotasController
 # from models.usuario import UsuarioModel
 from controllers.usuario import UsuarioController, Login
 from models.atencion import AtencionModel
@@ -45,6 +45,7 @@ api.add_resource(Login, '/login')
 api.add_resource(MascotaController,
                  '/mascota/add',
                  '/mascota/<int:id_usuario>')
+api.add_resource(MascotasController,'/mascotas')
 
 
 if __name__ == "__main__":

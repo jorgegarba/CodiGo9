@@ -57,7 +57,6 @@ class MascotaController(Resource):
             },500
         return mascota.retornar_mascota()
 
-
     def get(self,id_usuario):
         """Metodo que permite traer todas las mascotas de un mismo dueño"""
         resultado = MascotaModel.query.filter_by(usu_id=id_usuario).all()
@@ -115,3 +114,15 @@ class MascotaController(Resource):
         return{
             'message':'No se encontro la mascota'
         },404
+
+class MascotasController(Resource):
+    def get(self):
+        mascotas = MascotaModel.query.all()
+        if mascotas:
+            resultadoMascotas = []
+            for mascota in mascotas:
+                resultadoMascotas.append(mascota.retornar_mascota())
+            return resultadoMascotas
+        return {
+            'message': 'No se pudieron extraer las mascotas'
+        },500
