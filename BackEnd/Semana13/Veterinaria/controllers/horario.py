@@ -26,8 +26,7 @@ class HorarioController(Resource):
         parser.add_argument(
             "hora_salida",
             type=str,
-            required=True,
-            help="Se requiere la hora de salida"
+            required=False
         )
         parser.add_argument(
             "usuario",
