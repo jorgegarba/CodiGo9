@@ -4,7 +4,7 @@ from bd import bd
 from flask_cors import CORS
 
 # Solamente se crean las tablas siempre y cuando sean llamadas, ya sea directamente al modelo o al controlador
-from models.horario import HorarioModel
+from models.registro import RegistroModel
 # from models.mascota import MascotaModel
 from controllers.mascota import MascotaController, MascotasController
 # from models.usuario import UsuarioModel
@@ -14,6 +14,7 @@ from models.triaje import TriajeModel
 from models.precio import PrecioModel
 from models.detalle_doc import DetalleDocumentoModel
 from models.cabecera_doc import CabeceraDocumentoModel
+from models.turno import TurnoModel
 
 
 app = Flask(__name__)
