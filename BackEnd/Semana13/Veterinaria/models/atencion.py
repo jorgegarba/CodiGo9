@@ -26,11 +26,11 @@ class AtencionModel(bd.Model):
 
     def traer_atencion(self):
         return {
-            'fecha': self.fecha,
+            'fecha': format(self.fecha),
             'motivo': self.motivo,
             'diagnostico': self.diagnostico,
             'medicacion': self.medicacion,
-            'proxima atencion':self.siguiente_atencion,
+            'proxima atencion':format(self.siguiente_atencion),
             'observaciones': self.observaciones
         }
 

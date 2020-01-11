@@ -52,7 +52,7 @@ api.add_resource(MascotasController, '/mascotas')
 
 api.add_resource(RegistroController,
                  '/marcacion',
-                 '/marcacion/<string:anio>/<string:mes>/<int:usuario>')
+                 '/marcacion/<int:anio>/<int:mes>/<int:usuario>')
 
 api.add_resource(TriajeController,
                  '/triaje',
