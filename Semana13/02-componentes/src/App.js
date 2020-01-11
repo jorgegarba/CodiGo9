@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import Header from './componentes/Header';
 import Productos from './componentes/Productos';
+import Tabla from './componentes/Tabla';
 
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
       <Header t={"CodiGo"} />
       <main className="container">
         <Productos misProductos={misProductos} />
+        <hr/>
+        <Tabla misProductos={misProductos} />
       </main>
     </Fragment>
   );

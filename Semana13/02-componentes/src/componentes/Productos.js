@@ -4,7 +4,7 @@ import Producto from './Producto';
 const Productos = (props) => {
 
   let componentes = props.misProductos.map((p) => {
-    return <Producto p={p} />
+    return <Producto p={p} key={p.id}/>
   });
 
   // let componentes = [];
