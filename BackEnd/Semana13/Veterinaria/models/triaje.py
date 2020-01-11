@@ -25,3 +25,8 @@ class TriajeModel(bd.Model):
             'temperatura':self.temperatura,
             'atencion':self.atencion_id
         }
+
+    def actualizar_triaje(self, peso, temperatura):
+        self.peso = peso
+        self.temperatura = temperatura
+        bd.session.commit()
