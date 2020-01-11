@@ -61,5 +61,16 @@ class AtencionController (Resource):
                 'message':'Hubo un error al guardar la atencion en la base de datos'
             },500
         return atencion.traer_atencion(),201
-    def get(self):
-        pass
+
+    def get(self, id_mascota):
+        resultado = AtencionModel.query.filter_by(mascota_id= id_mascota).all()
+        if resultado:
+            atenciones =[]
+            for atencion in resultado:
+                atenciones.append(atencion.traer_atencion())
+            return {
+                'atenciones':atenciones
+            },200
+        return{
+            'message':'Esa mascota no tiene atenciones'
+        },404

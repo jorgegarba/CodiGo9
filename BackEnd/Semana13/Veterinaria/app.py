@@ -10,7 +10,8 @@ from controllers.registro import RegistroController
 from controllers.mascota import MascotaController, MascotasController
 # from models.usuario import UsuarioModel
 from controllers.usuario import UsuarioController, Login
-from models.atencion import AtencionModel
+# from models.atencion import AtencionModel
+from controllers.atencion import AtencionController
 # from models.triaje import TriajeModel
 from controllers.triaje import TriajeController
 from models.precio import PrecioModel
@@ -18,11 +19,20 @@ from models.detalle_doc import DetalleDocumentoModel
 from models.cabecera_doc import CabeceraDocumentoModel
 from models.turno import TurnoModel
 
+from flask_jwt import JWT
+from seguridad import autenticacion, identificacion
+
 
 app = Flask(__name__)
 CORS(app)
 # dialect://user:password@domain/database
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:root@localhost/veterinaria"
+app.config['SECRET_KEY']='codigo9'
+app.config['JWT_AUTH_URL_RULE']='/login'
+from datetime import timedelta
+app.config['JWT_EXPIRATION_DELTA']=timedelta(seconds=30)
+
+jsonwebtoken = JWT(app,autenticacion,identificacion)
 
 api = Api(app)
 @app.route('/')
@@ -44,7 +54,7 @@ api.add_resource(UsuarioController,
                  '/registro',
                  '/buscar_usuario/<string:nombre>')
 
-api.add_resource(Login, '/login')
+# api.add_resource(Login, '/login')
 api.add_resource(MascotaController,
                  '/mascota/add',
                  '/mascota/<int:id_usuario>')
@@ -58,6 +68,10 @@ api.add_resource(TriajeController,
                  '/triaje',
                  '/triaje/<int:id_atencion>',
                  '/triaje/<int:id_triaje>')
+
+api.add_resource(AtencionController,
+                 '/atencion',
+                 '/atencion/<int:id_mascota>')
 
 if __name__ == "__main__":
     app.run(debug=True)

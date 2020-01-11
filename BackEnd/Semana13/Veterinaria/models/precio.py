@@ -21,3 +21,8 @@ class PrecioModel(bd.Model):
             'descripcion':self.descripcion,
             'precio':self.precio
         }
+
+    def actualizar_precio(self, descripcion, precio):
+        self.descripcion= descripcion
+        self.precio = precio
+        bd.session.commit()

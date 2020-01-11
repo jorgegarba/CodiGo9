@@ -1,6 +1,7 @@
 from flask_restful import Resource, reqparse
 from models.usuario import UsuarioModel
 import bcrypt
+from flask_jwt import jwt_required
 
 class UsuarioController(Resource):
     def post (self):
@@ -65,6 +66,7 @@ class UsuarioController(Resource):
             'message':'Ya hay un usuario con ese correo, no se pudo agregar'
         }, 400 # BAD REQUEST
 
+    @jwt_required()
     def get(self, nombre):
         # USAR EL LIKE
         # SELECT * FROM T_USUARIO WHERE USU_NOM LIKE '%'+NOMBRE+'%'
