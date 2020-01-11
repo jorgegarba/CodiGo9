@@ -20,6 +20,6 @@ class RegistroModel(bd.Model):
 
     def horario_marcado(self):
         return {
-            'entrada': self.registro_ingreso,
-            'salida': self.registro_salida
+            'entrada': format(self.registro_ingreso),
+            'salida': format(self.registro_salida)
         }

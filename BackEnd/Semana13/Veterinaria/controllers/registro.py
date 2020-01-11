@@ -33,17 +33,17 @@ class RegistroController(Resource):
             }
         return ingreso.horario_marcado()
     def get(self, mes, anio, usuario):
-        resultado = RegistroModel.query.filter(
-            "month(registro_ingreso)"
-            #extract('month',RegistroModel.registro_ingreso)
-            ==mes,
-            "month(registro_ingreso)"
-            # extract('year',RegistroModel.registro_ingreso)
-            ==anio
-             ).all()
+        if(int(mes)<10):
+            mes='0'+mes
+        resultado = RegistroModel.query.filter(RegistroModel.registro_salida.like(anio+'-%')).filter(RegistroModel.registro_salida.like('%-'+mes+'-%')).filter(RegistroModel.usu_id == usuario).all()
         if resultado:
+            arrFinal = []
+            for marcacion in resultado:
+                arrFinal.append(marcacion.horario_marcado())
             print(resultado)
-            return 'Ok'
+            return {
+                'resultado':arrFinal
+            }
         return {
             'message':'El usuario no tiene ningun registro hasta la fecha'
         },200

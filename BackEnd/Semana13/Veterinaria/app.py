@@ -11,7 +11,8 @@ from controllers.mascota import MascotaController, MascotasController
 # from models.usuario import UsuarioModel
 from controllers.usuario import UsuarioController, Login
 from models.atencion import AtencionModel
-from models.triaje import TriajeModel
+# from models.triaje import TriajeModel
+from controllers.triaje import TriajeController
 from models.precio import PrecioModel
 from models.detalle_doc import DetalleDocumentoModel
 from models.cabecera_doc import CabeceraDocumentoModel
@@ -50,8 +51,13 @@ api.add_resource(MascotaController,
 api.add_resource(MascotasController, '/mascotas')
 
 api.add_resource(RegistroController,
-                 '/registro',
-                 '/registro/<int:anio>/<int:mes>/<int:usuario>')
+                 '/marcacion',
+                 '/marcacion/<string:anio>/<string:mes>/<int:usuario>')
+
+api.add_resource(TriajeController,
+                 '/triaje',
+                 '/triaje/<int:id_atencion>',
+                 '/triaje/<int:id_triaje>')
 
 if __name__ == "__main__":
     app.run(debug=True)
