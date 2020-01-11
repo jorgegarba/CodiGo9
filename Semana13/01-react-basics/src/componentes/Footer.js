@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Footer = () => {
+const Footer = (props) => {
   return (
     <footer>
-      2020 - Todos los derechos reservados
+      {props.anio} - Todos los derechos reservados
     </footer>
   )
 }
