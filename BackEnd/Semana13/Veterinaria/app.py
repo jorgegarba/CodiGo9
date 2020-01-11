@@ -4,7 +4,8 @@ from bd import bd
 from flask_cors import CORS
 
 # Solamente se crean las tablas siempre y cuando sean llamadas, ya sea directamente al modelo o al controlador
-from models.registro import RegistroModel
+# from models.registro import RegistroModel
+from controllers.registro import RegistroController
 # from models.mascota import MascotaModel
 from controllers.mascota import MascotaController, MascotasController
 # from models.usuario import UsuarioModel
@@ -46,8 +47,11 @@ api.add_resource(Login, '/login')
 api.add_resource(MascotaController,
                  '/mascota/add',
                  '/mascota/<int:id_usuario>')
-api.add_resource(MascotasController,'/mascotas')
+api.add_resource(MascotasController, '/mascotas')
 
+api.add_resource(RegistroController,
+                 '/registro',
+                 '/registro/<int:anio>/<int:mes>/<int:usuario>')
 
 if __name__ == "__main__":
     app.run(debug=True)

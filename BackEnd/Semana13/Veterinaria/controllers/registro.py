@@ -33,7 +33,14 @@ class RegistroController(Resource):
             }
         return ingreso.horario_marcado()
     def get(self, mes, anio, usuario):
-        resultado = RegistroModel.query.filter_by("month(registro_ingreso)"=mes).filter_by("year(registro_ingreso)"=anio).filter_by(usu_id=usuario).all()
+        resultado = RegistroModel.query.filter(
+            "month(registro_ingreso)"
+            #extract('month',RegistroModel.registro_ingreso)
+            ==mes,
+            "month(registro_ingreso)"
+            # extract('year',RegistroModel.registro_ingreso)
+            ==anio
+             ).all()
         if resultado:
             print(resultado)
             return 'Ok'
