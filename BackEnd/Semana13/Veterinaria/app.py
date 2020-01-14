@@ -26,7 +26,7 @@ from seguridad import autenticacion, identificacion
 app = Flask(__name__)
 CORS(app)
 # dialect://user:password@domain/database
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:root@localhost/veterinaria"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://wkzko93SHR:FGMAQr87AE@remotemysql.com/wkzko93SHR"
 app.config['SECRET_KEY']='codigo9'
 app.config['JWT_AUTH_URL_RULE']='/login'
 from datetime import timedelta
