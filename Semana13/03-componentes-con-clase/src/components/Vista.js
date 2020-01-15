@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Productos from "./Productos";
 import Tabla from "./Tabla";
 
@@ -9,10 +9,7 @@ export default class Vista extends Component {
     this.state = {
       misProductos: [
         {
-          id: 1,
-          nombre: 'TV 40" Samsung',
-          precio: 4500.0,
-          imagen: "http://placehold.it/300/"
+          id: 1, nombre: 'TV 40" Samsung', precio: 4500.0, imagen: "http://placehold.it/300/"
         },
         {
           id: 2,
@@ -29,21 +26,49 @@ export default class Vista extends Component {
       ],
       vistaToggle: true
     };
-    this.manejarVista = this.manejarVista.bind(this);
   }
 
-  manejarVista(){
-      this.setState({
-          vistaToggle: !this.state.vistaToggle
-      })
+  manejarVista = () => {
+    this.setState({
+      vistaToggle: !this.state.vistaToggle
+    })
+  }
+
+  eliminarProducto = (id) => {
+    console.log("Eliminando un producto " + id);
+    // 1. Tomar una copia de los productos del esteit
+    // OJO: usar el operador [...] cuando se desee hacer la copia de un
+    // arreglo
+    let copiaProductos = [...this.state.misProductos];
+    copiaProductos = copiaProductos.filter((p) => {
+      if (p.id != id) {
+        return p;
+      }
+    });
+
+    this.setState({
+      misProductos: copiaProductos
+    })
+
   }
 
   render() {
-    return <div className="row">
-        <button className="btn btn-primary btn-sm" onClick={this.manejarVista}>Cambiar Vista</button>
-
-        {this.state.vistaToggle === false ? (<Productos misProductos={this.state.misProductos}/> ) : (<Tabla misProductos={this.state.misProductos} />)}
-       
-    </div>;
+    return (
+      <Fragment>
+        <button className="btn btn-primary btn-sm" onClick={this.manejarVista}>
+          Cambiar Vista
+        </button>
+        <div className="row">
+          {
+            // A continuación, el operador ternario que decide qué componente mostrar
+            // tras el análisis de la variable this.state.vistaToggle
+            this.state.vistaToggle === false ?
+              (<Productos misProductos={this.state.misProductos} />)
+              :
+              (<Tabla misProductos={this.state.misProductos}
+                eliminarProducto={this.eliminarProducto} />)
+          }
+        </div>
+      </Fragment>)
   }
 }
