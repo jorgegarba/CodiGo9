@@ -26,7 +26,17 @@ export default class Vista extends Component {
       ],
       vistaToggle: true
     };
+    console.log("Se esta ejcutando el constructor :)");
   }
+
+  componentDidMount(){
+    console.log("Se ha ejecutado el componentDidMount");
+  }
+
+  componentDidUpdate(){
+    console.log("Se ha ejecutado el componentDidUpdate")
+  }
+
 
   manejarVista = () => {
     this.setState({
@@ -52,11 +62,28 @@ export default class Vista extends Component {
 
   }
 
+  anadirProducto = () => {
+    let id = this.state.misProductos.length + 1;
+    let objProducto = {
+      id:id,
+      nombre:"Guantes para Boxear y Programar",
+      precio:500.0,
+      imagen: "http://placehold.it/300/"
+    }
+    this.setState({
+      misProductos: [...this.state.misProductos, objProducto]
+    });
+  }
+
   render() {
     return (
       <Fragment>
+        {console.log("Yo soy el render!!!")}
         <button className="btn btn-primary btn-sm" onClick={this.manejarVista}>
           Cambiar Vista
+        </button>
+        <button className="btn btn-info btn-sm" onClick={this.anadirProducto}>
+          Añadir Producto
         </button>
         <div className="row">
           {
