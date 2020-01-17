@@ -5,11 +5,23 @@ import Resultado from './components/Resultado';
 
 export default class App extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      temperatura: {}
+    }
+  }
 
   buscarClima = (objeto) => {
-    console.log(objeto.ciudad);
-    console.log(objeto.pais);
-
+    let key = "f216cdc5ffb3839b7ebdb07394220bc1";
+    let endpoint = `https://api.openweathermap.org/data/2.5/weather?q=${objeto.ciudad},${objeto.pais}&appid=${key}&units=metric`;
+    fetch(endpoint).then((response) => {
+      response.json().then((json) => {
+        this.setState({
+          temperatura: json.main
+        })
+      })
+    })
   }
 
   render() {
@@ -36,7 +48,7 @@ export default class App extends Component {
             <div className="col-md-6">
               <div className="card shadow">
                 <div className="card-body">
-                  <Resultado />
+                  <Resultado temperatura={this.state.temperatura} />
                 </div>
               </div>
             </div>

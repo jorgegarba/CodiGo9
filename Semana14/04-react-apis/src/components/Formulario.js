@@ -45,7 +45,7 @@ export class Formulario extends Component {
                         <option value="PE">Perú</option>
                         <option value="MX">México</option>
                         <option value="ES">España</option>
-                        <option value="EU">Estados Unidos</option>
+                        <option value="US">Estados Unidos</option>
                       </select>
                     </div>
                   </div>
