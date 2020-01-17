@@ -23,7 +23,7 @@ export class Formulario extends Component {
 
   enviar = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    this.props.buscarClima(this.state);
   }
 
   render() {
@@ -39,7 +39,9 @@ export class Formulario extends Component {
                       <label htmlFor="pais">Seleccione Pais:</label>
                       <select name="pais" id="pais"
                         className="form-control"
-                        onChange={this.cambiarPais}>
+                        onChange={this.cambiarPais}
+                        value={this.state.pais}>
+                        <option value="">-Seleccione-</option>
                         <option value="PE">Perú</option>
                         <option value="MX">México</option>
                         <option value="ES">España</option>
@@ -52,14 +54,16 @@ export class Formulario extends Component {
                       <label htmlFor="ciudad">Ciudad:</label>
                       <input type="text" className="form-control"
                         placeholder="Ingrese Ciudad" name="ciudad"
-                        id="ciudad" onChange={this.cambiarCiudad} />
+                        id="ciudad" onChange={this.cambiarCiudad}
+                        value={this.state.ciudad} />
                     </div>
                   </div>
                 </div>
                 <div className="row justify-content-center">
                   <div className="col-md-4">
                     <button
-                      className="btn btn-danger btn-block shadow">
+                      className="btn btn-danger btn-block shadow"
+                      type="submit">
                       Buscar
                     </button>
                   </div>
