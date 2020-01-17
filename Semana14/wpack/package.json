@@ -1,0 +1,22 @@
+{
+  "name": "wpack",
+  "version": "1.0.0",
+  "description": "aprendiendo webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webpack",
+    "magia",
+    "negra"
+  ],
+  "author": "Osmar Montesinos",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^3.4.2",
+    "style-loader": "^1.1.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
