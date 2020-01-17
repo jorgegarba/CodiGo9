@@ -1,0 +1,16 @@
+//crear el package.json para un proyecto
+npm init
+
+//instalamos los paquetes basicos de webpack
+npm install -D webpack
+npm install webpack-cli
+
+//probamos webpack
+npx webpack --entry ./index.js --output ./build.js
+
+//ya con el archivo de configuracion
+npx webpack
+
+//loaders
+npm install -D css-loader
+npm install -D style-loader
