@@ -3,12 +3,14 @@
 
 
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     //
     entry: {
         home:path.resolve(__dirname, "src/js/index.js"),
-        ventas:path.resolve(__dirname, "src/js/ventas.js")
+        // ventas:path.resolve(__dirname, "src/js/ventas.js")
     },
     output:{
         //
@@ -17,6 +19,12 @@ module.exports = {
     },
     //para cambiar el modo que trabaja webpack, development ó production
     mode: "development",
+    //CONFIGURACION HOTSERVER
+    devServer:{
+        hot:true,
+        open:true,
+        port:9000
+    },
 
     //loaders
     module:{
@@ -28,7 +36,14 @@ module.exports = {
                 use:["style-loader","css-loader"]
             }
         ]
-    }
+    },
+    //aca ván los plugins que extenderán mi funcionalidad
+    plugins:[
+        new HtmlWebpackPlugin({
+            title:'App con Webpack'
+        }),
+        new webpack.HotModuleReplacementPlugin()
+    ]
 }
 
 

@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"body{\\r\\n    background-color:black;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/css/estilos.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"body{\\r\\n    background-color:black;\\r\\n    font-family: Arial, Helvetica, sans-serif;\\r\\n    color:white;\\r\\n    font-size: 50px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/css/estilos.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -140,7 +140,7 @@ eval("var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/run
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_estilos_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/estilos.css */ \"./src/css/estilos.css\");\n/* harmony import */ var _css_estilos_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_estilos_css__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\nconsole.log(\"Estoy aprendiendo webpack\");\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_estilos_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/estilos.css */ \"./src/css/estilos.css\");\n/* harmony import */ var _css_estilos_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_estilos_css__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\nlet caja = document.createElement(\"div\");\r\ncaja.innerHTML = \"<p>Webpack!!!!!</p>\";\r\ndocument.body.appendChild(caja);\r\n\r\nconsole.log(\"Estoy aprendiendo webpack\");\n\n//# sourceURL=webpack:///./src/js/index.js?");
 
 /***/ })
 
