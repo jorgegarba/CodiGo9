@@ -34,13 +34,21 @@ module.exports = {
                 //que cualquier archivo css pase por esto
                 test: /\.css$/,
                 use:["style-loader","css-loader"]
+            },
+            //babel
+            {
+                test: /\.js$/,
+                use:["babel-loader"],
+                exclude:/node_modules/
             }
         ]
     },
     //aca ván los plugins que extenderán mi funcionalidad
     plugins:[
         new HtmlWebpackPlugin({
-            title:'App con Webpack'
+            title:'App con Webpack',
+            //template contendrá la ruta de mi index.html
+            template:path.resolve(__dirname,"index.html")
         }),
         new webpack.HotModuleReplacementPlugin()
     ]
