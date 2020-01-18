@@ -1,4 +1,5 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Productos(props) {
     return (
@@ -26,8 +27,11 @@ export default function Productos(props) {
                                     <td>{producto.prod_desc}</td>
                                     <td>{producto.prod_price}</td>
                                     <td>
-                                        <button className="btn btn-danger" onClick={()=>{props.eliminar(producto.prod_id)}}>
-                                            Eliminar
+                                        <button className="btn btn-danger mr-1" onClick={()=>{props.eliminar(producto.prod_id)}}>
+                                            <FontAwesomeIcon icon="trash" />
+                                        </button>
+                                        <button className="btn btn-warning" >
+                                            <FontAwesomeIcon icon="pen" style={{color:'white'}} />
                                         </button>
                                     </td>
                                 </tr>
