@@ -8,7 +8,7 @@ export default class Historial extends Component {
       return (
         this.props.historial.map(h => {
             return (
-              <div>
+              <div key={h.id}>
                 <div className="card mb-1">
                   <div className="card-body">
                     <h4 className="card-title">
@@ -18,6 +18,9 @@ export default class Historial extends Component {
                         <b>Fecha de Búsqueda: </b>{h.fecha}<br/>
                         <b>Hora de Búsqueda: </b>{h.hora}
                     </p>
+                    <button className="btn btn-danger" onClick={()=>{this.props.eliminar(h.id)}}>
+                      Eliminar
+                    </button>
                   </div>
                 </div>
               </div>

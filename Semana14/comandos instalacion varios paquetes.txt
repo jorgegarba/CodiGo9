@@ -1,0 +1,6 @@
+//bootstrap
+npm install bootstrap
+npm install jquery popper.js
+
+//Y dentro de index.js
+import "bootstrap/dist/css/bootstrap.min.css";

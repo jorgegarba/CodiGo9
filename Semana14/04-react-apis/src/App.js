@@ -51,6 +51,16 @@ export default class App extends Component {
 
   }
 
+  eliminarHistoria = (id) => {
+    let copiaHistorial = [...this.state.historial];
+    copiaHistorial = copiaHistorial.filter(hist => (hist.id !== id));
+    //--> todo los elementos que cumplan la condición
+
+    this.setState({
+      historial: copiaHistorial
+    })
+  }
+
   render() {
     return (
       <Fragment>
@@ -68,7 +78,7 @@ export default class App extends Component {
             <div className="col-md-6">
               <div className="card shadow">
                 <div className="card-body">
-                  <Historial historial={this.state.historial}/>
+                  <Historial historial={this.state.historial} eliminar={this.eliminarHistoria}/>
                 </div>
               </div>
             </div>
