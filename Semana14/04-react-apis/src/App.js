@@ -1,14 +1,19 @@
 import React, { Component, Fragment } from 'react'
+import moment from 'moment';
+import uuid from "uuid/v1";
 import Header from './components/Header';
 import Formulario from './components/Formulario';
 import Resultado from './components/Resultado';
+import Historial from './components/Historial';
 
 export default class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      temperatura: {}
+      temperatura: {},
+      estado: '',
+      historial: []
     }
   }
 
@@ -17,11 +22,33 @@ export default class App extends Component {
     let endpoint = `https://api.openweathermap.org/data/2.5/weather?q=${objeto.ciudad},${objeto.pais}&appid=${key}&units=metric`;
     fetch(endpoint).then((response) => {
       response.json().then((json) => {
+        console.log(json);
         this.setState({
-          temperatura: json.main
+          temperatura: json.main,
+          estado:json.cod
         })
       })
     })
+
+    //oldHistorial contendrá todo el antiguo historial []
+    let oldHistorial = this.state.historial;
+    let fecha = moment().format("DD-MM-YYYY");
+    let hora = moment().format("h:mm:ss a");
+    //va a ser la info que va dentro historial[]
+    //estamos contruyendo el objeto
+    let objHistorial = {
+      id:uuid(),
+      fecha:fecha,
+      hora:hora,
+      pais:objeto.pais,
+      ciudad:objeto.ciudad
+    };
+
+    oldHistorial.push(objHistorial);
+    this.setState({
+      historial:oldHistorial
+    })
+
   }
 
   render() {
@@ -41,14 +68,14 @@ export default class App extends Component {
             <div className="col-md-6">
               <div className="card shadow">
                 <div className="card-body">
-
+                  <Historial historial={this.state.historial}/>
                 </div>
               </div>
             </div>
             <div className="col-md-6">
               <div className="card shadow">
                 <div className="card-body">
-                  <Resultado temperatura={this.state.temperatura} />
+                  <Resultado temperatura={this.state.temperatura} estado={this.state.estado}/>
                 </div>
               </div>
             </div>
