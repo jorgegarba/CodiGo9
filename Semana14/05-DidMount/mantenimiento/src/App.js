@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Header from './components/Header';
 import Productos from './components/Productos';
+import Formulario from './components/Formulario';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import URL_BACK from './env/env';
@@ -60,6 +61,20 @@ export default class App extends Component {
     });
   }
 
+  anadirProducto = (producto) => {
+    //axios.post(URL_A_DONDE_VA_A_MANDAR_LOS_DATOS, DATA, CONFIG({headers}))
+    axios.post(`${URL_BACK}/productos`,producto, {headers: {"Content-Type":"application/json"}})
+    .then(respuesta => {
+      //validamos que haya creado mediante el http status
+      if(respuesta.status === 201){
+        //actualizamos los datos
+        this.setState({
+          productos:[...this.state.productos, respuesta.data]
+        })
+      }
+    })
+  }
+
   render() {
     return (
       <div>
@@ -72,6 +87,7 @@ export default class App extends Component {
             </div>
             <div className="col-4">
               <h2>Formulario</h2>
+              <Formulario anadir={this.anadirProducto}/>
             </div>
           </div>
         </div>  

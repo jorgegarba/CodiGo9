@@ -4,3 +4,13 @@ npm install jquery popper.js
 
 //Y dentro de index.js
 import "bootstrap/dist/css/bootstrap.min.css";
+
+//instalar axios
+npm install axios
+
+//sweetalert en react
+npm install sweetalert2
+npm install sweetalert2-react-content
+
+//para instalar font awesome
+npm install @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
