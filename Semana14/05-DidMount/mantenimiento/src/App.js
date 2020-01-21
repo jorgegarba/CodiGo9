@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 //iconitos de font awesome en camelCase --->  fa-pencil => faPencil
 import { faTrash, faLaptop, faPen } from "@fortawesome/free-solid-svg-icons";
+import { Modal, Button, ThemeProvider } from "react-bootstrap";
 
 library.add(faTrash, faLaptop, faPen);
 
@@ -18,19 +19,40 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      productos: []
+      productos: [],
+      show: false,
+      id:0
     };
   }
 
-  componentDidMount() {
-    //petición para acceder a los datos de mockapi
-    //componentDidMount es el lugar ideal para hacer peticios y subscripciones
+  cerrarModal = () => {
+    this.setState({
+      show: false
+    })
+  }
+
+  //Es el mètodo que se encarga de editar y abrir el modal
+  abrirModal = (id) => {
+
+    this.setState({
+      show:true,
+      id:id
+    })
+  }
+
+  getData = () => {
     axios.get(`${URL_BACK}/productos`).then(respuesta => {
       // console.log(respuesta);
       this.setState({
         productos: respuesta.data
       });
     });
+  }
+
+  componentDidMount() {
+    //petición para acceder a los datos de mockapi
+    //componentDidMount es el lugar ideal para hacer peticios y subscripciones
+    this.getData();
   }
 
   eliminarProducto = id => {
@@ -87,6 +109,21 @@ export default class App extends Component {
       });
   };
 
+  editarProducto = producto => {
+    // console.log(producto);
+    axios
+      .put(`${URL_BACK}/productos/${producto.prod_id}`, producto, {
+        headers: { "Content-Type": "application/json" }
+      }).then((respuesta)=>{
+        // console.log(respuesta);
+        this.getData();
+        //para cerrar el modal
+        this.setState({
+          show:false
+        })
+      });
+  }
+
   render() {
     return (
       <div>
@@ -100,6 +137,7 @@ export default class App extends Component {
               <Productos
                 lista={this.state.productos}
                 eliminar={this.eliminarProducto}
+                editar={this.abrirModal}
               />
             </div>
             <div className="col-4">
@@ -107,6 +145,24 @@ export default class App extends Component {
               <Formulario anadir={this.anadirProducto} />
             </div>
           </div>
+          
+          {/* Aqui va el modal */}
+          <Modal show={this.state.show} onHide={this.cerrarModal}>
+            <Modal.Header closeButton>
+              <Modal.Title>Modal heading</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Formulario id={this.state.id} editar={this.editarProducto}/>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={this.cerrarModal}>
+                Close
+              </Button>
+              <Button variant="primary" onClick={this.cerrarModal}>
+                Save Changes
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </div>
       </div>
     );

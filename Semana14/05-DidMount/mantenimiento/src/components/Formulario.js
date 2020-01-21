@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import axios from 'axios';
+import URL_BACK from '../env/env';
 
 export default class Formulario extends Component {
 
@@ -6,6 +8,7 @@ export default class Formulario extends Component {
         super(props);
         //estado inicial
         this.state = {
+            id:0,
             nombre:"",
             precio:0,
             descripcion:""
@@ -33,10 +36,40 @@ export default class Formulario extends Component {
         this.props.anadir(objProducto);
     }
 
+    submitEditar = (event) => {
+        //para prevenir el comportamiento predeterminado de mi form
+        event.preventDefault();
+
+        let objProducto = {
+            prod_id:this.state.id,
+            prod_nom:this.state.nombre,
+            prod_desc:this.state.descripcion,
+            prod_price:this.state.precio
+        }
+        //esto me lo tiene que enviar App.js en los props pero para editar
+        this.props.editar(objProducto);
+    }
+
+    componentDidMount(){
+        //Aca nos encargaremos de obtener los datos de el producto
+        let id = this.props.id;
+        if(id != 0){
+            axios.get(`${URL_BACK}/productos/${id}`).then(respuesta => {
+                this.setState({
+                    id:respuesta.data.prod_id,
+                    nombre:respuesta.data.prod_nom,
+                    descripcion:respuesta.data.prod_desc,
+                    precio:respuesta.data.prod_price,
+                })
+              });
+        }
+    }
+
     render() {
         return (
             <div className="card p-2">
-                <form onSubmit={this.submit}>
+                {/* <form onSubmit={this.submit}> */}
+                <form onSubmit={this.state.id != 0 ? this.submitEditar : this.submit}>
                     <div className="form-group row">
                         <div className="col-12">
                             <h5>Nombre Producto</h5>
