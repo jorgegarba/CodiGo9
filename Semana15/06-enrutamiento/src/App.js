@@ -9,6 +9,7 @@ import Blog from './pages/Blog';
 import Contacto from './pages/Contacto';
 import Home from './pages/Home';
 import Nosotros from './pages/Nosotros';
+import NotFound from './pages/NotFound';
 
 export default class App extends Component {
   render() {
@@ -16,10 +17,14 @@ export default class App extends Component {
       <Router>
         <Header />
         <Switch>
+          <Route path={'/'} exact component={Home}/>
           <Route path={'/home'} exact component={Home}/>
           <Route path={'/blog'} exact component={Blog}/>
           <Route path={'/contacto'} exact component={Contacto}/>
           <Route path={'/nosotros'} exact component={Nosotros}/>
+
+          //ESTO TIENE QUE ESTAR AL FINAL !!!!!!
+          <Route component={NotFound} />
         </Switch>
       </Router>
     )
