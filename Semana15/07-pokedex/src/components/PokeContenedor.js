@@ -28,8 +28,8 @@ class PokeContenedor extends Component {
     return (
       <div className="row mt-3">
         {
-          this.state.pokemones.map((poke) => {
-            return <PokeCard poke={poke} />
+          this.state.pokemones.map((poke,index) => {
+            return <PokeCard poke={poke} key={index}  />
           })
         }
       </div>

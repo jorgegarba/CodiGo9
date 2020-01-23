@@ -76,6 +76,9 @@ export default class PokeCard extends Component {
                       }}>Ver menos</a>
                   }
                 </p>
+                <button className="btn btn-danger btn-block">
+                  Más Info!
+                </button>
               </div>
           }
         </div>
