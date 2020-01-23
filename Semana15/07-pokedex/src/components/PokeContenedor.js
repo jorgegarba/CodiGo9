@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PokeCard from './PokeCard';
 
 class PokeContenedor extends Component {
 
@@ -26,13 +27,11 @@ class PokeContenedor extends Component {
   render() {
     return (
       <div className="row mt-3">
-        <div className="col-12">
-          <div className="card shadow">
-            <div className="card-body">
-
-            </div>
-          </div>
-        </div>
+        {
+          this.state.pokemones.map((poke) => {
+            return <PokeCard poke={poke} />
+          })
+        }
       </div>
     );
   }
