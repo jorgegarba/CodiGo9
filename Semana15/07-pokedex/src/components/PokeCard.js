@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom';
 
 export default class PokeCard extends Component {
 
@@ -76,9 +77,9 @@ export default class PokeCard extends Component {
                       }}>Ver menos</a>
                   }
                 </p>
-                <button className="btn btn-danger btn-block">
+                <NavLink className="btn btn-danger btn-block" to={`/puchamon/${this.props.poke.name}`}>
                   Más Info!
-                </button>
+                </NavLink>
               </div>
           }
         </div>
