@@ -1,0 +1,6 @@
+Semana15 crear un directorio que se llame 01-node
+dentro ejecutar npm init
+crear index.js
+
+npm install nodemon -g
+

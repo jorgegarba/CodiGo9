@@ -1,0 +1,16 @@
+{
+  "name": "01-node",
+  "version": "1.0.0",
+  "description": "Mi primera app con node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Node",
+    "Back",
+    "Servidor"
+  ],
+  "author": "Osmar Montesinos",
+  "license": "MIT"
+}
