@@ -13,8 +13,10 @@ class Administrador extends Component {
         <Switch>
           <Route path={"/admin/productos"}
             render={() => { return <AdminProductos /> }} />
-          <Route path={"/admin/producto-ver"}
-            render={() => { return <AdminProductoVer /> }} />
+          <Route path={"/admin/producto-ver/:id"}
+            render={() => {
+              return <AdminProductoVer />
+            }} />
           <Route path={"/admin/dashboard"}
             render={() => { return <AdminDashboard /> }} />
           <Route render={() => {
