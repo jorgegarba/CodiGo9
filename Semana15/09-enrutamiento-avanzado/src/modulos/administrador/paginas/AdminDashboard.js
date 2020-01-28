@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import './../../../assets/estilos.css';
 
 class AdminDashboard extends Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class AdminDashboard extends Component {
   }
 
   irAInvitadoHome = () => {
+    // para navegar a otra ruta
     this.props.history.push("/invitado/home");
   }
 
@@ -14,7 +16,8 @@ class AdminDashboard extends Component {
     return (
       <div>
         <h1>AdminDashboard</h1>
-        <button onClick={this.irAInvitadoHome}>
+        <button onClick={this.irAInvitadoHome}
+          className="boton-rojo">
           Ir A Invitado Home
         </button>
       </div>
