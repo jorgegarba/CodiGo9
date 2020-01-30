@@ -1,4 +1,3 @@
 const Server = require('./src/clases/Server');
-
-const miServidor = new Server();
-miServidor.start();
+const miServer = new Server();
+miServer.start();

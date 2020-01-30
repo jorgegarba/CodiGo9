@@ -1,27 +1,29 @@
 const express = require('express');
-const usuario_router = require('./../rutas/Usuarios');
-
+const bodyParser = require('body-parser');
+const { conexion } = require('./../config/Sequelize');
+const Pabellon = require('./../modelos/Pabellon');
 class Server {
   constructor() {
-    this.puerto = 5000;
     this.app = express();
-    this.inicializarRutas();
-  }
-
-  inicializarRutas() {
-    this.app.get("/", (req, res) => {
-      res.send("Servidor Ok!");
-    });
-    // usar las rutas de usuario_router
-    this.app.use("/", usuario_router);
+    this.puerto = 5000;
   }
 
   start() {
     this.app.listen(this.puerto, () => {
-      console.log(`El servidor está corriendo en el puerto ${this.puerto}`);
-    })
+      console.log(`Tudo bem con el servidorsinho en el puertinho ${this.puerto}`);
+      // conexion.authenticate().then(() => {
+      //   console.log("Base de gatos conectada =) ");
+      // })
+
+      // conexion.sync({ force: true }).then(() => {
+      //   console.log("Base de gatos");
+      // })
+
+      // {force:true} => obligan a borrar la tabla y crearla nuevamente
+      // cada vez que el proyecto se ejecuta
+      Pabellon.sync({ force: true });
+    });
   }
 }
 
-// export default Server;
-module.exports = Server;
+module.exports = Server

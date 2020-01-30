@@ -10,6 +10,7 @@ const getUsuarios = (req, res) => {
 }
 
 const getUsuarioPorNombre = (req, res) => {
+
   let usuario = {
     nombre: 'Pedro',
     apellido: 'Caballero'
@@ -19,9 +20,24 @@ const getUsuarioPorNombre = (req, res) => {
   })
 }
 
+const postUsuarioCrear = (req, res) => {
+  let usuario = req.body.usuario;
+  res.json({
+    recibido: usuario
+  });
+}
+
+const deleteUsuarioBorrar = (req, res) => {
+  let id_usuario = req.params.id_usuario;
+  res.json({
+    recibido: id_usuario
+  })
+}
 
 // export default getUsuarios
 module.exports = {
   getUsuarios: getUsuarios,
-  getUsuarioPorNombre: getUsuarioPorNombre
+  getUsuarioPorNombre: getUsuarioPorNombre,
+  postUsuarioCrear: postUsuarioCrear,
+  deleteUsuarioBorrar: deleteUsuarioBorrar
 }
