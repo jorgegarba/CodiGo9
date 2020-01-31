@@ -6,7 +6,12 @@ class Server {
   constructor() {
     this.app = express();
     this.puerto = 5000;
+    this.configurarBodyParser();
     this.cargarRutas();
+  }
+
+  configurarBodyParser() {
+    this.app.use(bodyParser.json());
   }
 
   cargarRutas() {
