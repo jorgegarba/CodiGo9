@@ -21,7 +21,8 @@ class Server {
 
       // {force:true} => obligan a borrar la tabla y crearla nuevamente
       // cada vez que el proyecto se ejecuta
-      Pabellon.sync({ force: true });
+      // Pabellon.sync({ force: true });
+      conexion.sync({force:true});
     });
   }
 }
