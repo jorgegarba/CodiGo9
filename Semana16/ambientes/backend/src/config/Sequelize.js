@@ -9,9 +9,17 @@ const conexion = new Sequelize("ambientes", "root", "root", {
   dialect: 'mysql'
 });
 
+// Creando Modelos
 const Pabellon = pabellon_model(conexion);
 const Reserva = reserva_model(conexion);
 const Ambiente = ambiente_model(conexion);
+// Creando relaciones
+Pabellon.hasMany(Ambiente, { foreignKey: 'pab_id' });
+Ambiente.belongsTo(Pabellon, { foreignKey: 'pab_id' });
+
+Ambiente.hasMany(Reserva, { foreignKey: 'amb_id' });
+Reserva.belongsTo(Ambiente, { foreignKey: 'amb_id' });
+
 
 module.exports = {
   conexion: conexion,

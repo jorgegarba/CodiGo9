@@ -1,11 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { conexion } = require('./../config/Sequelize');
-const Pabellon = require('./../modelos/Pabellon');
+const { pabellon_router } = require('./../rutas/Pabellon');
 class Server {
   constructor() {
     this.app = express();
     this.puerto = 5000;
+    this.cargarRutas();
+  }
+
+  cargarRutas() {
+    // Asignando todas las rutas de pabellon_router al servidor
+    this.app.use('/', pabellon_router);
   }
 
   start() {
@@ -22,7 +28,9 @@ class Server {
       // {force:true} => obligan a borrar la tabla y crearla nuevamente
       // cada vez que el proyecto se ejecuta
       // Pabellon.sync({ force: true });
-      conexion.sync({force:true});
+      conexion.sync({ force: false }).then(() => {
+        console.log("Base de dataos sincronizada");
+      })
     });
   }
 }
