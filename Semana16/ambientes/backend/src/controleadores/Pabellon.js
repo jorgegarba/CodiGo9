@@ -1,6 +1,7 @@
 const { Pabellon } = require('./../config/Sequelize');
 // Con el objeto Pabellon, se accederá a la base de datos
 // en la tabla t_pabellon
+const {Op} = require('sequelize');
 
 const getPabellones = (req, res) => {
   // Select * FROM t_pabellon
@@ -11,7 +12,6 @@ const getPabellones = (req, res) => {
     })
   });
 }
-
 const postPabellon = (req, res) => {
   let objPabellon = req.body.objPabellon;
   // Forma 1, Creando primero la instancia de un Pabellon
@@ -71,10 +71,27 @@ const putPabellon = (req, res) => {
     })
   })
 }
+const getPabellonLike = (req,res)=>{
+  let {palabra}=req.params;
+  // SELECT * FROM PABELLON WHERE pab_nom LIKE '%'+palabra+'%'
+  Pabellon.findAll({
+    where: {
+      pab_nom:{
+      [Op.like]:'%'+palabra+'%'
+      }
+    }
+  }).then(pabellones=>{
+    res.status(200).json({
+      ok:true,
+      contenido:pabellones
+    })
+  })
+}
 
 module.exports = {
   getPabellones: getPabellones,
   postPabellon: postPabellon,
   postPabellonConCreate,
-  putPabellon
+  putPabellon,
+  getPabellonLike,
 }

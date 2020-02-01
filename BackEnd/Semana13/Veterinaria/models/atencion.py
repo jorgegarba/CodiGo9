@@ -37,3 +37,7 @@ class AtencionModel(bd.Model):
     def guardar_bd(self):
         bd.session.add(self)
         bd.session.commit()
+    
+    def eliminar_bd(self):
+        bd.session.delete(self)
+        bd.session.commit()

@@ -74,3 +74,14 @@ class AtencionController (Resource):
         return{
             'message':'Esa mascota no tiene atenciones'
         },404
+    def delete(self,id_mascota):
+        resultado = AtencionModel.query.filter_by(mascota_id=id_mascota).all()
+        if resultado:
+            for atencion in resultado:
+                atencion.eliminar_bd()
+            return {
+                'message':'Atenciones eliminadas de la mascota con id: %s'.format(id_mascota)
+            },200
+        return{
+            'message':'Esa mascota no tiene atenciones'
+        }
