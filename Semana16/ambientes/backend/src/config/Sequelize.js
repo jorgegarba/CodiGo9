@@ -6,7 +6,13 @@ const ambiente_model = require('../modelos/Ambiente');
 
 const conexion = new Sequelize("ambientes", "root", "root", {
   host: 'localhost',
-  dialect: 'mysql'
+  dialect: 'mysql',
+  dialectOptions: {
+    useUTC: false,
+    dateStrings: true,
+    typeCast: true
+  },
+  timezone: '-05:00'
 });
 
 // Creando Modelos

@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { conexion } = require('./../config/Sequelize');
 const { pabellon_router } = require('./../rutas/Pabellon');
+const { ambiente_router } = require('../rutas/Ambiente');
+const { reserva_router } = require('../rutas/Reserva');
 class Server {
   constructor() {
     this.app = express();
@@ -16,7 +18,7 @@ class Server {
 
   cargarRutas() {
     // Asignando todas las rutas de pabellon_router al servidor
-    this.app.use('/', pabellon_router);
+    this.app.use('/', pabellon_router, ambiente_router, reserva_router);
   }
 
   start() {

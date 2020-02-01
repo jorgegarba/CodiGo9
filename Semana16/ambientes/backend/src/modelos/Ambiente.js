@@ -11,7 +11,7 @@ const ambiente_model = (conexion) => {
       },
       amb_nro: {
         type: Sequelize.INTEGER,
-        unique: true,
+        // unique: true,
         allowNull: false
       },
       amb_afo: {

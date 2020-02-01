@@ -1,4 +1,4 @@
-const { Pabellon } = require('./../config/Sequelize');
+const { Pabellon, Ambiente, Reserva } = require('./../config/Sequelize');
 // Con el objeto Pabellon, se accederá a la base de datos
 // en la tabla t_pabellon
 const {Op} = require('sequelize');
@@ -88,10 +88,46 @@ const getPabellonLike = (req,res)=>{
   })
 }
 
+const getAmbientesByPabellon =(req,res)=>{
+  let {id_pabellon}= req.params;
+  Pabellon.findByPk(id_pabellon,{
+      attributes:[],
+      include:[{
+          model:Ambiente,
+          attributes:['amb_id','amb_nro','amb_afo','amb_tipo']
+      }]
+  }).then(pabellon=>{
+      res.status(200).json({
+          ok:true,
+          contenido:pabellon
+      })
+  })
+}
+
+const getReservaByPabellon = (req,res)=>{
+    let {id_pabellon} = req.params;
+    Pabellon.findByPk(id_pabellon,{
+      include:[{
+        model:Ambiente,
+        include:[{
+          model:Reserva
+        }]
+      }]
+    }).then(reservas=>{
+      res.status(200).json({
+        ok:true,
+        contenido:reservas
+      })
+    })
+}
+
+
 module.exports = {
   getPabellones: getPabellones,
   postPabellon: postPabellon,
   postPabellonConCreate,
   putPabellon,
   getPabellonLike,
+  getAmbientesByPabellon,
+  getReservaByPabellon
 }
