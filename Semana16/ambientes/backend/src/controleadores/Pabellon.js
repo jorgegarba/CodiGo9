@@ -29,14 +29,14 @@ const postPabellon = (req, res) => {
   })
 
 }
-const postPabellonConCreate = (req,res)=>{
+const postPabellonConCreate = (req, res) => {
   // Forma 2, Crear y guardar una instancia de un Pabellon en un 
   // solo paso
   // pero hay que tener cuidado porque si hay un error en la creacion de ese 
   // objeto a la siguiente vez, saltara su correlativo de la primary key
-  
+
   // Gracias a destructuracion de EMC6
-  let {objPabellon} = req.body;
+  let { objPabellon } = req.body;
   Pabellon.create(objPabellon).then((pabellonCreado) => {
     res.status(201).json({
       ok: true,
@@ -46,13 +46,29 @@ const postPabellonConCreate = (req,res)=>{
   })
 
 }
-const putPabellon = (req,res)=>{
-  let {id_pabellon} = req.params;
-  let {objPabellon} = req.body;
-  Pabellon.findAll({
-    where:{pab_id:id_pabellon}
-  }).then((pabellon)=>{
-    console.log(pabellon);
+const putPabellon = (req, res) => {
+  let { id_pabellon } = req.params;
+  let { objPabellon } = req.body;
+  // findAll, findOne, findByPk
+  Pabellon.findByPk(id_pabellon).then((pabellon) => {
+    if (pabellon) {
+      // anidamiento de promesas
+      return Pabellon.update(objPabellon, {
+        where: { pab_id: id_pabellon }
+      })
+    } else {
+      res.status(404).json({
+        ok: false,
+        contenido: null,
+        mensaje: 'No se encontro ese pabellon'
+      })
+    }
+  }).then(pabellonActualizado => {
+    res.status(200).json({
+      ok: true,
+      contenido: pabellonActualizado,
+      mensaje: 'El pabellon se actualizo correctamente'
+    })
   })
 }
 
