@@ -18,22 +18,47 @@ const postPabellon = (req, res) => {
   // Para guardarlo en la BD posteriormente
   let objPab = Pabellon.build(objPabellon);
   objPab.save().then((pabellonCreado) => {
-    res.json({
+    res.status(201).json({
+      ok: true,
+      contenido: pabellonCreado,
+      mensaje: 'El pabellon ha sido creado con exito'
+    })
+    // Si no le pones stado a tu respuesta automaticamente es el numero 200
+    // el send se usa para enviar una cadena de texto
+    // res.status(200).send('Ok');
+  })
+
+}
+const postPabellonConCreate = (req,res)=>{
+  // Forma 2, Crear y guardar una instancia de un Pabellon en un 
+  // solo paso
+  // pero hay que tener cuidado porque si hay un error en la creacion de ese 
+  // objeto a la siguiente vez, saltara su correlativo de la primary key
+  
+  // Gracias a destructuracion de EMC6
+  let {objPabellon} = req.body;
+  Pabellon.create(objPabellon).then((pabellonCreado) => {
+    res.status(201).json({
       ok: true,
       contenido: pabellonCreado,
       mensaje: 'El pabellon ha sido creado con exito'
     })
   })
 
-
-  // Forma 2, Crear y guardar una instancia de un Pabellon en un 
-  // solo paso
-
 }
-
-
+const putPabellon = (req,res)=>{
+  let {id_pabellon} = req.params;
+  let {objPabellon} = req.body;
+  Pabellon.findAll({
+    where:{pab_id:id_pabellon}
+  }).then((pabellon)=>{
+    console.log(pabellon);
+  })
+}
 
 module.exports = {
   getPabellones: getPabellones,
-  postPabellon: postPabellon
+  postPabellon: postPabellon,
+  postPabellonConCreate,
+  putPabellon
 }
