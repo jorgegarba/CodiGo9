@@ -1,9 +1,36 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { URL_BACKEND } from './../../../../environments/environments';
+import AdminCargando from '../../components/AdminCargando';
+export default class AdminPabellones extends Component {
 
-export class AdminDashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pabellones: [],
+      cargando: true
+    }
+  }
 
+  getPabellones = async () => {
+    let response = await fetch(`${URL_BACKEND}/pabellon`);
+    let json = await response.json();
+    if (json.ok) {
+      this.setState({
+        cargando: false,
+        pabellones: json.contenido
+      })
+    }
+  }
+
+  componentDidMount() {
+    this.getPabellones();
+  }
 
   render() {
+
+    if (this.state.cargando) {
+      return (<AdminCargando />)
+    }
     return (
       <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,11 +65,9 @@ export class AdminDashboard extends Component {
           </div>
         </nav>
 
-        <h2>DASHBOARD</h2>
-        
+        <h2>Pabellones</h2>
+
       </div>
     );
   }
 }
-
-export default AdminDashboard;

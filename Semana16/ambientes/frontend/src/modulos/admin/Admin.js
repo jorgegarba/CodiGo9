@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import AdminDashboard from './screens/AdminDashboard';
 import AdminSidebar from './components/AdminSidebar';
 import './assets/AdminEstilos.css';
+import AdminPabellones from './screens/pabellones/AdminPabellones';
 
 export class Admin extends Component {
 
@@ -24,9 +25,14 @@ export class Admin extends Component {
       <div className="wrapper">
         <AdminSidebar abierto={this.state.abierto} />
         <Switch>
+
+          <Route path={'/pabellones'} render={() => {
+            return <AdminPabellones toggleAbierto={this.toggleAbierto} />
+          }} />
           <Route path={'/'} render={() => {
             return <AdminDashboard toggleAbierto={this.toggleAbierto} />
           }} />
+
         </Switch>
       </div>
     );
