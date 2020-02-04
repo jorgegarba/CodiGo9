@@ -5,7 +5,11 @@ const {Op} = require('sequelize');
 
 const getPabellones = (req, res) => {
   // Select * FROM t_pabellon
-  Pabellon.findAll().then((pabellones) => {
+  Pabellon.findAll({
+    include: [{
+      model:Ambiente
+    }]
+  }).then((pabellones) => {
     res.json({
       ok: true,
       contenido: pabellones
