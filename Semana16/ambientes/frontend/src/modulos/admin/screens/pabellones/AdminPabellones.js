@@ -89,8 +89,8 @@ export default class AdminPabellones extends Component {
 
         <h2>Pabellones</h2>
         <div className="row">
-          <div class="col-12">
-            <table>
+          <div className="col-12">
+            <table className="table">
               <thead>
                 <tr>
                   <th>N°</th>
