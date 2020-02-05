@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { URL_BACKEND } from "./../../../../environments/environments";
 import AdminCargando from "../../components/AdminCargando";
+import {Link} from "react-router-dom";
+import {Route} from "react-router-dom";
+import AdminAmbientes from './AdminAmbientes';
+
 export default class AdminPabellones extends Component {
   constructor(props) {
     super(props);
@@ -92,6 +96,7 @@ export default class AdminPabellones extends Component {
                   <th>N°</th>
                   <th>Nombre Pabellón</th>
                   <th>Cant. Ambientes</th>
+                  <th>Acciones</th>
                 </tr>
               </thead>
               <tbody>
@@ -101,6 +106,12 @@ export default class AdminPabellones extends Component {
                       <td>{index}</td>
                       <td>{pab.pab_nom}</td>
                       <td>{pab.ambientes.length}</td>
+                      <td>
+                        <Link to={`/ambiente/${pab.pab_id}`} className="btn btn-info">
+                          Ver Ambientes
+                        </Link>
+                        
+                      </td>
                     </tr>
                   );
                 })}
