@@ -24,7 +24,35 @@ const RegistrarUsuario = (req,res)=>{
     })
 }
 
-const Login = (req,res)=>{}
+const Login = (req,res)=>{
+    let {objUsuario} = req.body;
+    Usuario.findOne({
+        where:{
+            usu_email: objUsuario.correo
+        }
+    }).then(usuarioEncontrado=>{
+        if(usuarioEncontrado){
+            let resultado = usuarioEncontrado.validarPassword(objUsuario.password);
+            if (resultado){
+                res.status(200).json({
+                    ok:true,
+                    contenido: usuarioEncontrado.usu_nom +' ' +usuarioEncontrado.usu_ape,
+                    mensaje: 'usuario correctamente logeado'
+                })
+            }else{
+                res.status(404).json({
+                    ok:false,
+                    mensaje: 'usuario o contraseña incorrectos'
+                })
+            }
+        }else{
+            res.status(404).json({
+                ok:false,
+                mensaje: 'usuario o contraseña incorrectos'
+            })
+        }
+    })
+}
 
 
 module.exports = {
