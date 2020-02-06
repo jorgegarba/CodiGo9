@@ -34,10 +34,12 @@ const Login = (req,res)=>{
         if(usuarioEncontrado){
             let resultado = usuarioEncontrado.validarPassword(objUsuario.password);
             if (resultado){
+                let token = usuarioEncontrado.generarJWT();
                 res.status(200).json({
                     ok:true,
                     contenido: usuarioEncontrado.usu_nom +' ' +usuarioEncontrado.usu_ape,
-                    mensaje: 'usuario correctamente logeado'
+                    mensaje: 'usuario correctamente logeado',
+                    token: token
                 })
             }else{
                 res.status(404).json({

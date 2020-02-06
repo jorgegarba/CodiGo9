@@ -1,5 +1,6 @@
 const sequelize = require('sequelize');
 const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
 const usuario_model = (conexion) => {
     let usuario = conexion.define("usuario",
         {
@@ -54,6 +55,17 @@ const usuario_model = (conexion) => {
         }else{
             return false;
         }
+    }
+    usuario.prototype.generarJWT = function (){
+        // El payload es la parte intermedia del JWT y sirve para guardar informacion adicional que se puede descencriptar en el frontend o lado cliente
+        let payload = {
+            usu_id: this.usu_id,
+            usu_nom: `${this.usu_nom} ${this.usu_ape}`,
+            usu_tipo: this.usu_tipo
+        }
+        // si es en segundos es un entero, si es en horas se representa '1h', si es en dias '2d' o '2 days', si le mando un numero entre comillas sera representado en milisegundos '120' => 120ms
+        let token = jwt.sign(payload, 'pps',{ expiresIn: 60},{algorithm: 'RS256'});
+        return token;
     }
 
 
