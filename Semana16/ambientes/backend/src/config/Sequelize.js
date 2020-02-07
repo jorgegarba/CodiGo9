@@ -29,8 +29,11 @@ Ambiente.belongsTo(Pabellon, { foreignKey: 'pab_id' });
 Ambiente.hasMany(Reserva, { foreignKey: 'amb_id' });
 Reserva.belongsTo(Ambiente, { foreignKey: 'amb_id' });
 
-Usuario.hasMany(Reserva, {foreignKey: 'usu_id'});
-Reserva.belongsTo(Usuario, {foreignKey: 'usu_id'});
+Usuario.hasMany(Reserva, {foreignKey: 'usu_autoriza'});
+Reserva.belongsTo(Usuario, {foreignKey: 'usu_autoriza'});
+
+Usuario.hasMany(Reserva, {foreignKey: 'usu_reserva'});
+Reserva.belongsTo(Usuario, {foreignKey: 'usu_reserva'})
 
 
 module.exports = {

@@ -15,6 +15,9 @@ const reserva_model = (conexion) => {
         res_fechfin:{
             allowNull:false,
             type:Sequelize.DATE
+        },
+        res_obs: {
+            type: Sequelize.TEXT
         }
         //Más tipos de datos en Sequelize -> Apartado DATATYPES
     },

@@ -48,7 +48,7 @@ class Server {
       // cada vez que el proyecto se ejecuta
       // Pabellon.sync({ force: true });
       conexion.sync({ force: false }).then(() => {
-        console.log("Base de dataos sincronizada");
+        console.log("Base de datos sincronizada");
       })
     });
   }
