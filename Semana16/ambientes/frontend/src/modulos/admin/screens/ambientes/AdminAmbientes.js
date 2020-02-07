@@ -1,32 +1,55 @@
-import React, { Component } from "react";
-import { URL_BACKEND } from "./../../../../environments/environments";
-import AdminCargando from "../../components/AdminCargando";
-import { Link } from "react-router-dom";
-import { Route } from "react-router-dom";
+import React, { Component } from 'react'
+import { URL_BACKEND } from './../../../../environments/environments'
+import AdminCargando from '../../components/AdminCargando';
+import { MDBDataTable } from 'mdbreact';
 
+export default class AdminAmbientes extends Component {
 
-export default class AdminPabellones extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pabellones: [],
-      cargando: true
-    };
+      cargando: true,
+      ambientes: [],
+      data: {}
+    }
   }
 
-  getPabellones = async () => {
-    let response = await fetch(`${URL_BACKEND}/pabellon`);
+  getAmbientes = async () => {
+    let url = `${URL_BACKEND}/ambiente`;
+    let response = await fetch(url);
     let json = await response.json();
-    if (json.ok) {
-      this.setState({
-        cargando: false,
-        pabellones: json.contenido
-      });
-    }
-  };
+
+    // Armar el objeto Data para el dataTable
+    let columns = [
+      { label: '#', field: 'posicion', sort: 'asc' },
+      { label: 'Nro', field: 'amb_nro', sort: 'asc' },
+      { label: 'Aforo', field: 'amb_afo', sort: 'asc' },
+      { label: 'Tipo', field: 'amb_tipo', sort: 'asc' },
+      { label: 'Pabellon', field: 'pab_nom', sort: 'asc' }
+    ];
+
+    let rows = json.contenido.map((objAmbiente, i) => {
+      return {
+        ...objAmbiente,
+        posicion: i + 1,
+        // posicion: <button>Noobs</button>,
+        pab_nom: objAmbiente.pabellon.pab_nom
+      }
+    })
+
+
+    this.setState({
+      cargando: false,
+      ambientes: json.contenido,
+      data: {
+        rows: rows,
+        columns: columns
+      }
+    })
+  }
 
   componentDidMount() {
-    this.getPabellones();
+    this.getAmbientes();
   }
 
   render() {
@@ -87,37 +110,23 @@ export default class AdminPabellones extends Component {
           </div>
         </nav>
 
-        <h2>Pabellones</h2>
+        <h2>Ambientes</h2>
+
         <div className="row">
           <div className="col-12">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>N°</th>
-                  <th>Nombre Pabellón</th>
-                  <th>Cant. Ambientes</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.pabellones.map((pab, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{index}</td>
-                      <td>{pab.pab_nom}</td>
-                      <td>{pab.ambientes.length}</td>
-                      <td>
-                        <Link to={`/pabellon/${pab.pab_id}/ambientes`} className="btn btn-info">
-                          Ver Ambientes
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+            <div className="card">
+              <div className="card-body shadow">
+                <MDBDataTable
+                  data={this.state.data}
+                  striped
+                  bordered
+                  hover
+                />
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
     );
   }

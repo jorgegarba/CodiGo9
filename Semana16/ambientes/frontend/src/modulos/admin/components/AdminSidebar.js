@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export class AdminSidebar extends Component {
   constructor(props) {
@@ -45,10 +46,10 @@ export class AdminSidebar extends Component {
                     </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
               <li>
-                <a href="#">Pabellones</a>
+                <Link to={'/pabellones'}>Pabellones</Link>
               </li>
               <li>
-                <a href="#">Page 2</a>
+                <Link to={'/ambientes'}>Ambientes</Link>
               </li>
               <li>
                 <a href="#">Page 3</a>

@@ -1,38 +1,32 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { URL_BACKEND } from "./../../../../environments/environments";
-import AdminCargando from "../../components/AdminCargando";
-import { Link } from "react-router-dom";
-import { Route } from "react-router-dom";
 
-
-export default class AdminPabellones extends Component {
+class AdminPabellonAmbientes extends Component {
   constructor(props) {
     super(props);
+    console.log("amb", console.log(this.props));
     this.state = {
-      pabellones: [],
-      cargando: true
-    };
+      ambientes: []
+    }
   }
-
-  getPabellones = async () => {
-    let response = await fetch(`${URL_BACKEND}/pabellon`);
+  getAmbientes = async (id) => {
+    let response = await fetch(`${URL_BACKEND}/pabellonambiente/${id}`);
     let json = await response.json();
     if (json.ok) {
       this.setState({
-        cargando: false,
-        pabellones: json.contenido
+        ambientes: json.contenido.ambientes
       });
+      console.log(json)
     }
-  };
-
-  componentDidMount() {
-    this.getPabellones();
   }
 
+  componentDidMount() {
+    //Aca estoy recibiendo el ID que le mando por la URL
+    this.getAmbientes(this.props.match.params.id);
+  }
   render() {
-    if (this.state.cargando) {
-      return <AdminCargando />;
-    }
+
     return (
       <div id="content">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -86,39 +80,41 @@ export default class AdminPabellones extends Component {
             </div>
           </div>
         </nav>
-
-        <h2>Pabellones</h2>
+        {/* Aqui comienzan los ambientes */}
+        <h2>Ambiente </h2>
         <div className="row">
           <div className="col-12">
             <table className="table">
               <thead>
                 <tr>
                   <th>N°</th>
-                  <th>Nombre Pabellón</th>
-                  <th>Cant. Ambientes</th>
-                  <th>Acciones</th>
+                  <th>Nro.</th>
+                  <th>Aforo</th>
+                  <th>Tipo</th>
                 </tr>
               </thead>
               <tbody>
-                {this.state.pabellones.map((pab, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{index}</td>
-                      <td>{pab.pab_nom}</td>
-                      <td>{pab.ambientes.length}</td>
-                      <td>
-                        <Link to={`/pabellon/${pab.pab_id}/ambientes`} className="btn btn-info">
-                          Ver Ambientes
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
+                {
+                  this.state.ambientes.map((amb, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index}</td>
+                        <td>
+                          {amb.amb_nro}
+                        </td>
+                        <td>{amb.amb_afo}</td>
+                        <td>{amb.amb_tipo}</td>
+                      </tr>
+                    )
+                  })
+                }
               </tbody>
             </table>
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
+
+export default withRouter(AdminPabellonAmbientes)

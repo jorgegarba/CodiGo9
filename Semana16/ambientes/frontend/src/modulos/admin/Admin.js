@@ -4,7 +4,8 @@ import AdminDashboard from './screens/AdminDashboard';
 import AdminSidebar from './components/AdminSidebar';
 import './assets/AdminEstilos.css';
 import AdminPabellones from './screens/pabellones/AdminPabellones';
-import AdminAmbientes from './screens/pabellones/AdminAmbientes';
+import AdminPabellonAmbientes from './screens/pabellones/AdminPabellonAmbientes';
+import AdminAmbientes from './screens/ambientes/AdminAmbientes';
 
 export class Admin extends Component {
 
@@ -30,8 +31,12 @@ export class Admin extends Component {
           <Route path={'/pabellones'} render={() => {
             return <AdminPabellones toggleAbierto={this.toggleAbierto} />
           }} />
-          
-          <Route path={'/ambiente/:id'} render={() => {
+
+          <Route path={'/pabellon/:id/ambientes'} render={() => {
+            return <AdminPabellonAmbientes toggleAbierto={this.toggleAbierto} />
+          }} />
+
+          <Route path={'/ambientes'} render={() => {
             return <AdminAmbientes toggleAbierto={this.toggleAbierto} />
           }} />
 
