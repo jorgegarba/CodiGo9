@@ -64,7 +64,7 @@ const usuario_model = (conexion) => {
             usu_tipo: this.usu_tipo
         }
         // si es en segundos es un entero, si es en horas se representa '1h', si es en dias '2d' o '2 days', si le mando un numero entre comillas sera representado en milisegundos '120' => 120ms
-        let token = jwt.sign(payload, 'pps',{ expiresIn: 60},{algorithm: 'RS256'});
+        let token = jwt.sign(payload, 'pps',{ expiresIn: '1h'},{algorithm: 'RS256'});
         return token;
     }
 
