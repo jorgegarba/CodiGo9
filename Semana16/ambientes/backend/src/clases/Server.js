@@ -8,7 +8,7 @@ const { usuario_router } = require('../rutas/Usuario');
 class Server {
   constructor() {
     this.app = express();
-    this.puerto = 5000;
+    this.puerto = process.env.PORT || 5000;
     this.habilitarCORS();
     this.configurarBodyParser();
     this.cargarRutas();
@@ -30,6 +30,9 @@ class Server {
 
   cargarRutas() {
     // Asignando todas las rutas de pabellon_router al servidor
+    this.app.get('/',(req,res)=>{
+      res.status(200).send('La API funciona!!! 😅😅😅');
+    });
     this.app.use('/', pabellon_router, ambiente_router, reserva_router, usuario_router);
   }
 
