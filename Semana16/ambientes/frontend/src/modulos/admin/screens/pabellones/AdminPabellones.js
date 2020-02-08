@@ -3,30 +3,91 @@ import { URL_BACKEND } from "./../../../../environments/environments";
 import AdminCargando from "../../components/AdminCargando";
 import { Link } from "react-router-dom";
 import { Route } from "react-router-dom";
-
+import { MDBModal, MDBModalHeader, MDBModalFooter, MDBModalBody, MDBBtn } from 'mdbreact';
+import Swal from 'sweetalert2';
+import { PabellonService } from '../../../../services/PabellonService';
 
 export default class AdminPabellones extends Component {
   constructor(props) {
     super(props);
     this.state = {
       pabellones: [],
-      cargando: true
+      cargando: true,
+      abierto: false,
+      formularioCrear: {
+        pab_nom: ''
+      }
     };
   }
 
-  getPabellones = async () => {
-    let response = await fetch(`${URL_BACKEND}/pabellon`);
-    let json = await response.json();
-    if (json.ok) {
-      this.setState({
-        cargando: false,
-        pabellones: json.contenido
-      });
-    }
+  getPabellones = () => {
+    PabellonService.getPabellones().then((rpta) => {
+      console.log(rpta);
+      if (rpta.ok) {
+        this.setState({
+          cargando: false,
+          pabellones: rpta.contenido
+        })
+      }
+    })
+    // let response = await fetch(`${URL_BACKEND}/pabellon`);
+    // let json = await response.json();
+    // if (json.ok) {
+    //   this.setState({
+    //     cargando: false,
+    //     pabellones: json.contenido
+    //   });
+    // }
   };
 
   componentDidMount() {
     this.getPabellones();
+  }
+  mostrarModal = () => {
+    this.setState({
+      abierto: !this.state.abierto
+    })
+  }
+
+  actualizarFormulario = (e) => {
+    console.log(e.target)
+    this.setState({
+      formularioCrear: {
+        ...this.state.formularioCrear,
+        [e.target.name]: e.target.value
+      }
+    })
+
+  }
+  agregarPabellon = () => {
+    Swal.fire({
+      icon: 'info',
+      title: 'Creando Pabellon',
+      text: 'Estamos creando el pabellon . . .',
+      allowOutsideClick: false,
+      showConfirmButton: false
+    });
+    PabellonService.postPabellon(this.state.formularioCrear).then(rpta => {
+      if (rpta.ok) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Pabellon Creado',
+          text: 'El pabellon fue creado exitosamente 😍😍'
+        })
+        this.getPabellones();
+        this.setState({
+          abierto: false
+        })
+      }
+    }).catch(err => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al crear Pabellon',
+        text: 'Hubo un error al crear pabellon, intente nuevamente 😫😫'
+      })
+    }
+    )
+
   }
 
   render() {
@@ -88,6 +149,9 @@ export default class AdminPabellones extends Component {
         </nav>
 
         <h2>Pabellones</h2>
+        <button onClick={() => {
+          this.mostrarModal()
+        }}>Agregar Pabellon</button>
         <div className="row">
           <div className="col-12">
             <table className="table">
@@ -118,6 +182,21 @@ export default class AdminPabellones extends Component {
             </table>
           </div>
         </div>
+        <MDBModal isOpen={this.state.abierto} toggle={this.mostrarModal} centered>
+          <MDBModalHeader toggle={this.mostrarModal}>Agregar Pabellon</MDBModalHeader>
+          <MDBModalBody>
+            <form>
+              <div className="form-group">
+                <label htmlFor="pab_nom">Nombre Pabellon</label>
+                <input type="text" className="form-control" id="pab_nom" aria-describedby="emailHelp" name="pab_nom" onChange={this.actualizarFormulario} value={this.state.formularioCrear.pab_nom} />
+              </div>
+            </form>
+          </MDBModalBody>
+          <MDBModalFooter>
+            <MDBBtn color="secondary" onClick={this.mostrarModal}>Cancelar</MDBBtn>
+            <MDBBtn color="primary" onClick={this.agregarPabellon}>Agregar</MDBBtn>
+          </MDBModalFooter>
+        </MDBModal>
       </div>
     );
   }
