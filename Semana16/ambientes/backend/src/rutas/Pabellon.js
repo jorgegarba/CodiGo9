@@ -8,7 +8,7 @@ pabellon_router.get('/pabellon', Pabellones.getPabellones);
 pabellon_router.post('/pabellon', Pabellones.postPabellon);
 pabellon_router.post('/pabelloncreate', Pabellones.postPabellonConCreate);
 pabellon_router.put('/pabellon/:id_pabellon', Pabellones.putPabellon);
-pabellon_router.get('/pabellon/:palabra', Pabellones.getPabellonLike);
+pabellon_router.get('/pabellones/:palabra', Pabellones.getPabellonLike);
 pabellon_router.get('/pabellonambiente/:id_pabellon',Pabellones.getAmbientesByPabellon);
 pabellon_router.get('/pabellonreservas/:id_pabellon', Pabellones.getReservaByPabellon);
 

@@ -90,6 +90,110 @@ paths:
           description: "Si el pabellon es actualizado con exito devolvera un JSON con un ok, contenido y un mensaje indicando que el pabellon se actualizo"
         404:
           description: "Si no se encontro ese pabellon devolvera un JSON con un ok en false, un contenido null y un mensaje indicando que el pabellon no se encontro"
+    
+          
+  /pabellones/{palabra}:
+    get:
+      tags:
+      - "Pabellones"
+      summary: "Devuelve un pabellon que haga coincidencia con una palabra"
+      description: "No es necesario que todoa la palabra este escrita, solo basta con una coincidencia"
+      operationId: "getPabellonesLike"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "palabra"
+        in: "path"
+        description: "Palabra para buscar una coincidencia con los pabellones"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Devuelve un JSON con un ok y con todas las coincidencias de los pabellones"
+  /pabellonambientes/{id_pabellon}:
+    get:
+      tags:
+      - "Pabellones"
+      summary: "Devuelve un pabellon que haga coincidencia con su ID e incluye todos sus ambientes"
+      description: "No es necesario que todoa la palabra este escrita, solo basta con una coincidencia"
+      operationId: "getAmbientesByPabellon"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id_pabellon"
+        in: "path"
+        description: "Id para buscar una coincidencia con los pabellones"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Devuelve un JSON con un ok y con el pabellon y sus ambientes" 
+  /pabellonreservas/{id_pabellon}:
+    get:
+      tags:
+      - "Pabellones"
+      summary: "Devuelve un pabellon que haga coincidencia con su ID e incluye todas sus reservas"
+      description: "No es necesario que toda la palabra este escrita, solo basta con una coincidencia"
+      operationId: "getReservaByPabellon"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id_pabellon"
+        in: "path"
+        description: "Id para buscar una coincidencia con los pabellones"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Devuelve un JSON con un ok y con el pabellon y sus reservas"
+  /ambiente:
+    get:
+      tags:
+      - "Ambientes"
+      summary: "Devuelve todos los ambientes registrados con su pabellon"
+      description: ""
+      operationId: "getAmbientesWithPabellon"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Devuelve un JSON con un ok y con todos los ambientes con sus respectivos pabellones"
+          schema:
+            $ref: "#/definitions/Ambientes"
+    post:
+      tags:
+      - "Ambientes"
+      summary: "Registra un nuevo ambiente"
+      description: ""
+      operationId: "postAmbientes"
+      produces:
+      - "application/json"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - name: "amb_nro"
+        in: "formData"
+        description: "Nro del ambiente"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "amb_afo"
+        in: "formData"
+        description: "Cantidad de capacidad del ambiente"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "amb_tipo"
+        in: "formData"
+        description: "Tipo de ambiente, puede ser clase, lab o auditorio maximo 10 caracteres"
+        required: true
+        type: "string"
+      responses:
+        201:
+          description: "Retorna un JSON con el ok true y el objeto ambiente creado"
+          
   /pet/findByStatus:
     get:
       tags:
@@ -590,6 +694,21 @@ definitions:
         format: "int64"
       pab_nom:
         type: "string"
+  Ambientes:
+    type: "object"
+    properties:
+      amb_id:
+        type: "integer"
+        format: "int64"
+      amb_nro:
+        type: "integer"
+        format: "int64"
+      amb_afo:
+        type: "integer"
+        format: "int64"
+      amb_tipo:
+        type: "string"
+        description: "Tipo de ambiente, puede ser aula, auditorio o lab"
   Order:
     type: "object"
     properties:
