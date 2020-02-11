@@ -1,0 +1,14 @@
+npm init
+npm i webpack
+npm i webpack-cli
+npx webpack nomb_entrada.js -o nomb_salida.js || opcionalmente cuando ponemos -p => en modo de produccion y -d => modo desarrollo
+npx webpack src/index.js -o build/salida.js
+una vez creado el archivo webpack.config.js ahora el comando a ejecutar es
+npx webpack aun tenemos que definir si estamos en produccion o en desarrollo
+
+npm install --save-dev html-webpack-plugin
+npm i --save-dev style-loader css-loader
+npm i --save-dev webpack-dev-server
+npx webpack-dev-server
+npm install --save-dev mini-css-extract-plugin
+npm install sass-loader node-sass --save-dev
