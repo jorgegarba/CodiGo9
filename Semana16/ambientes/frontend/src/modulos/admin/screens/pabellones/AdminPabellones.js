@@ -3,7 +3,7 @@ import { URL_BACKEND } from "./../../../../environments/environments";
 import AdminCargando from "../../components/AdminCargando";
 import { Link } from "react-router-dom";
 import { Route } from "react-router-dom";
-import { MDBModal, MDBModalHeader, MDBModalFooter, MDBModalBody, MDBBtn } from 'mdbreact';
+import { MDBModal, MDBModalHeader, MDBModalFooter, MDBModalBody, MDBBtn, MDBDataTable } from 'mdbreact';
 import Swal from 'sweetalert2';
 import { PabellonService } from '../../../../services/PabellonService';
 
@@ -16,7 +16,8 @@ export default class AdminPabellones extends Component {
       abierto: false,
       formularioCrear: {
         pab_nom: ''
-      }
+      },
+      data: {}
     };
   }
 
@@ -24,10 +25,28 @@ export default class AdminPabellones extends Component {
     PabellonService.getPabellones().then((rpta) => {
       console.log(rpta);
       if (rpta.ok) {
+        let columns = [
+          {label: '#', field: 'posicion', sort: 'asc'},
+          {label: 'Nombre', field: 'pab_nom', sort: 'asc'},
+          {label: 'Nro Ambientes', field: 'pab_can', sort: 'asc'},
+          {label: 'Acciones', field: 'acciones', sort: 'asc'},
+        ];
+        let rows = rpta.contenido.map((objPabellon, i)=>{
+          return {
+            ...objPabellon,
+            posicion : i+1,
+            pab_can: objPabellon.ambientes.length,
+            acciones: <button className="btn btn-block btn-primary">Editar Pabellon</button>
+          }
+        });
         this.setState({
           cargando: false,
-          pabellones: rpta.contenido
-        })
+          pabellones: rpta.contenido,
+          data: {
+            rows: rows,
+            columns: columns
+          }
+        });
       }
     })
     // let response = await fetch(`${URL_BACKEND}/pabellon`);
@@ -154,32 +173,41 @@ export default class AdminPabellones extends Component {
         }}>Agregar Pabellon</button>
         <div className="row">
           <div className="col-12">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>N°</th>
-                  <th>Nombre Pabellón</th>
-                  <th>Cant. Ambientes</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.pabellones.map((pab, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{index}</td>
-                      <td>{pab.pab_nom}</td>
-                      <td>{pab.ambientes.length}</td>
-                      <td>
-                        <Link to={`/pabellon/${pab.pab_id}/ambientes`} className="btn btn-info">
-                          Ver Ambientes
+            <MDBDataTable responsiveSm data={this.state.data} 
+            fixed 
+            entries={5}
+            // scrollY={true}
+            maxHeight="100px"
+            striped
+            hover/>
+{/*             
+              <table className="table ">
+                <thead>
+                  <tr>
+                    <th>N°</th>
+                    <th>Nombre Pabellón</th>
+                    <th>Cant. Ambientes</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.pabellones.map((pab, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index}</td>
+                        <td>{pab.pab_nom}</td>
+                        <td>{pab.ambientes.length}</td>
+                        <td>
+                          <Link to={`/pabellon/${pab.pab_id}/ambientes`} className="btn btn-info">
+                            Ver Ambientes
                         </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table> */}
+
           </div>
         </div>
         <MDBModal isOpen={this.state.abierto} toggle={this.mostrarModal} centered>
