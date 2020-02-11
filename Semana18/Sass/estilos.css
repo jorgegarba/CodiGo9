@@ -1,0 +1,51 @@
+.mi-contenedor, .mi-contenedor-con-altura {
+  width: 1024px; }
+
+.mi-contenedor-con-altura {
+  height: 560px; }
+
+ul {
+  font-size: 1.5em;
+  color: blue; }
+  ul li {
+    font-size: 1.7rem;
+    background-color: peru; }
+  ul:hover {
+    color: green; }
+  ul:focus {
+    color: purple; }
+
+.letras-panel {
+  width: 256px; }
+
+.row {
+  width: 102.4px; }
+
+.col-2 {
+  width: 50px; }
+
+.col-3 {
+  width: 33.3333333333px; }
+
+.col-4 {
+  width: 25px; }
+
+.col-5 {
+  width: 20px; }
+
+.col-6 {
+  width: 16.6666666667px; }
+
+.col-7 {
+  width: 14.2857142857px; }
+
+.col-8 {
+  width: 12.5px; }
+
+.col-9 {
+  width: 11.1111111111px; }
+
+.col-10 {
+  width: 10px; }
+
+/*# sourceMappingURL=estilos.css.map */

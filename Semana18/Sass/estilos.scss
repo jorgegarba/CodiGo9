@@ -1,0 +1,48 @@
+$ancho: 1024px;
+$color_principal: #cf2456;
+$color_secundario: #bf52ab;
+$altura: 560px;
+
+.mi-contenedor{
+    width: $ancho;
+}
+// El metodo @extend sirve para agregar todas las propiedades de otro bloque de codigo al cual se le esta invocando
+.mi-contenedor-con-altura{
+    @extend .mi-contenedor;
+    height: $altura;
+}
+// Los selectores anidados nos sirven para definir jerarquias, ademas nos sirve para definir los metodos como el hover, focus entre otros
+ul{
+    font-size: 1.5em;
+    color: blue;
+    li{
+        font-size: 1.7rem;
+        background-color: peru;
+    }
+    &:hover{
+        color: green;
+    }
+    &:focus{
+        color: purple;
+    }
+}
+// Aparte las variables, se pueden usar para calculos matematicos 
+.letras-panel {
+    width: ($ancho/4);
+}
+
+// tambien se pueden crear funciones para ser reutilizadas en diferentes partes del codigo, ademas para ser usada primero debe ser definida
+@function dividir($total, $partes){
+    @return ($total/$partes);
+}
+
+.row{
+    width: dividir($ancho,10);
+}
+
+// en sass hay bucles como for, while entre otros que nos ayudan a facilitar la definicion tanto de clases, id, entre otros como de sus valores
+@for $p from 2 through 10{
+    .col-#{$p}{
+        width: 100/$p+px;
+    }
+}
