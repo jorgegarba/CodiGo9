@@ -31,10 +31,10 @@ export default class AdminAmbientes extends Component {
     // Armar el objeto Data para el dataTable
     let columns = [
       { label: '#', field: 'posicion', sort: 'asc' },
-      { label: 'Nro', field: 'amb_nro', sort: 'asc' },
-      { label: 'Aforo', field: 'amb_afo', sort: 'asc' },
-      { label: 'Tipo', field: 'amb_tipo', sort: 'asc' },
-      { label: 'Pabellon', field: 'pab_nom', sort: 'asc' }
+      { label: 'Nro', field: 'amb_nro' },
+      { label: 'Aforo', field: 'amb_afo' },
+      { label: 'Tipo', field: 'amb_tipo' },
+      { label: 'Pabellon', field: 'pab_nom' }
     ];
 
     let rows = json.contenido.map((objAmbiente, i) => {
@@ -57,39 +57,49 @@ export default class AdminAmbientes extends Component {
     })
   }
   crearAmbiente = () => {
-    Swal.fire({
-      icon: 'info',
-      title: 'Creando el Ambiente',
-      text: 'Un momentito por favor esperese',
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-      showConfirmButton: false
-    });
-    AmbienteService.postAmbiente(this.state.crearAmbiente).then(rpta => {
-      console.log(rpta);
-      switch(rpta.status){
-        case 201:
-          Swal.fire({
-            icon: 'success',
-            title: 'Ambiente creado',
-            text: 'Se creo el ambiente exitosamente'
-          });
-          break;
-        case 401:
-          Swal.fire({
-            icon: 'error',
-            title: 'Error al crear el ambiente',
-            text: rpta.statusText
-          });
-          break;
-        default:
-          Swal.fire({
-            icon:'warning',
-            title:'Yo no se naa',
-            text: 'Hubo un error desconocido, intentelo de nuevo en unos momentos'
-          })
-      }
-    })
+    if (this.state.crearAmbiente.amb_tipo === "-1" || this.state.crearAmbiente.pab_id === "-1" || this.state.crearAmbiente.amb_tipo === "" || this.state.crearAmbiente.pab_id === 0) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Uno o mas campos invalidos',
+        text: 'Asegurese de completar todos los campos antes de crear el ambiente'
+      })
+    }
+    else {
+      Swal.fire({
+        icon: 'info',
+        title: 'Creando el Ambiente',
+        text: 'Un momentito por favor esperese',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showConfirmButton: false
+      });
+      AmbienteService.postAmbiente(this.state.crearAmbiente).then(rpta => {
+        console.log(rpta);
+        switch (rpta.status) {
+          case 201:
+            Swal.fire({
+              icon: 'success',
+              title: 'Ambiente creado',
+              text: 'Se creo el ambiente exitosamente'
+            });
+            break;
+          case 401:
+            Swal.fire({
+              icon: 'error',
+              title: 'Error al crear el ambiente',
+              text: rpta.statusText
+            });
+            break;
+          default:
+            Swal.fire({
+              icon: 'warning',
+              title: 'Yo no se naa',
+              text: 'Hubo un error desconocido, intentelo de nuevo en unos momentos'
+            })
+        }
+      })
+
+    }
 
   }
 
@@ -218,6 +228,7 @@ export default class AdminAmbientes extends Component {
                   <div className="form-group">
                     <label htmlFor="amb_tipo">Tipo</label>
                     <select name="amb_tipo" className="form-control" id="amb_tipo" onChange={this.actualizarFormulario}>
+                      <option value="-1">Seleccione un tipo</option>
                       <option>Aula</option>
                       <option>Auditorio</option>
                       <option>Lab</option>
@@ -227,6 +238,7 @@ export default class AdminAmbientes extends Component {
                   <div className="form-group">
                     <label htmlFor="pab_id">Pabellon</label>
                     <select name="pab_id" className="form-control" id="pab_id" onChange={this.actualizarFormulario}>
+                      <option value="-1">Seleccione Pabellon</option>
                       {
                         this.state.pabellones.map((pabellon, indice) => {
                           return (
