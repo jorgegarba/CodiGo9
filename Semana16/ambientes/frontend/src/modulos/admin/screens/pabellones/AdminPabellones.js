@@ -180,7 +180,7 @@ export default class AdminPabellones extends Component {
             maxHeight="100px"
             striped
             hover/>
-{/*             
+{/*
               <table className="table ">
                 <thead>
                   <tr>

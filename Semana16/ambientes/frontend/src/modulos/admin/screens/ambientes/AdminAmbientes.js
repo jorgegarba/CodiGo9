@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { URL_BACKEND } from './../../../../environments/environments'
 import AdminCargando from '../../components/AdminCargando';
 import { MDBDataTable } from 'mdbreact';
-
+import {AmbienteService} from '../../../../services/AmbienteService';
+import {PabellonService} from '../../../../services/PabellonService';
 export default class AdminAmbientes extends Component {
 
   constructor(props) {
@@ -47,7 +48,9 @@ export default class AdminAmbientes extends Component {
       }
     })
   }
+  crearAmbiente = ()=>{
 
+  }
   componentDidMount() {
     this.getAmbientes();
   }
@@ -111,7 +114,12 @@ export default class AdminAmbientes extends Component {
         </nav>
 
         <h2>Ambientes</h2>
-
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={this.crearAmbiente}>
+          Agregar Ambiente
+                </button>
         <div className="row">
           <div className="col-12">
             <div className="card">
