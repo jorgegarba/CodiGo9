@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { URL_BACKEND } from './../../../../environments/environments'
 import AdminCargando from '../../components/AdminCargando';
 import { MDBDataTable } from 'mdbreact';
-import {AmbienteService} from '../../../../services/AmbienteService';
-import {PabellonService} from '../../../../services/PabellonService';
+import { AmbienteService } from '../../../../services/AmbienteService';
+import { PabellonService } from '../../../../services/PabellonService';
 export default class AdminAmbientes extends Component {
 
   constructor(props) {
@@ -48,7 +48,7 @@ export default class AdminAmbientes extends Component {
       }
     })
   }
-  crearAmbiente = ()=>{
+  crearAmbiente = () => {
 
   }
   componentDidMount() {
@@ -117,7 +117,7 @@ export default class AdminAmbientes extends Component {
         <button
           type="button"
           className="btn btn-primary"
-          onClick={this.crearAmbiente}>
+          onClick={this.mostrarModalCrear}>
           Agregar Ambiente
                 </button>
         <div className="row">
@@ -134,7 +134,25 @@ export default class AdminAmbientes extends Component {
             </div>
           </div>
         </div>
-
+        <div className="modal fade" id="modalCrear" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">Crear un nuevo Ambiente</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                ...
+      </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
