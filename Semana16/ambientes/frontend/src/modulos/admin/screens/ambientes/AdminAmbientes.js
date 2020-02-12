@@ -68,7 +68,7 @@ export default class AdminAmbientes extends Component {
     AmbienteService.postAmbiente(this.state.crearAmbiente).then(rpta => {
       console.log(rpta);
       switch(rpta.status){
-        case 200:
+        case 201:
           Swal.fire({
             icon: 'success',
             title: 'Ambiente creado',
