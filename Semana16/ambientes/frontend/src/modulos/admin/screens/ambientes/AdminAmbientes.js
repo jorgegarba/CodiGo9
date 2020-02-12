@@ -4,6 +4,7 @@ import AdminCargando from '../../components/AdminCargando';
 import { MDBDataTable } from 'mdbreact';
 import { AmbienteService } from '../../../../services/AmbienteService';
 import { PabellonService } from '../../../../services/PabellonService';
+import Swal from 'sweetalert2';
 export default class AdminAmbientes extends Component {
 
   constructor(props) {
@@ -56,12 +57,45 @@ export default class AdminAmbientes extends Component {
     })
   }
   crearAmbiente = () => {
+    Swal.fire({
+      icon: 'info',
+      title: 'Creando el Ambiente',
+      text: 'Un momentito por favor esperese',
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      showConfirmButton: false
+    });
+    AmbienteService.postAmbiente(this.state.crearAmbiente).then(rpta => {
+      console.log(rpta);
+      switch(rpta.status){
+        case 200:
+          Swal.fire({
+            icon: 'success',
+            title: 'Ambiente creado',
+            text: 'Se creo el ambiente exitosamente'
+          });
+          break;
+        case 401:
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al crear el ambiente',
+            text: rpta.statusText
+          });
+          break;
+        default:
+          Swal.fire({
+            icon:'warning',
+            title:'Yo no se naa',
+            text: 'Hubo un error desconocido, intentelo de nuevo en unos momentos'
+          })
+      }
+    })
 
   }
 
-  mostrarModalCrear= () =>{
+  mostrarModalCrear = () => {
     PabellonService.getPabellones().then(rpta => {
-      if (rpta.ok){
+      if (rpta.ok) {
         console.log(rpta.contenido);
         this.setState({
           pabellones: rpta.contenido
@@ -70,7 +104,7 @@ export default class AdminAmbientes extends Component {
     })
   }
 
-  actualizarFormulario = (e)=>{
+  actualizarFormulario = (e) => {
     console.log(e.target.value);
     this.setState({
       crearAmbiente: {
@@ -175,11 +209,11 @@ export default class AdminAmbientes extends Component {
                 <form>
                   <div className="form-group">
                     <label htmlFor="amb_nro">Nro del ambiente</label>
-                    <input type="number" className="form-control" id="amb_nro" name="amb_nro" onChange={this.actualizarFormulario}/>
+                    <input type="number" className="form-control" id="amb_nro" name="amb_nro" onChange={this.actualizarFormulario} />
                   </div>
                   <div className="form-group">
                     <label htmlFor="amb_afo">Aforo</label>
-                    <input type="number" className="form-control" id="amb_afo" name="amb_afo" onChange={this.actualizarFormulario}/>
+                    <input type="number" className="form-control" id="amb_afo" name="amb_afo" onChange={this.actualizarFormulario} />
                   </div>
                   <div className="form-group">
                     <label htmlFor="amb_tipo">Tipo</label>
@@ -194,9 +228,9 @@ export default class AdminAmbientes extends Component {
                     <label htmlFor="pab_id">Pabellon</label>
                     <select name="pab_id" className="form-control" id="pab_id" onChange={this.actualizarFormulario}>
                       {
-                        this.state.pabellones.map((pabellon,indice)=>{
-                          return(
-                          <option key={indice} name="pab_id" value={pabellon.pab_id}>{pabellon.pab_nom}</option>
+                        this.state.pabellones.map((pabellon, indice) => {
+                          return (
+                            <option key={indice} name="pab_id" value={pabellon.pab_id}>{pabellon.pab_nom}</option>
                           )
                         })
                       }
@@ -205,8 +239,8 @@ export default class AdminAmbientes extends Component {
                 </form>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Save changes</button>
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" className="btn btn-primary" onClick={this.crearAmbiente}>Agregar Ambiente</button>
               </div>
             </div>
           </div>
