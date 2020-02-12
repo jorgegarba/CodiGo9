@@ -11,7 +11,14 @@ export default class AdminAmbientes extends Component {
     this.state = {
       cargando: true,
       ambientes: [],
-      data: {}
+      data: {},
+      crearAmbiente: {
+        amb_nro: 0,
+        amb_afo: 0,
+        amb_tipo: '',
+        pab_id: 0
+      },
+      pabellones: []
     }
   }
 
@@ -51,6 +58,27 @@ export default class AdminAmbientes extends Component {
   crearAmbiente = () => {
 
   }
+
+  mostrarModalCrear= () =>{
+    PabellonService.getPabellones().then(rpta => {
+      if (rpta.ok){
+        console.log(rpta.contenido);
+        this.setState({
+          pabellones: rpta.contenido
+        })
+      }
+    })
+  }
+
+  actualizarFormulario = (e)=>{
+    console.log(e.target.value);
+    this.setState({
+      crearAmbiente: {
+        ...this.state.crearAmbiente,
+        [e.target.name]: e.target.value
+      }
+    })
+  }
   componentDidMount() {
     this.getAmbientes();
   }
@@ -62,20 +90,20 @@ export default class AdminAmbientes extends Component {
     return (
       <div id="content">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
+          <div className="container-fluid">
             <button
               type="button"
               id="sidebarCollapse"
-              class="btn btn-info"
+              className="btn btn-info"
               onClick={() => {
                 this.props.toggleAbierto();
               }}
             >
-              <i class="fas fa-align-left"></i>
+              <i className="fas fa-align-left"></i>
               <span>Toggle Sidebar</span>
             </button>
             <button
-              class="btn btn-dark d-inline-block d-lg-none ml-auto"
+              className="btn btn-dark d-inline-block d-lg-none ml-auto"
               type="button"
               data-toggle="collapse"
               data-target="#navbarSupportedContent"
@@ -83,28 +111,28 @@ export default class AdminAmbientes extends Component {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <i class="fas fa-align-justify"></i>
+              <i className="fas fa-align-justify"></i>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="nav navbar-nav ml-auto">
+                <li className="nav-item active">
+                  <a className="nav-link" href="#">
                     Page
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
+                <li className="nav-item">
+                  <a className="nav-link" href="#">
                     Page
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
+                <li className="nav-item">
+                  <a className="nav-link" href="#">
                     Page
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
+                <li className="nav-item">
+                  <a className="nav-link" href="#">
                     Page
                   </a>
                 </li>
@@ -117,7 +145,7 @@ export default class AdminAmbientes extends Component {
         <button
           type="button"
           className="btn btn-primary"
-          onClick={this.mostrarModalCrear}>
+          onClick={this.mostrarModalCrear} data-target="#modalCrear" data-toggle="modal">
           Agregar Ambiente
                 </button>
         <div className="row">
@@ -144,8 +172,38 @@ export default class AdminAmbientes extends Component {
                 </button>
               </div>
               <div className="modal-body">
-                ...
-      </div>
+                <form>
+                  <div className="form-group">
+                    <label htmlFor="amb_nro">Nro del ambiente</label>
+                    <input type="number" className="form-control" id="amb_nro" name="amb_nro" onChange={this.actualizarFormulario}/>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="amb_afo">Aforo</label>
+                    <input type="number" className="form-control" id="amb_afo" name="amb_afo" onChange={this.actualizarFormulario}/>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="amb_tipo">Tipo</label>
+                    <select name="amb_tipo" className="form-control" id="amb_tipo" onChange={this.actualizarFormulario}>
+                      <option>Aula</option>
+                      <option>Auditorio</option>
+                      <option>Lab</option>
+                      <option>Biblioteca</option>
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="pab_id">Pabellon</label>
+                    <select name="pab_id" className="form-control" id="pab_id" onChange={this.actualizarFormulario}>
+                      {
+                        this.state.pabellones.map((pabellon,indice)=>{
+                          return(
+                          <option key={indice} name="pab_id" value={pabellon.pab_id}>{pabellon.pab_nom}</option>
+                          )
+                        })
+                      }
+                    </select>
+                  </div>
+                </form>
+              </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" className="btn btn-primary">Save changes</button>
