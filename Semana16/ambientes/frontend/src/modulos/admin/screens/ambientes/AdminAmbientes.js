@@ -5,6 +5,7 @@ import { MDBDataTable } from 'mdbreact';
 import { AmbienteService } from '../../../../services/AmbienteService';
 import { PabellonService } from '../../../../services/PabellonService';
 import Swal from 'sweetalert2';
+import $ from 'jquery';
 export default class AdminAmbientes extends Component {
 
   constructor(props) {
@@ -82,6 +83,9 @@ export default class AdminAmbientes extends Component {
               title: 'Ambiente creado',
               text: 'Se creo el ambiente exitosamente'
             });
+            $('#btn_cancelar').trigger('click');
+            
+            this.getAmbientes();
             break;
           case 401:
             Swal.fire({
@@ -211,7 +215,7 @@ export default class AdminAmbientes extends Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">Crear un nuevo Ambiente</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" className="close" id="btn_cancelar" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
