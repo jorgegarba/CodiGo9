@@ -6,13 +6,15 @@ import './assets/AdminEstilos.css';
 import AdminPabellones from './screens/pabellones/AdminPabellones';
 import AdminPabellonAmbientes from './screens/pabellones/AdminPabellonAmbientes';
 import AdminAmbientes from './screens/ambientes/AdminAmbientes';
+import AdminReserva from './screens/reservas/AdminReservas';
 
 export class Admin extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      abierto: false
+      abierto: false,
+      usuario: ''
     }
   }
 
@@ -20,6 +22,20 @@ export class Admin extends Component {
     this.setState({
       abierto: !this.state.abierto
     })
+  }
+  componentDidMount(){
+    let token = localStorage.getItem('reservas');
+    try{
+      let payload = token.split('.')[1];
+      let payloadDecodificado = window.atob(payload);
+      let payloadJSON = JSON.parse(payloadDecodificado);
+      this.setState({
+        usuario:payloadJSON.usu_nom
+      })
+
+    }catch(error){
+
+    }
   }
 
   render() {
@@ -40,8 +56,12 @@ export class Admin extends Component {
             return <AdminAmbientes toggleAbierto={this.toggleAbierto} />
           }} />
 
+          <Route path={'/reservas'} render={()=>{
+            return <AdminReserva toggleAbierto={this.toggleAbierto}/>
+          }}/>
+
           <Route path={'/'} render={() => {
-            return <AdminDashboard toggleAbierto={this.toggleAbierto} />
+            return <AdminDashboard usuarioGuardado={this.state.usuario} toggleAbierto={this.toggleAbierto} />
           }} />
 
         </Switch>

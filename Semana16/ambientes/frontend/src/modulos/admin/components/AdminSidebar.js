@@ -52,7 +52,7 @@ export class AdminSidebar extends Component {
                 <Link to={'/ambientes'}>Ambientes</Link>
               </li>
               <li>
-                <a href="#">Page 3</a>
+                <Link to={'/reservas'}>Reservas</Link>
               </li>
             </ul>
           </li>
