@@ -9,6 +9,7 @@
     "jquery": "^3.4.1",
     "mdbreact": "^4.25.1",
     "react": "^16.12.0",
+    "react-big-calendar": "^0.24.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.1",

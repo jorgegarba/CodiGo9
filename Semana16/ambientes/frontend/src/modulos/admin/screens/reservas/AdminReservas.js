@@ -1,6 +1,53 @@
 import React, { Component } from 'react';
+import {Calendar, momentLocalizer} from "react-big-calendar";
+import moment from 'moment';
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import {URL_BACKEND} from "./../../../../environments/environments";
+
+//Calendar utilizará un localizador (para ubicarse en el tiempo), pero puede usar varias librerias para ubicarse, en la siguiente linea estamos indicandole que utilize moment.js como libreria para ubicarse.
+const localizer = momentLocalizer(moment);
 
 export default class AdminReserva extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      eventos: [
+        {
+          id:0,
+          title:"Reserva Ambiente 310",
+          start:new Date(),
+          end:new Date()
+        }
+      ]
+    }
+  }
+
+  getReservas = async () => {
+    let fechaini = moment().startOf('month').format('YYYY-MM-DD');
+    let fechafin = moment().endOf('month').format('YYYY-MM-DD');
+    let url = `${URL_BACKEND}/reserva/${fechaini}/${fechafin}`;
+    console.log("url",url)
+    let response = await fetch(url);
+    let json = await response.json();
+    console.log("reservas",json);
+
+    let arrReservas = [];
+    json.contenido.forEach(reserva => {
+      let objEvento = {
+        id:reserva.res_id,
+        title:`Ambiente ${reserva.ambiente.amb_nro}`,
+        start:reserva.res_fechin,
+        end:reserva.res_fechfin
+      }
+      arrReservas.push(objEvento);
+    })
+    console.log("reservas a eventos", arrReservas);
+  }
+
+  componentDidMount(){
+    this.getReservas();
+  }
+
   render() {
     return (
         <div id="content">
@@ -65,13 +112,19 @@ export default class AdminReserva extends Component {
         <div className="row">
           <div className="col-12">
             <div className="card">
-              <div className="card-body shadow">
-                
+              <div className="card-body shadow" style={{height:"500px"}}>
+                {/* contenido */}
+                <Calendar
+                  events={this.state.eventos}
+                  defaultDate={moment().toDate()}
+                  localizer={localizer}
+                  startAccessor="start"
+                  endAccessor="end"
+                 /> 
               </div>
             </div>
           </div>
         </div>
-        
       </div>
     );
   }
