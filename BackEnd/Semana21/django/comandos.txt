@@ -1,0 +1,7 @@
+pip install django
+pip install djangorestframework
+py -m django --version
+py manage.py (tienes que estar dentro del proyecto para localizar el archivo)
+py manage.py showmigrations => sirve para ver las migraciones completas e incompletas en mi bd
+py manage.py makemigrations => para hacer las migraciones, opcionalmente le podemos poner el modulo al cual queremos hacer las migraciones
+py manage.py migrate => sirve para realizar todas las migraciones incompletas
