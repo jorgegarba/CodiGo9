@@ -12,8 +12,12 @@ class CategoriaModel (models.Model):
         null = False
         )
         # si quiere mas documentacion visite: https://docs.djangoproject.com/en/3.0/topics/db/models/
-    descripcion= models.CharField(max_length=100, unique=True)
+    nueva_descripcion= models.CharField(max_length=100, unique=True)
     activo = models.BooleanField(default=True)
+
+    def __str__(self):
+        """Metodo magico para sobreescribir la lectura por defecto del objeto"""
+        return 'La categoria es: {}'.format(self.descripcion)
 
     # La clase Meta se usa para configurar mi tabla de mi base de datos
     class Meta:
