@@ -17,7 +17,7 @@ class CategoriaModel (models.Model):
 
     def __str__(self):
         """Metodo magico para sobreescribir la lectura por defecto del objeto"""
-        return 'La categoria es: {}'.format(self.descripcion)
+        return 'La categoria es: {}'.format(self.nueva_descripcion)
 
     # La clase Meta se usa para configurar mi tabla de mi base de datos
     class Meta:
