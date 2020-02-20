@@ -1,0 +1,20 @@
+{
+  "name": "backend-chat",
+  "version": "1.0.0",
+  "description": "chat con node utilizando socket.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "socket",
+    "node",
+    "chat"
+  ],
+  "author": "Me",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}
