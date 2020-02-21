@@ -12,6 +12,18 @@ app.use(router);
 const server = http.createServer(app);
 const io = socketio(server);
 
+io.on('connection', (socket) => {
+    console.log("Hay una nueva conexión!!");
+    //Acá adentro vamos a manejar todos los mensajes y demás
+    socket.on('join', ({name, room}, callback) => {
+        console.log(name, room);
+        // callback({error:"error ñe"})
+    })
+    socket.on('disconnect', () => {
+        console.log("El usuario se ha desconectado");
+    })
+})
+
 server.listen(PORT, () => {
     console.log(`El servidor de sockets esta funcionando en: ${PORT}`);
 })
