@@ -4,6 +4,7 @@
   "description": "chat con node utilizando socket.io",
   "main": "index.js",
   "scripts": {
+    "start":"nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
