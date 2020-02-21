@@ -1,0 +1,10 @@
+//BACK
+npm i express
+npm i socket.io
+
+
+
+//FRONT
+npm i react-router
+npm i react-router-dom
+npm i socket.io-client
