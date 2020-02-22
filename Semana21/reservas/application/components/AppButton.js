@@ -21,6 +21,7 @@ export default function AppButton(propiedades) {
         title={title}
         icon={
             <Icon
+            style={{marginLeft:10}}
             name={iconName}
             size={iconSize}
             color={iconColor}
