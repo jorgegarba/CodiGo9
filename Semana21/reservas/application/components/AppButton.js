@@ -4,12 +4,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {Dimensions} from 'react-native';
 
 export default function AppButton(propiedades) {
-    const {action, iconName, iconColor, title, bgColor} = propiedades;
+    const {action, iconName, iconColor, title, bgColor, iconSize} = propiedades;
     let width = Dimensions.get('window').width;
-    console.log(width);
-    console.log(propiedades);
-    
-    
     return (
         <Button 
         onPress={action}
@@ -26,7 +22,7 @@ export default function AppButton(propiedades) {
         icon={
             <Icon
             name={iconName}
-            size={15}
+            size={iconSize}
             color={iconColor}
             />
         }

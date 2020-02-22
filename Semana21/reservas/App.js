@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import AppButton from './application/components/AppButton';
 import PreLoader from './application/components/PreLoader';
 import BackgroundImage from './application/components/BackgroundImage';
+import Start from './application/screens/Start';
 
 export default function App() {
   return (
@@ -19,9 +20,11 @@ export default function App() {
     // <PreLoader />
 
     // Bajarse imagen de fondo animada de giphy
-    <BackgroundImage source={require('./assets/images/minino.gif')}>
-      <Text>Hola</Text>
-    </BackgroundImage>
+    // <BackgroundImage source={require('./assets/images/minino.gif')}>
+    //   <Text>Hola</Text>
+    // </BackgroundImage>
+
+    <Start/>
   );
 }
 
