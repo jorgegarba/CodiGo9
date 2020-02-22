@@ -4,7 +4,7 @@ import AppButton from './application/components/AppButton';
 import PreLoader from './application/components/PreLoader';
 import BackgroundImage from './application/components/BackgroundImage';
 import Start from './application/screens/Start';
-import Login from './application/screens/Login';
+import LoginRNC from './application/screens/LoginRNC';
 
 export default function App() {
   return (
@@ -25,8 +25,7 @@ export default function App() {
     //   <Text>Hola</Text>
     // </BackgroundImage>
 
-    // <Start/>
-    <Login/>
+    <LoginRNC/>
   );
 }
 

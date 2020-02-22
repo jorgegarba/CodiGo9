@@ -4,6 +4,9 @@ import { Card } from 'react-native-elements';
 import BackgroundImage from '../components/BackgroundImage';
 import { View } from 'react-native';
 import AppButton from '../components/AppButton';
+import Toast from 'react-native-simple-toast';
+
+
 const Form = t.form.Form;
 export default function Login() {
     const form = useRef(null);
@@ -48,7 +51,9 @@ export default function Login() {
     let login = ()=>{
         const validacion= form.current.getValue();
         console.log(validacion);
-        
+        if (validacion){
+            Toast.showWithGravity("Validado", Toast.LONG, Toast.BOTTOM);
+        }
     }
     return (
         <BackgroundImage source={require('../../assets/images/minino.gif')}>
