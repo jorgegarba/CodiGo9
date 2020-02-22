@@ -46,6 +46,9 @@ export default function Login() {
         }
     }
     let login = ()=>{
+        const validacion= form.current.getValue();
+        console.log(validacion);
+        
     }
     return (
         <BackgroundImage source={require('../../assets/images/minino.gif')}>
@@ -64,6 +67,7 @@ export default function Login() {
                         iconCOlor="#ffff"
                         title="Iniciar Sesion"
                         bgColor="rgba(111,38,74,0.7)"
+                        ancho={true}
                     />
                 </Card>
             </View>
