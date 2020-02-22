@@ -4,8 +4,9 @@ import { View } from 'react-native';
 import Estilos from '../../styles/Estilos';
 import AppButton from '../components/AppButton';
 
-export default function Start() {
+export default function Start({navigation}) {
     function login(){
+        navigation.navigate('Login')
 
     }
     function register(){

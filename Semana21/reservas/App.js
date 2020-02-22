@@ -6,6 +6,8 @@ import BackgroundImage from './application/components/BackgroundImage';
 import Start from './application/screens/Start';
 import LoginRNC from './application/screens/LoginRNC';
 
+import {NavigationContainer} from '@react-navigation/native';
+import NavegacionInvitado from './application/navigations/Invitado';
 export default function App() {
   return (
     // <View>
@@ -24,8 +26,9 @@ export default function App() {
     // <BackgroundImage source={require('./assets/images/minino.gif')}>
     //   <Text>Hola</Text>
     // </BackgroundImage>
-
-    <LoginRNC/>
+    <NavigationContainer>
+      <NavegacionInvitado />
+    </NavigationContainer>
   );
 }
 
