@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import StartScreen from '../screens/Start';
 import LoginScreen from '../screens/LoginRNC';
 import { Dimensions } from 'react-native';
+import RegisterScreen from '../screens/Registro';
 const Stack = createStackNavigator()
 
 export default function Invitado() {
@@ -45,6 +46,10 @@ export default function Invitado() {
                     fontWeight:'bold',
                 }
             }}
+            />
+            <Stack.Screen 
+            name="Register"
+            component={RegisterScreen}
             />
         </Stack.Navigator>
     )

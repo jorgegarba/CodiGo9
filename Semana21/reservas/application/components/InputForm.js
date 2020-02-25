@@ -2,7 +2,7 @@ import React from 'react'
 import { Input} from 'react-native-elements';
 import  Icon  from 'react-native-vector-icons/FontAwesome';
 
-let InputForm = ({placeHolder, iconName, iconSize, iconColor, errorMessage, evt})=> (
+let InputForm = ({placeHolder, iconName, iconSize, iconColor, errorMessage, evt, password})=> (
         <Input
         placeholder={placeHolder}
         leftIcon={
@@ -13,6 +13,7 @@ let InputForm = ({placeHolder, iconName, iconSize, iconColor, errorMessage, evt}
             />
         }
         errorMessage={errorMessage}
+        secureTextEntry={password}
         errorStyle={{color:'red'}}
         onChange={evt}
         

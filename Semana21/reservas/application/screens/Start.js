@@ -7,10 +7,9 @@ import AppButton from '../components/AppButton';
 export default function Start({navigation}) {
     function login(){
         navigation.navigate('Login')
-
     }
     function register(){
-
+        navigation.navigate('Register')
     }
     async function facebook(){
 
