@@ -40,7 +40,7 @@ class Producto(models.Model):
     # PROTECT => prohibe eliminar la pk porque tiene relaciones existentes, en ese caso lo que se recomienda hacer es primero eliminar la relaciones y luego eliminar la pk
     # SET_NULL => cuando se elimina la pk el campo de la pk queda con el valor de NULL
     # DO_NOTHING => esta es la peor de todas porque crea problema en su integridad de datos al hacer que si tu eliminas una pk no hace nada y aun en el campo de la fk mantiene su valor eliminado
-    producto_padre = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    # producto_padre = models.ForeignKey(Producto, on_delete=models.CASCADE)
     um_id = models.ForeignKey(UnidadMedida, on_delete=models.CASCADE)
     grup_id = models.ForeignKey(Grupo, on_delete=models.CASCADE)
 
@@ -123,7 +123,7 @@ class CabeceraDocumento(models.Model):
     doc_fecha = models.DateField(help_text="Fecha de la cabecera")
     doc_total = models.DecimalField(max_digits=5, decimal_places=2, help_text="Total de pago")
     vendedor = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    cliente = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="cliente")
     class Meta: 
         db_table="t_cabDocumento"
         verbose_name_plural="Cabeceras Documento"
@@ -132,7 +132,7 @@ class DetalleDocumento(models.Model):
     detalle_id= models.AutoField(primary_key=True, help_text="Id del detalle")
     detalle_cant = models.IntegerField(help_text="Cantidad del producto")
     detalle_precio = models.DecimalField(max_digits=5, decimal_places=2, help_text="Precio del detalle")
-    doc_id = models.ForeignKey(DetalleDocumento, on_delete=models.CASCADE)
+    doc_id = models.ForeignKey(CabeceraDocumento, on_delete=models.CASCADE)
     prod_id = models.ForeignKey(Producto, on_delete=models.CASCADE)
     class Meta:
         db_table="t_detDocumento"
