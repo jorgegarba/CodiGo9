@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 // Para leer los parametros de la url
 import queryString from "query-string";
 import io from "socket.io-client";
+import Messages from '../Messages/Messages';
+import Input from '../Input/Input';
+
 let socket;
 
 export default function Chat() {
@@ -46,12 +49,13 @@ export default function Chat() {
     console.log(message, messages);
     
     return (
-        <div>
-            <input
-                value={message}
-                onChange={(e) =>  setMessage(e.target.value) }
-                onKeyPress={(e) =>  e.key === 'Enter' ? sendMessage(e) : null }
-                type="text" />
+        <div style={{width:"60%", margin:"0 auto"}}>
+            <Messages messages={messages} name={name}/>
+            <Input
+                message={message}
+                setMessage={setMessage}
+                sendMessage={sendMessage}
+            /> 
         </div>
     )
 }
