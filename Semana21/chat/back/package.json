@@ -1,10 +1,10 @@
 {
   "name": "backend-chat",
   "version": "1.0.0",
-  "description": "chat con node utilizando socket.io",
+  "description": "chat con node utilizando sockets.io",
   "main": "index.js",
   "scripts": {
-    "start":"nodemon index.js",
+    "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -12,7 +12,7 @@
     "node",
     "chat"
   ],
-  "author": "Me",
+  "author": "Yo",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
