@@ -9,3 +9,4 @@ npm i react-router
 npm i react-router-dom
 npm i socket.io-client
 npm i react-emoji
+npm i react-scroll-to-bottom
