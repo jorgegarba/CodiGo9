@@ -3,6 +3,8 @@ import BackgroundImage from '../components/BackgroundImage'
 import { View } from 'react-native';
 import Estilos from '../../styles/Estilos';
 import AppButton from '../components/AppButton';
+import * as Facebook from 'expo-facebook';
+import {APP_ID} from '../utils/facebook';
 
 export default function Start({navigation}) {
     function login(){
@@ -12,6 +14,14 @@ export default function Start({navigation}) {
         navigation.navigate('Register')
     }
     async function facebook(){
+        // expo-facebook
+        await Facebook.initializeAsync(APP_ID);
+        const {type, token} = await Facebook.logInWithReadPermissionsAsync({
+            permissions:['public_profile']
+        })
+        console.log('tipo:',type);
+        console.log('token:',token);
+
 
     }
     function google(){
