@@ -5,6 +5,9 @@ import Estilos from '../../styles/Estilos';
 import AppButton from '../components/AppButton';
 import * as Facebook from 'expo-facebook';
 import {APP_ID} from '../utils/facebook';
+import Toast from 'react-native-simple-toast';
+import * as firebase from 'firebase';
+import FirebaseConfig from '../utils/firebase';
 
 export default function Start({navigation}) {
     function login(){
@@ -21,8 +24,20 @@ export default function Start({navigation}) {
         })
         console.log('tipo:',type);
         console.log('token:',token);
-
-
+        if (type==="success"){
+            const credenciales = await firebase.auth.FacebookAuthProvider.credential(token);
+            FirebaseConfig.auth().signInWithCredential(credenciales).then(()=>{
+                Toast.showWithGravity("iniciaste sesion correctamente", Toast.LONG, Toast.BOTTOM);
+            }).catch(error=>{
+                let errorMessage = error.message;
+                let errorCode = error.code;
+                Toast.showWithGravity(errorCode + errorMessage, Toast.LONG,Toast.BOTTOM);
+            })
+        }else if (type==="cancel"){
+            Toast.showWithGravity("Inicio de sesion cancelado", Toast.LONG, Toast.BOTTOM);
+        }else{
+            Toast.showWithGravity("Error desconocido", Toast.LONG, Toast.BOTTOM);
+        }
     }
     function google(){
 
