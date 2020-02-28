@@ -26,6 +26,8 @@ class UnidadMedida(models.Model):
     class Meta:
         db_table = "t_um"
         verbose_name_plural = "Unidad de Medidas"
+        # Filtro para ordenamiento automaticos
+        ordering=["um_desc"]
 
 
 class Producto(models.Model):
@@ -40,9 +42,9 @@ class Producto(models.Model):
     # PROTECT => prohibe eliminar la pk porque tiene relaciones existentes, en ese caso lo que se recomienda hacer es primero eliminar la relaciones y luego eliminar la pk
     # SET_NULL => cuando se elimina la pk el campo de la pk queda con el valor de NULL
     # DO_NOTHING => esta es la peor de todas porque crea problema en su integridad de datos al hacer que si tu eliminas una pk no hace nada y aun en el campo de la fk mantiene su valor eliminado
-    # producto_padre = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    um_id = models.ForeignKey(UnidadMedida, on_delete=models.CASCADE)
-    grup_id = models.ForeignKey(Grupo, on_delete=models.CASCADE)
+    producto_padre = models.ForeignKey("Producto", on_delete=models.CASCADE)
+    um_id = models.ForeignKey(UnidadMedida, on_delete=models.PROTECT)
+    grup_id = models.ForeignKey(Grupo, on_delete=models.PROTECT)
 
     def __str__(self):
         return "{} {}".format(self.prod_nom, self.um_id.um_desc)
@@ -123,6 +125,7 @@ class CabeceraDocumento(models.Model):
     doc_fecha = models.DateField(help_text="Fecha de la cabecera")
     doc_total = models.DecimalField(max_digits=5, decimal_places=2, help_text="Total de pago")
     vendedor = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    # related_name => es un atributo que especifica el nombre reserso de la relacion en este caso, la relacion reversa seria de USuario a CabeceraDocumento
     cliente = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="cliente")
     class Meta: 
         db_table="t_cabDocumento"
