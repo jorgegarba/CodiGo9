@@ -1,0 +1,7 @@
+npm install -g @angular/cli
+ng new hola-angular
+cd hola-angular
+ng serve
+
+
+https://angular.io/
