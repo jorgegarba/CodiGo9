@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from .models import UnidadMedida, Grupo
 from rest_framework import status
-from .serializers import MiPrimerSerializador
+from .serializers import MiPrimerSerializador, UnidadMedidaSerializador
 # Create your views here.
 
 # Las APIView funcionan en forma de clases, y dentro de ellas los metodos que se pueden sobreescribir son los verbos HTTP (get, post, put, delete, patch...)
@@ -13,15 +13,33 @@ from .serializers import MiPrimerSerializador
 class UnidadMedidaViews(APIView):
     def get(self, request, format=None):
         unidades = UnidadMedida.objects.all()
-
-        print(unidades)
-        for unidad in unidades:
-            print(unidad.um_desc)
+        data = UnidadMedidaSerializador(unidades, many=True).data
+        # en el caso de pasar una data extraida de la base de datos ya no es necesario usar el metodo de validacion (is_valid()) y simplemente se llama a su atributo data el cual retornara un diccionario ordenado y listo para mostrar
+        print(data)
+        # for unidad in unidades:
+        #     print(unidad.um_desc)
         return Response({
             "message": "ok",
             "contenido": "Las unidades de medida son:",
-            # "respuesta": unidades
+            "respuesta": data
         }, status=status.HTTP_200_OK)
+    def post(self, request, format=None):
+        serializador = UnidadMedidaSerializador(data=request.data)
+        if serializador.is_valid():
+            serializador.save()
+            print(serializador.data)
+            print(serializador.validated_data)
+            # validated_data => nos devuelve la data validada, solamente la que nosotros le hemos pasado
+            # data => nos devuelve TODO el objeto creado, inclusive campos que no hemos ingresado pero que al momento de guardar en la bd (save()) se han generado automaticamente como por ejemplo um_id
+            return Response({
+                'message':'ok',
+                'contenido':{
+                    'id':serializador.data['um_id'],
+                    'descripcion':serializador.data['um_desc']
+                }
+            }, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializador.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ProbandoSerializadorViews(APIView):
@@ -81,3 +99,19 @@ class ProbandoSerializadorViews(APIView):
                 }, status=status.HTTP_200_OK)
             else:
                 return Response(serializador.errors,status=status.HTTP_400_BAD_REQUEST)
+
+class GrupoViews(APIView):
+    def get(self,request,pk, format=None):
+        """Traer un grupo segun su pk"""
+        pass
+    def post(self, request, format=None):
+        data = request.data
+        grupo = Grupo.objects.create(grup_nom=data['grup_nom'])
+        grupo.save()
+        return Response({
+            'message':'ok',
+            'contenido':{
+                'id': grupo.grup_id,
+                'nombre':grupo.grup_nom
+            }
+        },status=status.HTTP_201_CREATED)
