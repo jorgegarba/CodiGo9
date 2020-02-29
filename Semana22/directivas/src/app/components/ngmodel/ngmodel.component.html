@@ -1,0 +1,29 @@
+<main class="container mt-3">
+    <h1>Coctel</h1>
+    <!-- Cuando hacemos un ngMOdel hay que importar FormsModule -->
+    <input 
+        type="text" 
+        class="form-control"
+        [(ngModel)]="ingrediente"
+    >
+    <p>
+        Ingrediente: {{ingrediente}}
+    </p>
+    <button 
+        class="btn btn-primary"
+        (click)="agregarIngrediente()"
+    >
+        Agregar Ingrediente
+    </button>
+    <ul>
+        <li *ngFor="let c of coctel; index as i">
+            {{c}}
+            <button 
+                class="btn btn-danger"
+                (click)="eliminarIngrediente(i)"
+            >
+                X
+            </button>
+        </li>
+    </ul>
+</main>

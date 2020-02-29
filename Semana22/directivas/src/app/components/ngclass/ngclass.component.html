@@ -1,0 +1,25 @@
+<main class="container mt-3">
+    <h2>Directiva <code>ngClass</code></h2>
+
+    <p>
+        La directiva ngClass <code>[ngClass]</code> sirve para asignar clases a elementos html
+    </p>
+    <p>Una alerta común y silvestre</p>
+    <div class="alert alert-success">
+        Registro creado correctamente
+    </div>
+    <p>Aquí, una alerta con <code>ngClass</code></p>
+    <div [ngClass]="alerta">
+        Error en la conexión a la DB
+    </div>
+    <p>Aqui, <code>ngClass</code> con una condición</p>
+    <div>
+        <span 
+            [ngClass]="{'badge-primary':cantidad_inventario > 50,'badge-warning' : cantidad_inventario <= 10}" 
+            class="badge"
+        >
+            {{cantidad_inventario}}
+        </span>
+    </div>
+
+</main>

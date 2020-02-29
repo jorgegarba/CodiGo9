@@ -14,8 +14,12 @@ ng generate component Nombre    ->  NombreComponent
 
 ng g c Nombre 
 
-ng g c Nombre --spec false
+ng g c Nombre --skipTests
 
 //para instalar bootstrap en Angular
+npm i bootstrap
+npm i jquery
+npm i popper.js
+
 
 

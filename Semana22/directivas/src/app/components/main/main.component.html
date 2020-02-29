@@ -1,0 +1,43 @@
+<main class="container mt-3">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Nombre</th>
+                    <th>Código</th>
+                    <th>Precio</th>
+                    <th>Imagen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr 
+                *ngFor="let prod of productos; let i = index"
+                >
+                    <td>{{i}}</td>
+                    <td>{{prod.nombre}}</td>
+                    <td>{{prod.codigo}}</td>
+                    <td>
+                        <span 
+                            *ngIf="prod.precio >=50"
+                            class="bg-danger"
+                        >
+                            {{prod.precio}}
+                        </span>
+                        <span 
+                            *ngIf="prod.precio < 50"
+                            class="bg-info"
+                        >
+                            {{prod.precio}}
+                        </span>
+                    </td>
+                    <td>
+                        <!-- property binding y va con [] -->
+                        <img [src]="prod.imagen">
+                        <!-- <img src="{{prod.imagen}}"> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>

@@ -1,0 +1,25 @@
+<main class="container mt-3">
+    <p><code>(click)</code> es un event Binding y nos permite detectar el evento de click y capturar el evento</p>
+    <button class="btn btn-primary" (click)="clickAlerta()">
+        Click Console
+    </button>
+    <h2>Lista de Ingredientes</h2>
+    <ul>
+        <li *ngFor="let i of items">
+            {{i}}
+        </li>
+    </ul>  
+    <!-- Event Binding -->
+    <button class="btn btn-success" (click)="clickPush()">
+        Agregar
+    </button>
+    <div class="alert" [ngClass]="tipoAlerta">
+        Todo Ok!
+    </div>
+    <button 
+        class="btn btn-danger"
+        (click)="tipoAlerta = 'alert-danger'"
+    >
+        Error!!
+    </button>
+</main>
