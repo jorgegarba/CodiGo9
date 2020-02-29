@@ -2,6 +2,20 @@ npm install -g @angular/cli
 ng new hola-angular
 cd hola-angular
 ng serve
+http://localhost:4200
 
+//en caso descarguen un proyecto de angular
+npm install
 
 https://angular.io/
+
+//para crear un componente
+ng generate component Nombre    ->  NombreComponent
+
+ng g c Nombre 
+
+ng g c Nombre --spec false
+
+//para instalar bootstrap en Angular
+
+

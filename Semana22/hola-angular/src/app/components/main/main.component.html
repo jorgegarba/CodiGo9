@@ -1,0 +1,15 @@
+<main>
+    <h1>Artículos</h1>
+    <div>
+        <h2>{{articulo.titulo}}</h2>
+        <p>{{articulo.texto}}</p>
+    </div>
+    <div>
+        <p *ngIf="revisado">
+            El articulo es fiable
+        </p>
+        <p *ngIf="!revisado">
+            El articulo está por revisar
+        </p>
+    </div>
+</main>

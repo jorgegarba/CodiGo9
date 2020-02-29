@@ -3,12 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
+import { MainComponent } from './components/main/main.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   // Componentes, Pipes, en declarations
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    MainComponent,
+    FooterComponent
   ],
   // Modulos que vamos a utilizar 
   imports: [
