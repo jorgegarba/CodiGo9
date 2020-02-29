@@ -1,0 +1,12 @@
+header{
+    padding:10px;
+    background-color: blue;
+    color:white;
+    font-family: Arial;
+    display:flex;
+    justify-content: space-between;
+}
+ul{
+    display:flex;
+    list-style: none;
+}
