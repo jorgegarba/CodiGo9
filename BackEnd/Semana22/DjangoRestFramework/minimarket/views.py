@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from .models import UnidadMedida, Grupo
 from rest_framework import status
-from .serializers import MiPrimerSerializador, UnidadMedidaSerializador
+from .serializers import MiPrimerSerializador, UnidadMedidaSerializador, GrupoSerializador
 # Create your views here.
 
 # Las APIView funcionan en forma de clases, y dentro de ellas los metodos que se pueden sobreescribir son los verbos HTTP (get, post, put, delete, patch...)
@@ -103,7 +103,38 @@ class ProbandoSerializadorViews(APIView):
 class GrupoViews(APIView):
     def get(self,request,pk, format=None):
         """Traer un grupo segun su pk"""
-        pass
+        # try:
+        #     grupo = Grupo.objects.filter(grup_id=pk)[0]
+        #     print(grupo.grup_id)
+        #     print(grupo.grup_nom)
+        #     grupo = Grupo.objects.get(grup_id=pk)
+        #     # get_object_or_404
+        #     if grupo:
+        #         return Response({
+        #             'message':'ok',
+        #             'contenido':{
+        #                 'id': grupo.grup_id,
+        #                 'nombre':grupo.grup_nom
+        #             }
+        #         })
+        # except:
+        #     return Response({
+        #         'message':'false',
+        #         'contenido':'Error, no hay ese grupo'
+        #     },status=status.HTTP_404_NOT_FOUND)
+
+        # ahora con el get_object_or_404
+        grupo = get_object_or_404(Grupo,pk=pk)
+        data = GrupoSerializador(grupo, many=False).data
+        print(data)
+        return Response({
+            'message':'ok',
+            'contenido':{
+                'id':data['grup_id'],
+                'nombre':data['grup_nom']
+            }
+        })
+
     def post(self, request, format=None):
         data = request.data
         grupo = Grupo.objects.create(grup_nom=data['grup_nom'])

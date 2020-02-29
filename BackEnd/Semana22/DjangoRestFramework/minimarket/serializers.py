@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import UnidadMedida
+from .models import UnidadMedida, Grupo
 
 class MiPrimerSerializador(serializers.Serializer):
     """Un Serializer es un campo de nombre para probar nuestra vista en nuestra API"""
@@ -15,3 +15,8 @@ class UnidadMedidaSerializador(serializers.ModelSerializer):
         fields='__all__'
         # El atributo exclude sirve para excluir que atributos no vas a utilizar, no se puede usar los dos a la vez, o es uno, o es el otro
         # exclude=['um_id']
+
+class GrupoSerializador(serializers.ModelSerializer):
+    class Meta:
+        model= Grupo
+        fields='__all__'
