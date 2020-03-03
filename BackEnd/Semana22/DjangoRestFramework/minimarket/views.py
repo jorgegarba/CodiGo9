@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
+from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-from .models import UnidadMedida, Grupo
+from .models import UnidadMedida, Grupo, Proveedor
 from rest_framework import status
 from .serializers import MiPrimerSerializador, UnidadMedidaSerializador, GrupoSerializador
 # Create your views here.
@@ -146,3 +147,28 @@ class GrupoViews(APIView):
                 'nombre':grupo.grup_nom
             }
         },status=status.HTTP_201_CREATED)
+    
+    # APIView => get, post, put ,delete, options...
+    # es el tipo mas basico de usar una API, describe como va a ser el comportamiento de los endpoints
+    # cuando usar APIViews:
+    # 1. Cuando se necesita un control completo de la logica
+    # 2. Para procesar respestas dependiendo del verbo http
+    # 3. Cuando se llama a otras API en el mismo request
+    # 4. Acceder a archivos locales o a la informacion local
+
+    # ViewSet => list, create, retrieve, update
+    # como en las APIs nos permite escribir la logica de nuestros endpoints, sin embargo los viewset en vez de definir las funciones que mapean nuestros metodos HTTP, crean funciones que mapean acciones de los objetos de las API como list trae una lista de objetos, create se usa para crear nuevos objetos, retrieve para devolver un objeto en especifico, update para actualizar un objecto y destroy para eliminar un objeto, adicionalmente los viewset toman cuidado de nuestra logica de nuestros endpoints para nosotros, es perfecto para estandarizar la base de datos y es la manera mas rapida de interactuar con la base de datos.
+    # cuando usar ViewSet
+    # 1. Dependiendo de las preferencias personales
+    # 2. Para hacer un crud simple y rapido a la base de datos
+    # 3. para una API simple
+    # 4. Cuando la API no tiene mucha logica
+
+class ProveedorViews(ViewSet):
+    def list(self, request, format=None):
+        """En un list generalmente se retorna uno o muchos resultados"""
+        proveedores = Proveedor.objects.all()
+        print(proveedores)
+        return Response({
+            'message':'Ok'
+        })
