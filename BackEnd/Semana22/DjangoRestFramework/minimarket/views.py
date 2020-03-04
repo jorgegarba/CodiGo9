@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from .models import UnidadMedida, Grupo, Proveedor
 from rest_framework import status
-from .serializers import MiPrimerSerializador, UnidadMedidaSerializador, GrupoSerializador
+from .serializers import MiPrimerSerializador, UnidadMedidaSerializador, GrupoSerializador, ProveedorSerializador
 # Create your views here.
 
 # Las APIView funcionan en forma de clases, y dentro de ellas los metodos que se pueden sobreescribir son los verbos HTTP (get, post, put, delete, patch...)
@@ -169,6 +169,33 @@ class ProveedorViews(ViewSet):
         """En un list generalmente se retorna uno o muchos resultados"""
         proveedores = Proveedor.objects.all()
         print(proveedores)
+        if proveedores:
+            return Response({
+                'message':'Si hay'
+            })
+        else:
+            return Response({
+                'message':'no hay'
+            })
+
+    def create(self, request):
+        serializador = ProveedorSerializador(data=request.data)
+        if serializador.is_valid():
+            serializador.save()
+            return Response(
+                serializador.validated_data,
+                status=status.HTTP_201_CREATED)
+        else:
+            return Response(
+                serializador.errors,
+                status=status.HTTP_400_BAD_REQUEST
+            )
+    
+    # el metodo retrieve es igual que un get pero con parametros, en este caso le mandamos el parametro pk para que lo valida y traiga un proveedor en especifico
+    def retrieve(self,request,pk=None):
+        """Maneja los objetos de la PK"""
+        proveedor = get_object_or_404(Proveedor, pk=pk)
+        data = ProveedorSerializador(proveedor).data
         return Response({
-            'message':'Ok'
-        })
+            'proveedor':data
+        },status=status.HTTP_200_OK)

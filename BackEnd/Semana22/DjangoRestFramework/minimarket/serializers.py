@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import UnidadMedida, Grupo
+from .models import UnidadMedida, Grupo, Proveedor
 
 class MiPrimerSerializador(serializers.Serializer):
     """Un Serializer es un campo de nombre para probar nuestra vista en nuestra API"""
@@ -19,4 +19,9 @@ class UnidadMedidaSerializador(serializers.ModelSerializer):
 class GrupoSerializador(serializers.ModelSerializer):
     class Meta:
         model= Grupo
+        fields='__all__'
+
+class ProveedorSerializador(serializers.ModelSerializer):
+    class Meta:
+        model= Proveedor
         fields='__all__'
