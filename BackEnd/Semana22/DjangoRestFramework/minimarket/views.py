@@ -199,3 +199,16 @@ class ProveedorViews(ViewSet):
         return Response({
             'proveedor':data
         },status=status.HTTP_200_OK)
+    
+    def update(self, request, pk):
+        """Actualiza los datos segun la pk"""
+        data = ProveedorSerializador(data=request.data)
+        if data.is_valid():
+            print(data.validated_data.keys())
+            print(data.validated_data.values())
+            # Proveedor.objects.filter(prov_id=pk).update()
+            return Response({
+                'message':'Ok'
+            })
+        else:
+            return Response(data.errors, status=status.HTTP_403_FORBIDDEN)
