@@ -1,0 +1,20 @@
+<div class="container mt-3">
+    <h1>ngSwitch</h1>
+    <input 
+        class="form-control" 
+        type="text" 
+        [(ngModel)]="mes"
+    >
+    Texto: {{mes}}
+    <p>El ngSwitch evaluara una condición o una variable y según eso mostrará un resultado</p>
+    <div [ngSwitch]="mes">
+        <p *ngSwitchCase="'enero'">Mes de Enero</p> 
+        <p *ngSwitchCase="'febrero'">Mes de Febrero</p>
+        <p *ngSwitchCase="'marzo'">Mes de marzo</p>
+        <p *ngSwitchCase="'abril'">Mes de abril</p>
+        <p *ngSwitchCase="'mayo'">Mes de mayo</p>
+        <p *ngSwitchCase="'junio'">Mes de junio</p>
+        <p *ngSwitchCase="'julio'">Mes de julio</p>
+        <p *ngSwitchCase="'agosto'">Mes de agosto</p>
+    </div>
+</div>

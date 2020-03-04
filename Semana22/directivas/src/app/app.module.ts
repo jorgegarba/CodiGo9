@@ -9,6 +9,7 @@ import { NgclassComponent } from './components/ngclass/ngclass.component';
 import { NgclickComponent } from './components/ngclick/ngclick.component';
 import { NgstyleComponent } from './components/ngstyle/ngstyle.component';
 import { NgmodelComponent } from './components/ngmodel/ngmodel.component';
+import { NgswitchComponent} from './components/ngswitch/ngswitch.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NgmodelComponent } from './components/ngmodel/ngmodel.component';
     NgclassComponent,
     NgclickComponent,
     NgstyleComponent,
-    NgmodelComponent
+    NgmodelComponent,
+    NgswitchComponent
   ],
   imports: [
     BrowserModule,
