@@ -24,6 +24,7 @@ class UnidadMedidaViews(APIView):
             "contenido": "Las unidades de medida son:",
             "respuesta": data
         }, status=status.HTTP_200_OK)
+
     def post(self, request, format=None):
         serializador = UnidadMedidaSerializador(data=request.data)
         if serializador.is_valid():
@@ -33,10 +34,10 @@ class UnidadMedidaViews(APIView):
             # validated_data => nos devuelve la data validada, solamente la que nosotros le hemos pasado
             # data => nos devuelve TODO el objeto creado, inclusive campos que no hemos ingresado pero que al momento de guardar en la bd (save()) se han generado automaticamente como por ejemplo um_id
             return Response({
-                'message':'ok',
-                'contenido':{
-                    'id':serializador.data['um_id'],
-                    'descripcion':serializador.data['um_desc']
+                'message': 'ok',
+                'contenido': {
+                    'id': serializador.data['um_id'],
+                    'descripcion': serializador.data['um_desc']
                 }
             }, status=status.HTTP_201_CREATED)
         else:
@@ -88,21 +89,24 @@ class ProbandoSerializadorViews(APIView):
         print(longitud)
         if id > longitud:
             return Response({
-                'message':'Indice fuera de rango'
+                'message': 'Indice fuera de rango'
             })
         else:
             serializador = self.serializer_class(data=request.data)
             if serializador.is_valid():
-                self.personas[id]['nombre']=serializador.validated_data.get('nombre')
-                self.personas[id]['apellido']=serializador.validated_data.get('apellido')
+                self.personas[id]['nombre'] = serializador.validated_data.get(
+                    'nombre')
+                self.personas[id]['apellido'] = serializador.validated_data.get(
+                    'apellido')
                 return Response({
                     'message': 'Se actualizo con exito'
                 }, status=status.HTTP_200_OK)
             else:
-                return Response(serializador.errors,status=status.HTTP_400_BAD_REQUEST)
+                return Response(serializador.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class GrupoViews(APIView):
-    def get(self,request,pk, format=None):
+    def get(self, request, pk, format=None):
         """Traer un grupo segun su pk"""
         # try:
         #     grupo = Grupo.objects.filter(grup_id=pk)[0]
@@ -125,14 +129,14 @@ class GrupoViews(APIView):
         #     },status=status.HTTP_404_NOT_FOUND)
 
         # ahora con el get_object_or_404
-        grupo = get_object_or_404(Grupo,pk=pk)
+        grupo = get_object_or_404(Grupo, pk=pk)
         data = GrupoSerializador(grupo, many=False).data
         print(data)
         return Response({
-            'message':'ok',
-            'contenido':{
-                'id':data['grup_id'],
-                'nombre':data['grup_nom']
+            'message': 'ok',
+            'contenido': {
+                'id': data['grup_id'],
+                'nombre': data['grup_nom']
             }
         })
 
@@ -141,13 +145,13 @@ class GrupoViews(APIView):
         grupo = Grupo.objects.create(grup_nom=data['grup_nom'])
         grupo.save()
         return Response({
-            'message':'ok',
-            'contenido':{
+            'message': 'ok',
+            'contenido': {
                 'id': grupo.grup_id,
-                'nombre':grupo.grup_nom
+                'nombre': grupo.grup_nom
             }
-        },status=status.HTTP_201_CREATED)
-    
+        }, status=status.HTTP_201_CREATED)
+
     # APIView => get, post, put ,delete, options...
     # es el tipo mas basico de usar una API, describe como va a ser el comportamiento de los endpoints
     # cuando usar APIViews:
@@ -164,6 +168,7 @@ class GrupoViews(APIView):
     # 3. para una API simple
     # 4. Cuando la API no tiene mucha logica
 
+
 class ProveedorViews(ViewSet):
     def list(self, request, format=None):
         """En un list generalmente se retorna uno o muchos resultados"""
@@ -171,11 +176,11 @@ class ProveedorViews(ViewSet):
         print(proveedores)
         if proveedores:
             return Response({
-                'message':'Si hay'
+                'message': 'Si hay'
             })
         else:
             return Response({
-                'message':'no hay'
+                'message': 'no hay'
             })
 
     def create(self, request):
@@ -190,25 +195,54 @@ class ProveedorViews(ViewSet):
                 serializador.errors,
                 status=status.HTTP_400_BAD_REQUEST
             )
-    
+
     # el metodo retrieve es igual que un get pero con parametros, en este caso le mandamos el parametro pk para que lo valida y traiga un proveedor en especifico
-    def retrieve(self,request,pk=None):
+    def retrieve(self, request, pk=None):
         """Maneja los objetos de la PK"""
         proveedor = get_object_or_404(Proveedor, pk=pk)
         data = ProveedorSerializador(proveedor).data
         return Response({
-            'proveedor':data
-        },status=status.HTTP_200_OK)
-    
+            'proveedor': data
+        }, status=status.HTTP_200_OK)
+
     def update(self, request, pk):
         """Actualiza los datos segun la pk"""
         data = ProveedorSerializador(data=request.data)
         if data.is_valid():
-            print(data.validated_data.keys())
-            print(data.validated_data.values())
-            # Proveedor.objects.filter(prov_id=pk).update()
+            # Primera forma
+            # provEncontrado = Proveedor.objects.get(prov_id=pk)
+            # provEncontrado.prov_raz_soc = data.validated_data.get(
+            #     'prov_raz_soc')
+            # provEncontrado.prov_doc = data.validated_data.get('prov_doc')
+            # provEncontrado.prov_fono = data.validated_data.get('prov_fono')
+            # provEncontrado.prov_correo = data.validated_data.get('prov_correo')
+            # provEncontrado.save()
+
+            # Segunda forma
+            Proveedor.objects.filter(prov_id=pk).update(
+                prov_raz_soc = data.validated_data.get('prov_raz_soc'),
+                prov_doc = data.validated_data.get('prov_doc'),
+                prov_fono = data.validated_data.get('prov_fono'),
+                prov_correo = data.validated_data.get('prov_correo')
+                )
             return Response({
-                'message':'Ok'
-            })
+                'message': 'Ok',
+                'contenido': 'Proveedor actualizado con exito'
+            }, status=status.HTTP_202_ACCEPTED)
         else:
             return Response(data.errors, status=status.HTTP_403_FORBIDDEN)
+
+    def destroy(self, request, pk):
+        """El metodo destroy se ejecutara cuando se llame al verbo HTTP delete"""
+        get_object_or_404(Proveedor,pk=pk)
+        # Primera forma
+        # eliminacion directa
+        Proveedor.objects.filter(prov_id=pk).delete()
+        # Segunda forma
+        # eliminacion mediante instancia
+        # instancia = Proveedor.objects.get(prov_id=pk)
+        # instancia.delete()
+        return Response({
+            'message':'Ok',
+            'contenido':'Proveedor eliminado con exito'
+        }, status=status.HTTP_200_OK)
