@@ -1,1 +1,16 @@
-<p>usuarios works!</p>
+<main class="container mt-2">
+    <!-- Se hace una validación si es que usuarioSeleccionado  es undefined,porque no esta inicializado con nada, hasta que hacemos click!! -->
+    <div class="row" *ngIf="usuarioSeleccionado">
+        {{usuarioSeleccionado.first_name}}
+    </div>
+    <div class="row">
+        <div class="col-3" *ngFor="let usuario of listaUsuarios">
+            <!-- {{usuario.first_name}} -->
+            <app-usuario 
+                [objUsuario]="usuario"
+                (outUsuario)="recibirUsuario($event)"
+            >
+            </app-usuario>
+        </div>
+    </div>
+</main>

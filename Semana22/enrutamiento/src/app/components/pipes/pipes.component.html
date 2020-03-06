@@ -1,0 +1,82 @@
+<main class="container mt-2">
+    <h1>Pipes</h1>
+    <p>Un Pipe va a transformar el valor de una variable u objeto en otro, sin cambiar el valor original</p>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Variable</td>
+                <td>Pipe</td>
+                <td>Aplicación</td>
+                <td>Resultado</td>
+                <td>Que hace</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{nombre}}</td>
+                <td>Uppercase</td>
+                <!-- COMO SE ESCRIBE -->
+                <td>{{'{nombre | uppercase}'}}</td>
+                <!-- PIPE FUNCIONANDO -->
+                <td>{{nombre | uppercase}}</td>
+                <td>Pone a mayúsculas</td>
+            </tr>
+            <tr>
+                <td>{{nombre}}</td>
+                <td>Lowercase</td>
+                <!-- COMO SE ESCRIBE -->
+                <td>{{'{nombre | lowercase}'}}</td>
+                <!-- PIPE FUNCIONANDO -->
+                <td>{{nombre | lowercase}}</td>
+                <td>Pone a minúsculas</td>
+            </tr>
+            <tr>
+                <td>{{platos}}</td>
+                <td>Slice</td>
+                <!-- COMO SE ESCRIBE -->
+                <td>{{'{platos | slice:2:4}'}}</td>
+                <!-- PIPE FUNCIONANDO -->
+                <td>{{platos | slice:2:4}}</td>
+                <td>Devolvera los valores según las posiciones indicadas</td>
+            </tr>
+            <tr>
+                <td>{{pi}}</td>
+                <td>number</td>
+                <!-- COMO SE ESCRIBE -->
+                <td>{{'{numero | number:3.0-0}'}}</td>
+                <!-- PIPE FUNCIONANDO -->
+                <td>{{pi | number:'3.0-4'}}</td>
+                <td>Devuelve 3 primeros numeros y 0 decimales</td>
+            </tr>
+            <tr>
+                <td>{{impuesto}}</td>
+                <td>percent</td>
+                <!-- COMO SE ESCRIBE -->
+                <td>{{'{numero | percent}'}}</td>
+                <!-- PIPE FUNCIONANDO -->
+                <td>{{impuesto | percent}}</td>
+                <td>Multiplica el valor por 100 y le agrega %</td>
+            </tr>
+            <tr>
+                <td>{{sueldo}}</td>
+                <td>currency</td>
+                <!-- COMO SE ESCRIBE -->
+                <td>{{'{numero | currency}'}}</td>
+                <!-- PIPE FUNCIONANDO -->
+                <!-- Según ISO 4217 -->
+                <td>{{sueldo | currency:'PEN':'S. ':'4.2-2'}}</td>
+                <td>Cambiara el valor según la moneda</td>
+            </tr>
+            <tr>
+                <td>{{persona}}</td>
+                <td>json</td>
+                <!-- COMO SE ESCRIBE -->
+                <td>{{'{objeto | json}'}}</td>
+                <!-- PIPE FUNCIONANDO -->
+                <td>{{persona | json}}</td>
+                <td>Dará el formato JSON tal cual</td>
+            </tr>
+        </tbody>
+    </table>
+</main>

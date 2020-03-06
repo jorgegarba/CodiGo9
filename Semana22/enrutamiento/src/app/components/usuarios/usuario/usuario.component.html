@@ -1,1 +1,16 @@
-<p>usuario works!</p>
+<div class="card">
+    <img src="{{objUsuario.avatar}}" class="card-img-top">
+    <div class="card-body">
+        <p>Nombre: {{objUsuario.first_name}}</p>
+        <p>Apellido: {{objUsuario.last_name}}</p>
+        <p>Email: {{objUsuario.email}}</p>
+    </div>
+    <div class="card-footer">
+        <button 
+            class="btn btn-primary btn-block"
+            (click)="seleccionarUsuario(objUsuario)"
+        >
+            Mandar Usuario
+        </button>
+    </div>
+</div>

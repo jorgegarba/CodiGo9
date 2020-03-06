@@ -10,6 +10,7 @@ import {RoutingModule} from './app.routing';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { ErrorComponent } from './components/error/error.component';
 import { UsuarioComponent } from './components/usuarios/usuario/usuario.component';
+import { PipesComponent } from './components/pipes/pipes.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { UsuarioComponent } from './components/usuarios/usuario/usuario.componen
     RestauranteComponent,
     UsuariosComponent,
     ErrorComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    PipesComponent
   ],
   imports: [
     BrowserModule,
