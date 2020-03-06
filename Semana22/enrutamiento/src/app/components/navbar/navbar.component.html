@@ -1,3 +1,22 @@
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <span class="navbar-brand mb-0 h1">Navbar</span>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-3">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['home']">
+          Inicio
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['usuarios']">
+          Usuarios
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['restaurante']">
+          Restaurante
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>
