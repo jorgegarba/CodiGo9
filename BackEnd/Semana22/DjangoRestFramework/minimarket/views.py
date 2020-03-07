@@ -169,16 +169,17 @@ class GrupoViews(APIView):
 class ProveedorViews(ViewSet):
     def list(self, request, format=None):
         """En un list generalmente se retorna uno o muchos resultados"""
-        proveedores = Proveedor.objects.all()
+        proveedores = ProveedorSerializador(Proveedor.objects.all(), many=True).data
         print(proveedores)
         if proveedores:
             return Response({
-                'message': 'Si hay'
+                'message': 'Ok',
+                'contenido':proveedores
             })
         else:
             return Response({
-                'message': 'no hay'
-            })
+                'message': 'Por el momento no hay proveedores'
+            },status=status.HTTP_404_NOT_FOUND)
 
     def create(self, request):
         serializador = ProveedorSerializador(data=request.data)
@@ -252,11 +253,37 @@ class ProductoViews(ViewSet):
             'contenido': data
         })
     def create(self, request):
-        pass
+        serializador = ProductoSerializador(data=request.data)
+        if serializador.is_valid():
+            serializador.save()
+            return Response(serializador.validated_data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializador.errors, status=status.HTTP_400_BAD_REQUEST)
     def retrieve(self, request, pk):
-        pass
+        productos = get_object_or_404(Producto, pk=pk)
+        return Response(ProductoSerializador(productos).data, status=status.HTTP_200_OK)
     def update(self,request, pk):
-        pass
+        data = ProductoSerializador(data= request.data)
+        if data.is_valid():
+            Producto.objects.filter(prod_id=pk).update(
+                nombre_producto=data.validated_data.get('nombre_producto'),
+                prod_prec = data.validated_data.get('prod_prec'),
+                estado_del_producto = data.validated_data.get('estado_del_producto'),
+                producto_padre = data.validated_data.get('producto_padre'),
+                um_id = data.validated_data.get('um_id'),
+                grup_id = data.validated_data.get('grup_id')
+            )
+            return Response({
+                'message':'Ok',
+                'contenido':'Producto actualizado exisotamente'
+            }, status=status.HTTP_202_ACCEPTED)
+        else:
+            return Response({
+                'message':'Error',
+                'error':data.errors
+            },status=status.HTTP_400_BAD_REQUEST)
     def destroy(self,request,pk):
-        pass
+        get_object_or_404(Producto, pk=pk)
+        Producto.objects.filter(prod_id=pk).update(estado_del_producto=False)
+        return Response({'message':'Ok','contenido':'Producto eliminado exitosamente'},status=status.HTTP_202_ACCEPTED)
     # partial_update => hacer actualizaciones parciales hasta esperar la confirmacion del usuario, eso se usa con transacciones para poder hacer commit o un rollback

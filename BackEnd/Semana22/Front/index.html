@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=()=>{
+        fetch('http://127.0.0.1:8000/api/proveedor').then(rpta=>{
+            return rpta.json();
+        }).then(contenido=>{
+            console.log(contenido);
+        }).catch()
+
+        function tiempoEspera(tiempo, promesa){
+            return new Promise(function(resolve, reject){
+                setTimeout(()=>{
+                    reject(new Error("tiempo de espera terminado"))
+                },tiempo)
+                promesa.then(resolve,reject)
+            })
+        }
+        tiempoEspera(3000, fetch('http://127.0.0.1:8000/api/proveedor'))
+        .then((rpta)=>{
+                return rpta.json();
+            }
+        ).then(contenido=>{
+            console.log(contenido);
+        }).catch(error=>{
+            console.error(error);
+        })
+        }
+    </script>
+</head>
+<body>
+    <ul id="lista-proveedores"></ul>
+</body>
+</html>

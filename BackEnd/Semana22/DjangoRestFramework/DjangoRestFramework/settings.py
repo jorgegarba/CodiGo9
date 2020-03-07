@@ -39,17 +39,36 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'minimarket',
-
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+# Para hacer cualquier tipo de solicitud de cualquier dominio
+# CORS_ORIGIN_ALLOW_ALL = True
+
+# Registrar los dominios y que solo ellos puedan hacer peticiones
+CORS_ORIGIN_WHITELIST = [
+    "http://127.0.0.1:5500"
+]
+# CORS_ORIGIN_REGEX_WHITELIST=[
+#     r"https://midominio.com/*"
+# ]
+# Para definir que metodos pueden hacer
+CORS_ALLOW_METHODS=[
+    # 'GET',
+    'POST',
+    'PUT',
+    'DELETE'
 ]
 
 ROOT_URLCONF = 'DjangoRestFramework.urls'
