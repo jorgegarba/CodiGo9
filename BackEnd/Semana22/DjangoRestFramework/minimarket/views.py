@@ -247,7 +247,6 @@ class ProveedorViews(ViewSet):
 class ProductoViews(ViewSet):
     def list(self, request):
         data = ProductoSerializador(Producto.objects.all(), many=True).data
-        print(data)
         return Response({
             'message':'Ok',
             'contenido': data

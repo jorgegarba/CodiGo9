@@ -16,7 +16,7 @@ class UnidadMedidaSerializador(serializers.ModelSerializer):
     # Si ponemos el mismo nombre de related_name como el nombre de la instancia, ya no es necesario definir el parametro source y viceversa
     # productos = serializers.StringRelatedField( many=True)
     # productitos = serializers.PrimaryKeyRelatedField(source='productos', many=True, read_only=True)
-    productosporserializador=ProductosSerializador(many=True, read_only=True)
+    productosporserializador=ProductosSerializador(source='productos', many=True, read_only=True)
     class Meta:
         model=UnidadMedida
         # El atributo include sirve para indicar que atributos de mi modelo yo voy a utilizar, si pones '__all__' indicara que vas a usar todos, pero si quieres usar algunos en especificos va dentro de una lista
@@ -34,9 +34,16 @@ class ProveedorSerializador(serializers.ModelSerializer):
         model= Proveedor
         fields='__all__'
 
+class UmSerializador(serializers.ModelSerializer):
+    class Meta:
+        model=UnidadMedida
+        fields=['um_desc']
 class ProductoSerializador(serializers.ModelSerializer):
+    # um = serializers.CharField(source='productos', read_only=True)
+    # um = UmSerializador(source='productos', read_only=True)
     um = serializers.RelatedField(source='productos', read_only=True)
+    print(um)
     class Meta:
         model = Producto
-        fields=['nombre_producto', 'prod_prec','um']
+        fields= '__all__' #['nombre_producto', 'prod_prec','um']
 

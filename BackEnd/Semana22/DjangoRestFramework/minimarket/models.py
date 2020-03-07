@@ -40,6 +40,7 @@ class Producto(models.Model):
     # PROTECT => prohibe eliminar la pk porque tiene relaciones existentes, en ese caso lo que se recomienda hacer es primero eliminar la relaciones y luego eliminar la pk
     # SET_NULL => cuando se elimina la pk el campo de la pk queda con el valor de NULL
     # DO_NOTHING => esta es la peor de todas porque crea problema en su integridad de datos al hacer que si tu eliminas una pk no hace nada y aun en el campo de la fk mantiene su valor eliminado
+    estado_del_producto = models.BooleanField(default=True, db_column="prod_est",help_text="Estado del producto")
     producto_padre = models.ForeignKey("Producto", on_delete=models.CASCADE, null=True, db_column='producto_padre' )
     um_id = models.ForeignKey(UnidadMedida, on_delete=models.PROTECT, db_column="um_id", related_name='productos')
     grup_id = models.ForeignKey(Grupo, on_delete=models.PROTECT, db_column="grup_id")
