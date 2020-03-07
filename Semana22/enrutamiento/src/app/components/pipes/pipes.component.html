@@ -77,6 +77,24 @@
                 <td>{{persona | json}}</td>
                 <td>Dará el formato JSON tal cual</td>
             </tr>
+            <tr>
+                <td>{{nombre}}</td>
+                <td>custom</td>
+                <!-- COMO SE ESCRIBE -->
+                <td>{{'{texto | custom}'}}</td>
+                <!-- PIPE FUNCIONANDO -->
+                <td>{{nombre | custom}}</td>
+                <td>Custom Pipe</td>
+            </tr>
+            <tr>
+                <td>{{nombre}}</td>
+                <td>custom</td>
+                <!-- COMO SE ESCRIBE -->
+                <td>{{'{texto | custom}'}}</td>
+                <!-- PIPE FUNCIONANDO -->
+                <td>{{nombre | titlecase}}</td>
+                <td>Custom Pipe</td>
+            </tr>
         </tbody>
     </table>
 </main>

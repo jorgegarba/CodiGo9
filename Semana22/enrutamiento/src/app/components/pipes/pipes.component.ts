@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PipesComponent implements OnInit {
 
-  nombre:string = "Jorge Osmar";
+  nombre:string = "jorge osmar";
   platos:Array<string> = ['Ceviche','Causa','Chicharron','Pollo','Adobo','Pizza'];
   pi:number = Math.PI;
   impuesto:number = 0.18;

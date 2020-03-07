@@ -11,6 +11,8 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { ErrorComponent } from './components/error/error.component';
 import { UsuarioComponent } from './components/usuarios/usuario/usuario.component';
 import { PipesComponent } from './components/pipes/pipes.component';
+import { CustomPipe } from './pipes/custom.pipe';
+import { PascalPipe } from './pipes/pascal.pipe';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,15 @@ import { PipesComponent } from './components/pipes/pipes.component';
     UsuariosComponent,
     ErrorComponent,
     UsuarioComponent,
-    PipesComponent
+    PipesComponent,
+    CustomPipe,
+    PascalPipe
   ],
   imports: [
     BrowserModule,
     RoutingModule
   ],
+  // SERVICIOS
   providers: [],
   bootstrap: [AppComponent]
 })

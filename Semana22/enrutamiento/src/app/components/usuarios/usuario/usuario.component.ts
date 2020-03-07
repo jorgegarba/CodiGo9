@@ -39,5 +39,4 @@ export class UsuarioComponent implements OnInit, OnChanges, DoCheck, OnDestroy {
     this.outUsuario.emit(usuario);
   }
 
-
 }

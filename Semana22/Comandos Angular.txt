@@ -22,4 +22,6 @@ npm i jquery
 npm i popper.js
 
 
+ng generate pipe pipes/nombrepipe
 
+ng generate service services/nombreservice
