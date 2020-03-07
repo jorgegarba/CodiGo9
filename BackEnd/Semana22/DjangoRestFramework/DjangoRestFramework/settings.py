@@ -60,12 +60,12 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:5500"
 ]
-# CORS_ORIGIN_REGEX_WHITELIST=[
-#     r"https://midominio.com/*"
-# ]
+CORS_ORIGIN_REGEX_WHITELIST=[
+    r"https://midominio.com/*"
+]
 # Para definir que metodos pueden hacer
 CORS_ALLOW_METHODS=[
-    # 'GET',
+    'GET',
     'POST',
     'PUT',
     'DELETE'
