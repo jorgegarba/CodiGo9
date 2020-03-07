@@ -16,7 +16,6 @@ class Grupo(models.Model):
         db_table = "t_grupo"
         verbose_name_plural = "Grupos"
 
-
 class UnidadMedida(models.Model):
     um_id = models.AutoField(
         primary_key=True, help_text="Id de la unidad de medida")
@@ -29,10 +28,9 @@ class UnidadMedida(models.Model):
         # Filtro para ordenamiento automaticos
         ordering=["um_desc"]
 
-
 class Producto(models.Model):
     prod_id = models.AutoField(primary_key=True, help_text="Id del producto")
-    prod_nom = models.CharField(max_length=45, help_text="Nombre del producto")
+    nombre_producto = models.CharField(max_length=45, help_text="Nombre del producto", db_column='prod_nom')
     prod_prec = models.DecimalField(
         max_digits=5, decimal_places=2, help_text="Precio del producto")
     # tproductos_col
@@ -42,17 +40,16 @@ class Producto(models.Model):
     # PROTECT => prohibe eliminar la pk porque tiene relaciones existentes, en ese caso lo que se recomienda hacer es primero eliminar la relaciones y luego eliminar la pk
     # SET_NULL => cuando se elimina la pk el campo de la pk queda con el valor de NULL
     # DO_NOTHING => esta es la peor de todas porque crea problema en su integridad de datos al hacer que si tu eliminas una pk no hace nada y aun en el campo de la fk mantiene su valor eliminado
-    producto_padre = models.ForeignKey("Producto", on_delete=models.CASCADE)
-    um_id = models.ForeignKey(UnidadMedida, on_delete=models.PROTECT)
-    grup_id = models.ForeignKey(Grupo, on_delete=models.PROTECT)
+    producto_padre = models.ForeignKey("Producto", on_delete=models.CASCADE, null=True, db_column='producto_padre' )
+    um_id = models.ForeignKey(UnidadMedida, on_delete=models.PROTECT, db_column="um_id", related_name='productos')
+    grup_id = models.ForeignKey(Grupo, on_delete=models.PROTECT, db_column="grup_id")
 
     def __str__(self):
-        return "{} {}".format(self.prod_nom, self.um_id.um_desc)
+        return "{} {}".format(self.nombre_producto, self.prod_prec)
 
     class Meta:
         db_table = "t_producto"
         verbose_name_plural = "Productos"
-
 
 class Precio(models.Model):
     precio_id = models.AutoField(primary_key=True, help_text="Id del precio")

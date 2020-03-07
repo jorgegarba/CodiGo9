@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import UnidadMedida, Grupo, Proveedor
+from .models import UnidadMedida, Grupo, Proveedor, Producto
 
 class MiPrimerSerializador(serializers.Serializer):
     """Un Serializer es un campo de nombre para probar nuestra vista en nuestra API"""
@@ -7,8 +7,16 @@ class MiPrimerSerializador(serializers.Serializer):
     nombre = serializers.CharField(max_length=10)
     apellido = serializers.CharField(max_length=15)
 
+class ProductosSerializador(serializers.ModelSerializer):
+    class Meta:
+        model=Producto
+        fields=['nombre_producto','prod_prec']
 class UnidadMedidaSerializador(serializers.ModelSerializer):
     # campo_extra=serializers.CharField(max_length=10)
+    # Si ponemos el mismo nombre de related_name como el nombre de la instancia, ya no es necesario definir el parametro source y viceversa
+    # productos = serializers.StringRelatedField( many=True)
+    # productitos = serializers.PrimaryKeyRelatedField(source='productos', many=True, read_only=True)
+    productosporserializador=ProductosSerializador(many=True, read_only=True)
     class Meta:
         model=UnidadMedida
         # El atributo include sirve para indicar que atributos de mi modelo yo voy a utilizar, si pones '__all__' indicara que vas a usar todos, pero si quieres usar algunos en especificos va dentro de una lista
@@ -25,3 +33,10 @@ class ProveedorSerializador(serializers.ModelSerializer):
     class Meta:
         model= Proveedor
         fields='__all__'
+
+class ProductoSerializador(serializers.ModelSerializer):
+    um = serializers.RelatedField(source='productos', read_only=True)
+    class Meta:
+        model = Producto
+        fields=['nombre_producto', 'prod_prec','um']
+

@@ -3,9 +3,9 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-from .models import UnidadMedida, Grupo, Proveedor
+from .models import UnidadMedida, Grupo, Proveedor, Producto
 from rest_framework import status
-from .serializers import MiPrimerSerializador, UnidadMedidaSerializador, GrupoSerializador, ProveedorSerializador
+from .serializers import MiPrimerSerializador, UnidadMedidaSerializador, GrupoSerializador, ProveedorSerializador, ProductoSerializador
 # Create your views here.
 
 # Las APIView funcionan en forma de clases, y dentro de ellas los metodos que se pueden sobreescribir son los verbos HTTP (get, post, put, delete, patch...)
@@ -42,7 +42,6 @@ class UnidadMedidaViews(APIView):
             }, status=status.HTTP_201_CREATED)
         else:
             return Response(serializador.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 class ProbandoSerializadorViews(APIView):
     personas = []
@@ -103,7 +102,6 @@ class ProbandoSerializadorViews(APIView):
                 }, status=status.HTTP_200_OK)
             else:
                 return Response(serializador.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 class GrupoViews(APIView):
     def get(self, request, pk, format=None):
@@ -167,7 +165,6 @@ class GrupoViews(APIView):
     # 2. Para hacer un crud simple y rapido a la base de datos
     # 3. para una API simple
     # 4. Cuando la API no tiene mucha logica
-
 
 class ProveedorViews(ViewSet):
     def list(self, request, format=None):
@@ -246,3 +243,21 @@ class ProveedorViews(ViewSet):
             'message':'Ok',
             'contenido':'Proveedor eliminado con exito'
         }, status=status.HTTP_200_OK)
+
+class ProductoViews(ViewSet):
+    def list(self, request):
+        data = ProductoSerializador(Producto.objects.all(), many=True).data
+        print(data)
+        return Response({
+            'message':'Ok',
+            'contenido': data
+        })
+    def create(self, request):
+        pass
+    def retrieve(self, request, pk):
+        pass
+    def update(self,request, pk):
+        pass
+    def destroy(self,request,pk):
+        pass
+    # partial_update => hacer actualizaciones parciales hasta esperar la confirmacion del usuario, eso se usa con transacciones para poder hacer commit o un rollback

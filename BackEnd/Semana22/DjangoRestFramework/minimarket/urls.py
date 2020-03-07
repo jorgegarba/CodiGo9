@@ -1,10 +1,11 @@
 from django.urls import path, include
-from .views import UnidadMedidaViews, ProbandoSerializadorViews, GrupoViews, ProveedorViews
+from .views import UnidadMedidaViews, ProbandoSerializadorViews, GrupoViews, ProveedorViews, ProductoViews
 
 # PARA LOS VIEWSETS
 from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register('proveedor',ProveedorViews,basename="Proveedores")
+router.register('productos',ProductoViews, basename="Productos")
 
 urlpatterns=[
     path('um',UnidadMedidaViews.as_view(),name="Rutas de la tabla unidad de medida"),
