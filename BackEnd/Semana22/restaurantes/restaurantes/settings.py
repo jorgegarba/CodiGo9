@@ -111,7 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+# https://stackoverflow.com/questions/21717411/timezone-information-missing-in-pytz
+TIME_ZONE = 'America/Lima'
 
 USE_I18N = True
 
