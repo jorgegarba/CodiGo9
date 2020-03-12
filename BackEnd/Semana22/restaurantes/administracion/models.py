@@ -1,6 +1,5 @@
 from django.db import models
-
-# Create your models here.
+from django.contrib.auth.models import User
 
 class Restaurante (models.Model):
     id = models.AutoField(primary_key=True, db_column="res_id")
@@ -68,3 +67,35 @@ class SucursalServicio(models.Model):
     class Meta:
         db_table="t_suc_serv"
         verbose_name_plural="Sucursales Servicios"
+
+class Producto(models.Model):
+    id = models.AutoField(primary_key=True, db_column="prod_id")
+    nombre = models.CharField(max_length=45, db_column="prod_nom")
+    codigo = models.CharField(max_length=45, db_column="prod_cod")
+    precio = models.DecimalField(max_digits=5, decimal_places=2, db_column="prod_prec")
+    descripcion = models.TextField(db_column="prod_desc")
+    imagen = models.TextField(db_column="prod_img")
+    class Meta:
+        db_table="t_producto"
+        verbose_name_plural="Productos"
+
+class ProductoSucursal(models.Model):
+    id= models.AutoField(primary_key=True, db_column="prod_suc_id")
+    estado= models.BooleanField(default=True, db_column="prod_suc_est")
+    precio= models.DecimalField(max_digits=5, decimal_places=2, db_column="prod_suc_prec")
+    sucursal= models.ForeignKey(Sucursal, on_delete=models.PROTECT, related_name="sucursales", db_column="suc_id")
+    producto= models.ForeignKey(Producto, on_delete=models.PROTECT, related_name="productos", db_column="prod_id")
+    class Meta:
+        db_table="t_prod_suc"
+        verbose_name_plural="Productos Sucursales"
+
+class Calificacion(models.Model):
+    id = models.AutoField(primary_key=True, db_column="cal_id")
+    puntaje = models.IntegerField(db_column="cal_puntaje")
+    comentario = models.CharField(max_length=45, db_column="cal_coment")
+    sucursal = models.ForeignKey(Sucursal, on_delete=models.PROTECT, related_name="sucursales", db_column="suc_id")
+    calificacion = models.ForeignKey('self', on_delete=models.PROTECT, related_name="calificaciones", db_column="cal_fk", null=True)
+    usuario = models.ForeignKey(User,on_delete=models.PROTECT, related_name="usuarios", db_column="usu_id")
+    class Meta:
+        db_table="t_calificacion"
+        verbose_name_plural="Calificaciones"
