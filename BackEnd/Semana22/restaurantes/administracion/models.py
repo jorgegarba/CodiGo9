@@ -53,3 +53,18 @@ class Horario(models.Model):
     class Meta:
         db_table="t_horario"
         verbose_name_plural="Horarios"
+
+class Servicio(models.Model):
+    id = models.AutoField(primary_key = True, db_column="serv_id")
+    nombre = models.CharField(max_length=25, db_column="serv_nom")
+    class Meta:
+        db_table="t_servicio"
+        verbose_name_plural="Servicios"
+
+class SucursalServicio(models.Model):
+    id = models.AutoField(primary_key=True, db_column="sucserv_id")
+    servicio = models.ForeignKey(Servicio, on_delete=models.PROTECT, db_column="serv_id", related_name="servicios")
+    sucursal = models.ForeignKey(Sucursal, on_delete=models.PROTECT, db_column="suc_id", related_name="sucursales")
+    class Meta:
+        db_table="t_suc_serv"
+        verbose_name_plural="Sucursales Servicios"
