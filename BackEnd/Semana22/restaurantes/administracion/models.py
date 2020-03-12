@@ -62,8 +62,8 @@ class Servicio(models.Model):
 
 class SucursalServicio(models.Model):
     id = models.AutoField(primary_key=True, db_column="sucserv_id")
-    servicio = models.ForeignKey(Servicio, on_delete=models.PROTECT, db_column="serv_id", related_name="servicios")
-    sucursal = models.ForeignKey(Sucursal, on_delete=models.PROTECT, db_column="suc_id", related_name="sucursales")
+    servicio = models.ForeignKey(Servicio, on_delete=models.PROTECT, db_column="serv_id", related_name="sucserv_servicios")
+    sucursal = models.ForeignKey(Sucursal, on_delete=models.PROTECT, db_column="suc_id", related_name="sucserv_sucursales")
     class Meta:
         db_table="t_suc_serv"
         verbose_name_plural="Sucursales Servicios"
@@ -93,9 +93,9 @@ class Calificacion(models.Model):
     id = models.AutoField(primary_key=True, db_column="cal_id")
     puntaje = models.IntegerField(db_column="cal_puntaje")
     comentario = models.CharField(max_length=45, db_column="cal_coment")
-    sucursal = models.ForeignKey(Sucursal, on_delete=models.PROTECT, related_name="sucursales", db_column="suc_id")
+    sucursal = models.ForeignKey(Sucursal, on_delete=models.PROTECT, related_name="cal_sucursales", db_column="suc_id")
     calificacion = models.ForeignKey('self', on_delete=models.PROTECT, related_name="calificaciones", db_column="cal_fk", null=True)
-    usuario = models.ForeignKey(User,on_delete=models.PROTECT, related_name="usuarios", db_column="usu_id")
+    usuario = models.ForeignKey(User,on_delete=models.PROTECT, related_name="cal_usuarios", db_column="usu_id")
     class Meta:
         db_table="t_calificacion"
         verbose_name_plural="Calificaciones"
