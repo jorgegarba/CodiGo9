@@ -14,4 +14,7 @@ export class ProductosService {
     return this._sHttp.get("https://5e22b9e7afee990014e59669.mockapi.io/productos");
   }
 
+  getProducto(id:string): Observable<any> {
+    return this._sHttp.get(`https://5e22b9e7afee990014e59669.mockapi.io/productos/${id}`);
+  }
 }

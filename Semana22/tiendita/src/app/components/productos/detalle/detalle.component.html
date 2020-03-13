@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <!-- Estoy validando si miProducto existe -->
+        <div *ngIf="miProducto">
+            <img 
+            [src]="miProducto.prod_img" 
+            class="col-12" 
+            style="height:150px;"
+            />
+            <strong>Nombre: </strong>{{miProducto.prod_nom}}
+            <br/>
+            <strong>Descripción: </strong>{{miProducto.prod_desc}}
+            <br/>
+            <strong>Precio: </strong>{{miProducto.prod_price}}
+        </div>
+    </div>
+</div>

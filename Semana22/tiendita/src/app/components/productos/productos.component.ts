@@ -26,4 +26,7 @@ export class ProductosComponent implements OnInit {
     })
   }
 
+  anadirACarrito(producto:any){
+    console.log(producto);
+  }
 }
