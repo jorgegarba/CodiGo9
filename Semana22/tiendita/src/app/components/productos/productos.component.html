@@ -1,4 +1,9 @@
 <div class="row">
+    <div class="col-12">
+        <button (click)="crearProducto()" class="btn btn-primary">
+            Crear Producto
+        </button>
+    </div>
     <div *ngFor="let prod of productos" class="col-3">
         <app-producto 
             [prod]="prod"

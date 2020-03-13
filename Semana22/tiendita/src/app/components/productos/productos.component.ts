@@ -45,6 +45,20 @@ export class ProductosComponent implements OnInit, OnDestroy {
     // console.log(this.miCarrito);
   }
 
+  crearProducto(){
+    let objProducto = {
+      prod_nom:"Mascarillas",
+      prod_desc:"Ahora están más carillas",
+      prod_price:5,
+      prod_img:"https://picsum.photos/300/300"
+    }
+    this._sProductos.createProducto(objProducto)
+    .subscribe((productoCreado)=>{
+      console.log(productoCreado);
+    })
+
+  }
+
   ngOnDestroy(){
     this.suscripcion.unsubscribe();
     this.suscripcionCarrito.unsubscribe();

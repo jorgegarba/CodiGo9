@@ -17,4 +17,8 @@ export class ProductosService {
   getProducto(id:string): Observable<any> {
     return this._sHttp.get(`https://5e22b9e7afee990014e59669.mockapi.io/productos/${id}`);
   }
+
+  createProducto(producto:any): Observable<any>{
+    return this._sHttp.post(`https://5e22b9e7afee990014e59669.mockapi.io/productos`,producto);
+  }
 }

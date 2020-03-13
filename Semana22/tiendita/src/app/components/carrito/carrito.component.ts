@@ -18,6 +18,10 @@ export class CarritoComponent implements OnInit, OnDestroy {
     .subscribe((arregloProductos) => {
       // console.log(arregloProductos);
       this.carrito = arregloProductos;
+      // let arr = [...this.carrito,{}];
+      let unique = [...new Set(this.carrito)];
+      console.log(unique);
+      
     });
   }
 
