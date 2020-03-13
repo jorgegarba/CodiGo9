@@ -1,0 +1,30 @@
+<div class="container">
+    <h2>Tu carrito ya esta Listo!!!</h2>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Foto</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let prod of carrito">
+                    <tr>
+                        <td>{{prod.prod_nom}}</td>
+                        <td>{{prod.prod_desc}}</td>
+                        <td>{{prod.prod_price}}</td>
+                        <td>
+                            <img 
+                            [src]="prod.prod_img" 
+                            style="width:100px"
+                            />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -8,6 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ProductoComponent } from './components/productos/producto/producto.component';
 import { DetalleComponent } from './components/productos/detalle/detalle.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { DetalleComponent } from './components/productos/detalle/detalle.compone
     NavbarComponent,
     ProductosComponent,
     ProductoComponent,
-    DetalleComponent
+    DetalleComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
