@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card m-2">
     <img [src]="prod.prod_img" class="card-img-top">
     <div class="card-body">
         <h5 class="card-title">
@@ -10,7 +10,11 @@
         <strong>
             Precio: {{prod.prod_price | currency:'PEN'}}
         </strong>
-        <a [routerLink]="['detalle',prod.prod_id]">Ver Detalle</a>
-        <button (click)="mandarACarrito()">Agregar a Carrito</button>
+        <a class="btn btn-info btn-block" [routerLink]="['detalle',prod.prod_id]">
+            Ver Detalle
+        </a>
+        <button class="btn btn-primary btn-block" (click)="mandarACarrito()">
+            Agregar a Carrito
+        </button>
     </div>
 </div>
