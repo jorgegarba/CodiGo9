@@ -1,0 +1,21 @@
+{
+  "name": "hoteles",
+  "version": "1.0.0",
+  "description": "Backend para la reserva de hoteles en typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "reserva",
+    "hoteles",
+    "node",
+    "express"
+  ],
+  "author": "Eduardo de Rivero",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sequelize": "^5.21.5"
+  }
+}
