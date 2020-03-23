@@ -4,6 +4,7 @@ export const conexion = new Sequelize(
     'hoteles','root','root',{
         host:'localhost',
         dialect:'mysql',
+        // evita que se muestre los comandos sql por consola
         // logging: console.log,
         logging:false,
         dialectOptions: {
