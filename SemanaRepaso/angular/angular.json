@@ -1,9 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
+  "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
-    "tiendita": {
+    "angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/tiendita",
+            "outputPath": "dist/angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,13 +24,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -66,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "tiendita:build"
+            "browserTarget": "angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "tiendita:build:production"
+              "browserTarget": "angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tiendita:build"
+            "browserTarget": "angular:build"
           }
         },
         "test": {
@@ -114,19 +110,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "tiendita:serve"
+            "devServerTarget": "angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "tiendita:serve:production"
+              "devServerTarget": "angular:serve:production"
             }
           }
         }
       }
-    }
-  },
-  "defaultProject": "tiendita",
-  "cli": {
-    "analytics": "cfa51a55-293b-43ab-8eb9-456b4daaf417"
-  }
+    }},
+  "defaultProject": "angular"
 }
