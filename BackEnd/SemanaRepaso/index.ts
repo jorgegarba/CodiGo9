@@ -1,2 +1,3 @@
-console.log('Hola');
-console.log('Adios');
+import {Server} from './app/config/Server';
+let objServidor = new Server();
+objServidor.iniciar();  

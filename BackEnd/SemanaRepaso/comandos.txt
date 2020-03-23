@@ -2,3 +2,4 @@ npm i --g nodemon => para instalar nodemon de manera global
 npm i --g typescript => para instalar typescript de manera global
 npm init => para inicializar el proyecto en node
 tsc --init => modifico la linea "target":"es6", descomento la linea "outDir" y le asigno el valor de "./dist/"
+npm i express sequelize
