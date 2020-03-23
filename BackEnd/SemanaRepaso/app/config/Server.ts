@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import bodyParser from 'body-parser';
 import { conexion } from './sequelize';
+import { habitacion_router } from '../Routes/Habitacion';
 
 export class Server {
     public app: express.Application;
@@ -33,7 +34,8 @@ export class Server {
             res.status(200).json({
                 mensaje: 'La api se levanto con exito!'
             })
-        })
+        });
+        this.app.use("", habitacion_router);
     }
     iniciar() {
         this.app.listen(this.PUERTO, () => {
