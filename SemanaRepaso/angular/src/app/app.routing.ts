@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'administrador',
     loadChildren: () => import('./modulos/admin/admin.module').then(m => m.AdminModule)
   },
+  {
+    path: 'cliente',
+    loadChildren: () => import('./modulos/cliente/cliente.module').then(m => m.ClienteModule)
+  },
   // la ruta ** es la ruta del ERROR o la ruta que responde
   // cuando se coloca una ruta inexistente
   { path: '**', component: PageNotFoundComponent },
