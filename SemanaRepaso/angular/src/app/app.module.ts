@@ -7,6 +7,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { RecoverComponent } from './auth/recover/recover.component';
 import { AppRoutingModule } from './app.routing';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { BlankComponent } from './components/blank/blank.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     LoginComponent,
     RegisterComponent,
     RecoverComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    BlankComponent
   ],
   imports: [
     BrowserModule,

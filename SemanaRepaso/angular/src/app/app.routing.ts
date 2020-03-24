@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RecoverComponent } from './auth/recover/recover.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { BlankComponent } from './components/blank/blank.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: BlankComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'recuperar', component: RecoverComponent },
   {
     path: 'administrador',

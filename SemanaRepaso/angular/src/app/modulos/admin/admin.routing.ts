@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { HabitacionesComponent } from './screens/habitaciones/habitaciones.component';
 import { ReservasComponent } from './screens/reservas/reservas.component';
+import { BlankAdminComponent } from './screens/blank-admin/blank-admin.component';
 
 const routes: Routes = [
   {
-    path: 'admin',
+    path: '',
     component: AdminComponent,
     children: [
+      { path: 'blank', component: BlankAdminComponent },
       { path: 'habitaciones', component: HabitacionesComponent },
       { path: 'reservas', component: ReservasComponent }
     ]
