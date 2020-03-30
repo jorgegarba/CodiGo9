@@ -20,6 +20,10 @@ export const getAllHabitacion = (req: Request, res: Response) => {
     })
 }
 export const createHabitacion = (req: Request, res: Response) => {
+    // 1. validar el token (que esté vivo)
+    // 2. Obtener información del cuerpo del TOKEN 
+    // 2.1. Obtener el id del usuario que está enviando el TOKEN del PAYLOAD
+    // 3. Validar si el tipo de usuario es "admin" para que pueda crear la habitación
     Habitacion.build(req.body).save().then((objHabitacion: Model) => {
         return res.status(201).json({
             ok: true,
