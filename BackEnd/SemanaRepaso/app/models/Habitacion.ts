@@ -16,6 +16,10 @@ export const habitacion_model = (conexion : Sequelize)=>{
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: true
+        },
+        hab_prec:{
+            type: DataTypes.DECIMAL(5,2),
+            allowNull: false
         }
     },{
         tableName:'t_habitacion',

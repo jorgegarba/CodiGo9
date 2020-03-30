@@ -10,10 +10,6 @@ export const caracteristica_model=(conexion:Sequelize)=>{
         caract_desc:{
             type:DataTypes.STRING(45),
             allowNull:false,
-        },
-        caract_prec:{
-            type: DataTypes.DECIMAL(5,2),
-            allowNull:false
         }
     }, {
         tableName:'t_caracteristica',
