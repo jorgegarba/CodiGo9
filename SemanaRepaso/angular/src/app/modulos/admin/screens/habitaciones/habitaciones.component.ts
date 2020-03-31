@@ -1,4 +1,6 @@
+import { iHabitacion } from './../../../../interfaces/Habitacion';
 import { Component, OnInit } from '@angular/core';
+import { HabitacionService } from 'src/app/servicios/habitacion.service';
 
 @Component({
   selector: 'app-habitaciones',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HabitacionesComponent implements OnInit {
 
-  constructor() { }
+  habitaciones: Array<iHabitacion>;
+  // inyeccion por dependencia para consumir los servicios
+  constructor(private _sHabitacion: HabitacionService) { }
 
   ngOnInit(): void {
+    this._sHabitacion.getHabitaciones().subscribe((rpta: any) => {
+      if (rpta.ok === true) {
+        this.habitaciones = rpta.content;
+      }
+    }, (error) => {
+      console.error(error)
+    });
   }
 
 }

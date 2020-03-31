@@ -1,43 +1,73 @@
 <div class="container-fluid">
-    <!-- ============================================================== -->
-    <!-- Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
-    <div class="row page-titles">
-        <div class="col-md-5 align-self-center">
-            <h3 class="text-themecolor">Habitaciones</h3>
-        </div>
-        <div class="col-md-7 align-self-center">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="javascript:void(0)">Home</a>
-                </li>
-                <li class="breadcrumb-item">pages</li>
-                <li class="breadcrumb-item active">Blank Page</li>
-            </ol>
-        </div>
-        <div>
-            <button
-                class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i
-                    class="ti-settings text-white"></i></button>
-        </div>
+  <!-- ============================================================== -->
+  <!-- Bread crumb and right sidebar toggle -->
+  <!-- ============================================================== -->
+  <div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+      <h3 class="text-themecolor">Habitaciones</h3>
     </div>
-    <!-- ============================================================== -->
-    <!-- End Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
+    <div class="col-md-7 align-self-center">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="javascript:void(0)">Home</a>
+        </li>
+        <li class="breadcrumb-item">pages</li>
+        <li class="breadcrumb-item active">Blank Page</li>
+      </ol>
+    </div>
+    <div>
+      <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i
+          class="ti-settings text-white"></i></button>
+    </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Bread crumb and right sidebar toggle -->
+  <!-- ============================================================== -->
 
-    <!-- ============================================================== -->
-    <!-- Start Page Content -->
-    <!-- ============================================================== -->
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    Habitaciones Works
-                </div>
-            </div>
+  <!-- ============================================================== -->
+  <!-- Start Page Content -->
+  <!-- ============================================================== -->
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          Habitaciones Works
         </div>
+      </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- End PAge Content -->
-    <!-- ============================================================== -->
+  </div>
+  <!-- ROW TABLA DE HABITACIONES -->
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <table class="row-border hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Id</th>
+                <th>Habitación</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let h of habitaciones; let i=index">
+                <td>{{i}}</td>
+                <td>{{h.hab_id}}</td>
+                <td>{{h.hab_nomb}}</td>
+                <td>{{h.hab_disp}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIN ROW TABLA DE HABITACIONES -->
+
+  <!-- ============================================================== -->
+  <!-- End PAge Content -->
+  <!-- ============================================================== -->
 </div>
