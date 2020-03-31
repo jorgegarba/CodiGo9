@@ -9,6 +9,11 @@ import { AppRoutingModule } from './app.routing';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { BlankComponent } from './components/blank/blank.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
+// Importando modulo de los DATATABLES
+import { DataTablesModule } from 'angular-datatables';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +25,9 @@ import { BlankComponent } from './components/blank/blank.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
