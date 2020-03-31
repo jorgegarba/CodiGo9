@@ -1,4 +1,4 @@
-import { Habitacion } from '../config/sequelize';
+import { Habitacion, Tipo } from '../config/sequelize';
 import { Request, Response } from 'express';
 import { Model } from 'sequelize/types';
 
@@ -24,13 +24,25 @@ export const createHabitacion = (req: Request, res: Response) => {
     // 2. Obtener información del cuerpo del TOKEN 
     // 2.1. Obtener el id del usuario que está enviando el TOKEN del PAYLOAD
     // 3. Validar si el tipo de usuario es "admin" para que pueda crear la habitación
-    Habitacion.build(req.body).save().then((objHabitacion: Model) => {
-        return res.status(201).json({
-            ok: true,
-            content: objHabitacion
-        })
+    let objHabitacion = Habitacion.build(req.body);
+    Tipo.findByPk(req.body.tipo_id).then((objTipo:Model)=>{
+        if(objTipo){
+            return objHabitacion.save();
+        }else{
+            res.status(200).json({
+                ok: false,
+                content: `El tipo con id ${req.body.tipo_id} no existe en la bd`
+            });
+        }
+    }).then((objHabitacionC: Model) => {
+        if (objHabitacionC){
+            res.status(201).json({
+                ok: true,
+                content: objHabitacionC
+            })
+        }
     }).catch((error: any) => {
-        return res.status(500).json({
+        res.status(500).json({
             ok: false,
             message: error
         })

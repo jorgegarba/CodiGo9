@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import bodyParser from 'body-parser';
 import { conexion } from './sequelize';
 import { habitacion_router } from '../Routes/Habitacion';
+import { tipo_router } from '../Routes/Tipo';
 
 export class Server {
     public app: express.Application;
@@ -36,6 +37,7 @@ export class Server {
             })
         });
         this.app.use("", habitacion_router);
+        this.app.use("", tipo_router);
     }
     iniciar() {
         this.app.listen(this.PUERTO, () => {
