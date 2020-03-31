@@ -7,6 +7,8 @@ import { ReservasComponent } from './screens/reservas/reservas.component';
 import { NavbarAdminComponent } from './components/navbar-admin/navbar-admin.component';
 import { BlankAdminComponent } from './screens/blank-admin/blank-admin.component';
 import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
+import { HabitacionVerComponent } from './screens/habitacion-ver/habitacion-ver.component';
+import { HabitacionCrearComponent } from './screens/habitacion-crear/habitacion-crear.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.
     ReservasComponent,
     NavbarAdminComponent,
     BlankAdminComponent,
-    SidebarAdminComponent
+    SidebarAdminComponent,
+    HabitacionVerComponent,
+    HabitacionCrearComponent
   ],
   imports: [
     CommonModule,

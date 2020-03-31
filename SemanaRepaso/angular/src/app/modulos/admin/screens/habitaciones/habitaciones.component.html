@@ -30,8 +30,12 @@
   <div class="row">
     <div class="col-12">
       <div class="card">
-        <div class="card-body">
-          Habitaciones Works
+        <div class="card-body flex-padre">
+          <span>Habitaciones Works</span>
+          <button class="btn btn-outline-primary" (click)="goCrearHabitacion()">
+            <i class="fas fa-plus-square mr-2"></i>
+            Crear Habitacion
+          </button>
         </div>
       </div>
     </div>
@@ -42,13 +46,15 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <table id="tabla-habitaciones" class="row-border hover">
+          <table id="tabla-habitaciones" class="row-border hover" *ngIf="cargando===false">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Id</th>
                 <th>Habitación</th>
                 <th>Estado</th>
+                <th>Precio</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -56,10 +62,27 @@
                 <td>{{i}}</td>
                 <td>{{h.hab_id}}</td>
                 <td>{{h.hab_nom}}</td>
-                <td>{{h.hab_disp}}</td>
+                <td>
+                  <span class="label label-success" *ngIf="h.hab_disp===true">Disponible</span>
+                  <span class="label label-danger" *ngIf="h.hab_disp===false">Ocupado</span>
+                </td>
+                <td>{{ h.hab_prec | currency:'PEN':'S/ ':'.2-2' }}</td>
+                <td>
+                  <button class="btn btn-outline-primary" (click)="goVerHabitacion(h.hab_id)">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
+
+          <div class="alert alert-info text-center" role="alert" *ngIf="cargando===true">
+            <h4 class="alert-heading">Recuperando datos de la base de datos</h4>
+            <p>
+              <i class="fa fa-refresh fa-3x fa-spin"></i>
+            </p>
+          </div>
+
         </div>
       </div>
     </div>

@@ -4,6 +4,8 @@ import { AdminComponent } from './admin.component';
 import { HabitacionesComponent } from './screens/habitaciones/habitaciones.component';
 import { ReservasComponent } from './screens/reservas/reservas.component';
 import { BlankAdminComponent } from './screens/blank-admin/blank-admin.component';
+import { HabitacionVerComponent } from './screens/habitacion-ver/habitacion-ver.component';
+import { HabitacionCrearComponent } from './screens/habitacion-crear/habitacion-crear.component';
 
 const routes: Routes = [
   {
@@ -12,7 +14,9 @@ const routes: Routes = [
     children: [
       { path: 'blank', component: BlankAdminComponent },
       { path: 'habitaciones', component: HabitacionesComponent },
-      { path: 'reservas', component: ReservasComponent }
+      { path: 'reservas', component: ReservasComponent },
+      { path: 'habitaciones/crear', component: HabitacionCrearComponent },
+      { path: 'habitaciones/:hab_id', component: HabitacionVerComponent }
     ]
   },
 ];
