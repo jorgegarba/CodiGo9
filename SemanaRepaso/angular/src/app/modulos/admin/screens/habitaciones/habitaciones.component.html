@@ -42,7 +42,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <table class="row-border hover">
+          <table id="tabla-habitaciones" class="row-border hover">
             <thead>
               <tr>
                 <th>#</th>
@@ -55,7 +55,7 @@
               <tr *ngFor="let h of habitaciones; let i=index">
                 <td>{{i}}</td>
                 <td>{{h.hab_id}}</td>
-                <td>{{h.hab_nomb}}</td>
+                <td>{{h.hab_nom}}</td>
                 <td>{{h.hab_disp}}</td>
               </tr>
             </tbody>

@@ -14,6 +14,6 @@ export class HabitacionService {
    * Funcion que devuelve una lista de habitaciones
    */
   getHabitaciones() {
-    return this._sHttpClient.get(`${environment.URL_BACKEND}/habitacion`)
+    return this._sHttpClient.get(`${environment.URL_BACKEND}/habitaciones`)
   }
 }
