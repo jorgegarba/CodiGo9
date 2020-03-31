@@ -3,7 +3,16 @@ import { Request, Response } from 'express';
 import { Model } from 'sequelize/types';
 
 export const getAllHabitacion = (req: Request, res: Response) => {
-    Habitacion.findAll().then((habitaciones: Model) => {
+    Habitacion.findAll({
+        // Si deseamos excluir uno o mas campos se usa el metodo exclude dentro de la declaracion de los atributos
+        attributes: {exclude: ['createdAt', 'updatedAt','tipo_id']},
+        // Si deseamos especificar que campos mostrar se usa el metodo include dentro de la declaracion de los atributos
+        // attributes: {include: ['hab_nom','hab_disp','hab_prec']},
+        // NOTA: Se recomienda usar uno o el otro, puesto que al usar los dos es redundante
+        include:[
+            {model: Tipo, attributes: ['tipo_desc']}
+        ]
+    }).then((habitaciones: Model) => {
         console.log(habitaciones);
         if (habitaciones.length === 0) {
             return res.status(200).json({
@@ -48,3 +57,4 @@ export const createHabitacion = (req: Request, res: Response) => {
         })
     })
 }
+

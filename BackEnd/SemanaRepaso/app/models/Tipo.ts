@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes } from 'sequelize';
 
 export const tipo_model = (conexion: Sequelize) => {
-    const modelo = conexion.define("Tipo", {
+    const modelo = conexion.define("tipo", {
         tipo_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,

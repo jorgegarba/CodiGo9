@@ -41,8 +41,8 @@ Habitacion_Caracteristica.belongsTo(Habitacion, {foreignKey:"hab_id"});
 Habitacion.hasMany(Reserva, {foreignKey:"hab_id"});
 Reserva.belongsTo(Habitacion, {foreignKey:"hab_id"});
 
-Caracteristica.hasMany(Habitacion_Caracteristica, {foreignKey:"carac_id"});
-Habitacion_Caracteristica.belongsTo(Caracteristica, {foreignKey:"carac_id"})
+Caracteristica.hasMany(Habitacion_Caracteristica, {foreignKey:"caract_id"});
+Habitacion_Caracteristica.belongsTo(Caracteristica, {foreignKey:"caract_id"})
 
 Usuario.hasMany(Reserva, {foreignKey:"cli_id"});
 Reserva.belongsTo(Usuario, {foreignKey:"cli_id"});

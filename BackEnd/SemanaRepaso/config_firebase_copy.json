@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "hoteles-eduardo-codigo9",
+  "private_key_id": "bb8bb973914ba3715caac09c533b1b3e157e8ee5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC0gHcaGckwlZhC\nOzTuXJXNFzPI5z+HVcxukY+c/SXBtQunoBSgWiEWuXcYF4IO0IaUf6exX71x6mm4\ntU7HX4S2QbQw1P+zcTGeJII19gw9u8OGFjirbI4yZjQTGwG5JXI4IveuDpqqtGJs\nA4mImYsZikQkCSYRLm/ixRr1dBdVCOzdK8R9vaMx1vcUCtLuzrKHf7r/dR8HnXN/\notafcEiRwqkdQb2xCy998PURZ4tQM3bi14e3IWbQ4srqy0n4gaYFhibof6cN3dQt\nEfvpbeOWRQwPqy1nRS6TxhCvsTGpEU8o6tPqxv0yRuotMNuEg5FOd1YQllbj7fP9\nQihE72FxAgMBAAECggEAKSc5AGxsoHUa987D7KyTQuVNWzrOEy8Oow7w7VwSJa3/\ncEJhMYYbETFL4+RINNR6OpU4SIqJiNVnMUO1KGOwwFUOniuR+PmP1HyCa4cjl1ed\n5o5ecUcYzIjcypZXuDy/Y+klCzwtK0phPjs4Ojq3qiUKECU91qD9xXgnA1tqjmpO\nTP4a23Xh8Oz5udm85tCSiDotVK5kps0s+My94DIuNsLU2peLE4m/AtVzGJ0TM6QL\n7Afq1HZ1V2YEjQ+6vWk4n27NuZJ8yzqlSaNwNb3Q9lC9VNhPurAGW+c2oZnq0kK9\nX0Mf/zWSNElGERcAfXvEFovdsA2ikl92hJ5GjwrSOQKBgQDlTp9vMVGc4HMiRNkq\npjQMtRGnPUapfWEbl+oCJMbXscJ129ANBS7egto0SML0pAC78EPnS6ciaQVzpsg8\nTP/R/YB4qr/Auk2ssB/315xd58JTR/HQvahADdkgIsJOl7G/J5r8UHbTRYLjdvSl\nQsecQ3aeCxMRBHOIp1mANK8olwKBgQDJg3BovBTlnU6tmFf0I4DSjzj5BDdp+NCD\nQHmzZYTWhoyPRO6yklpNaEB9c0ioEULO9R12m+hMUtYclYaI55Nn8hoVTm71IlUs\nhTDlczOUNUiCnO6ir04rweXn75M3+bzFmMrnSnJnxvH4fD02fQJ7zhz78BLwWGbW\nlhM6j8O/NwKBgASWSQwxYV+RAdyaofl/b6Udbif5StOTJYEmzdCTKcMg1DIFXqkU\nBHcBCRpopjW8niMkUEdtNP+0OB6zJGhIZgmuV4aSa9mQIIOm1kzf7EnYnAOMeeLi\nGF6HqGNDLr3hvPWE9k270lSxnEeuloBD0LhohRPuRshdXW5LYrf01dgrAoGAVs+Z\n+HS2J+jpwR01HsbAs3Th3Vz0pmF7Kl/3TdJ5NJXILdxLXIByCJDV33Vvon+1IUU1\nSSiHHYI+HRhJWecxeIEyvWUJpe8BdGl4lBBZ8wo1T5ddspYE/hLNAWsTJ/UdXp6h\nIpzOxmhNS3fyQuv9yuoTUHGvJv1eaClE5WCTumcCgYEAzV0qQesqsG0YL114pa4r\nj/ObeFPAsIe1uDOlSeZB0dI4IO2Zh7iOA9fATpm1045RhGzqHwkBiRFG/hwe7ge6\naRyA7uEp/OettRhcp1PDkLPIHcDhdpvlJi348HB/sU9r8qRNAMb8ayw/0gX3xJdE\nRxHpER3crllpB6p2aszNdvo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-rqkvo@hoteles-eduardo-codigo9.iam.gserviceaccount.com",
+  "client_id": "103656272710832924825",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-rqkvo%40hoteles-eduardo-codigo9.iam.gserviceaccount.com"
+}

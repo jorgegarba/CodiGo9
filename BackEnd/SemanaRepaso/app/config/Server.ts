@@ -3,6 +3,8 @@ import bodyParser from 'body-parser';
 import { conexion } from './sequelize';
 import { habitacion_router } from '../Routes/Habitacion';
 import { tipo_router } from '../Routes/Tipo';
+import { caracteristica_router } from '../Routes/Caracteristica';
+import { habcaract_router } from '../Routes/HabitacionCaracteristica';
 
 export class Server {
     public app: express.Application;
@@ -38,6 +40,8 @@ export class Server {
         });
         this.app.use("", habitacion_router);
         this.app.use("", tipo_router);
+        this.app.use("", caracteristica_router);
+        this.app.use("", habcaract_router);
     }
     iniciar() {
         this.app.listen(this.PUERTO, () => {
